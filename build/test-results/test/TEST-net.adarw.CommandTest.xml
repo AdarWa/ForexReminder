@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="net.adarw.CommandTest" tests="1" skipped="0" failures="0" errors="0" timestamp="2023-02-22T20:00:06" hostname="adarch" time="0.084">
+  <properties/>
+  <testcase name="test2()" classname="net.adarw.CommandTest" time="0.084"/>
+  <system-out><![CDATA[{"reminder":{"uuid":"0fc7efdb-2713-4214-a08e-2c66216d0b08","entries":[{"key":{"type":"BOOLEAN","name":"SomeName"},"value":true},{"key":{"type":"STRING","name":"SomeName2"},"value":"Hello"}],"date":"Feb 22, 2023, 10:00:06 PM"}}
+]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>
