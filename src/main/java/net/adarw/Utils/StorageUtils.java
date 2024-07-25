@@ -4,19 +4,16 @@ import com.google.gson.Gson;
 import net.adarw.Reminders;
 import net.adarw.Settings;
 import net.adarw.Template;
-import net.adarw.TemplateParser;
 
 import java.io.*;
 import java.nio.file.Path;
 import java.nio.file.Paths;
-import java.util.Objects;
-import java.util.Scanner;
 import java.util.logging.Logger;
 
 public class StorageUtils {
     static Logger logger = Logger.getLogger(StorageUtils.class.getName());
 
-    public static Path home = Paths.get(System.getProperty("user.home"));
+    public static Path home = Paths.get(System.getProperty("user.dir"));
     public static Path dataDir = Paths.get(home.toString(), "SuperReminderDaemon");
     public static Path template = Paths.get(dataDir.toString(), "template.json");
     public static Path reminders = Paths.get(dataDir.toString(), "reminders.json");

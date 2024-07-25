@@ -1,0 +1,5 @@
+alertTitle: "Alert"
+minutesPerHeartbeat: 1
+showDialogOnDelete: true
+openBrowserOnStart: true
+showTrayIcon: true

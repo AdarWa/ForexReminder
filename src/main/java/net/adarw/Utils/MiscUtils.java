@@ -30,14 +30,26 @@ public class MiscUtils {
 
     public static void openTextEditor(File file){
         try {
-            if (System.getProperty("os.name").toLowerCase().contains("windows")) {
+            if(Desktop.isDesktopSupported()){
+                Desktop.getDesktop().edit(file);
+            }else if (System.getProperty("os.name").toLowerCase().contains("windows")) {
                 String cmd = "rundll32 url.dll,FileProtocolHandler " + file.getCanonicalPath();
                 Runtime.getRuntime().exec(cmd);
-            } else {
-                Desktop.getDesktop().edit(file);
             }
         }catch (Exception e){
             logger.severe("Exception while trying to open the text editor: " + e.getMessage());
+        }
+    }
+
+    public static void openDirectory(File dir){
+        if(Desktop.isDesktopSupported()){
+            try {
+                Desktop.getDesktop().open(dir);
+            } catch (IOException e) {
+                logger.severe("IOException while trying to open a directory in File Explorer: " + e.getMessage());
+            }
+        }else {
+            logger.severe("The Desktop interface isn't supported on this machine!");
         }
     }
 }

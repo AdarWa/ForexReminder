@@ -23,7 +23,7 @@ public class Listener extends Thread{
                 }
                 catch (Exception e)
                 {
-//                    logger.severe("Exception while waiting on interrupt: " + e.getMessage());
+                    break;
                 }
             }
             working = true;

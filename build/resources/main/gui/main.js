@@ -221,3 +221,58 @@ $("#default").on("click", function(){
     
     });
 });
+
+$("#openTem").on("click", function(){
+    $("#dialog").text("You will need to restart the core after every change done to the template.\n Please note that if you change the settings, you can click the reload settings button and no restart will be required.");
+    $("#dialog").dialog({
+
+        autoOpen: true,
+        buttons: [
+    
+            {
+                text: "Ok",
+                click: function() {
+                    $.post({
+                        url: "/",
+                        data:JSON.stringify({type:"SETTINGS", operation:"openTemplate"}),
+                        dataType: "json",
+                        contentType: "json",
+                        success: function () {
+                            if(result.code != 0){
+                                alert("Code " + result.code + ". Message: " + result.message);
+                                console.log("Code " + result.code + ". Message: " + result.message);
+                                return;
+                            }
+                        },
+                        error: function(){
+                            heartbeat();
+                        }
+                    });
+                    $("#dialog").text("");
+                    $(this).dialog("close");
+            }
+        }
+        ],
+        width: 400
+    
+    });
+});
+
+$("#openDir").on("click", function(){
+    $.post({
+        url: "/",
+        data:JSON.stringify({type:"SETTINGS", operation:"openDir"}),
+        dataType: "json",
+        contentType: "json",
+        success: function () {
+            if(result.code != 0){
+                alert("Code " + result.code + ". Message: " + result.message);
+                console.log("Code " + result.code + ". Message: " + result.message);
+                return;
+            }
+        },
+        error: function(){
+            heartbeat();
+        }
+    });
+});

@@ -14,11 +14,8 @@ import javax.swing.*;
 import javax.swing.filechooser.FileFilter;
 import javax.swing.filechooser.FileNameExtensionFilter;
 import java.awt.*;
-import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.*;
-import java.net.URI;
-import java.net.URISyntaxException;
 import java.nio.file.Paths;
 import java.util.Date;
 import java.util.logging.Logger;
@@ -135,10 +132,15 @@ public class Main implements MainInterface{
                 Main.getInstance().listener.interrupt();
                 return MessageUtils.getSuccessMessage();
             }else if(command.getType() == Command.CommandType.CHOOSEFILE){
+                final JFrame frame = new JFrame();
+                frame.setAlwaysOnTop(true);
+                frame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+                frame.setLocationRelativeTo(null);
+                frame.requestFocus();
                 FileFilter filter = new FileNameExtensionFilter("WAV File","wav");
                 final JFileChooser fc = new JFileChooser();
                 fc.setFileFilter(filter);
-                int res = fc.showOpenDialog(null);
+                int res = fc.showOpenDialog(frame);
                 if(res == JFileChooser.APPROVE_OPTION){
                     return MessageUtils.getMessage(2, fc.getSelectedFile().getAbsolutePath());
                 }else {
@@ -153,12 +155,17 @@ public class Main implements MainInterface{
                     Settings.current = Settings.SettingsManager.readSettings();
                 }else if(operation.equals("open")){
                     MiscUtils.openTextEditor(StorageUtils.settings.toFile());
-                }else if(operation.equals("quit")){
+                }else if(operation.equals("openTemplate")){
+                    MiscUtils.openTextEditor(StorageUtils.template.toFile());
+                } else if(operation.equals("quit")){
                     System.exit(0);
                     return MessageUtils.getSuccessMessage();
                 }else if(operation.equals("default")){
                     FileUtils.deleteDirectory(StorageUtils.dataDir.toFile());
                     System.exit(0);
+                    return MessageUtils.getSuccessMessage();
+                }else if(operation.equals("openDir")){
+                    MiscUtils.openDirectory(StorageUtils.dataDir.toFile());
                     return MessageUtils.getSuccessMessage();
                 }else{
                     return MessageUtils.getMessage(3, "Invalid settings operation: " + operation);

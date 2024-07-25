@@ -1,0 +1,24 @@
+Jul 25, 2024 11:55:18 AM net.adarw.Main <init>
+INFO: Initializing Server...
+Jul 25, 2024 11:55:19 AM net.adarw.Main <init>
+INFO: Server is active in port 8579!
+Jul 25, 2024 11:59:26 AM net.adarw.Main <init>
+INFO: Initializing Server...
+Jul 25, 2024 11:59:26 AM net.adarw.Main <init>
+INFO: Server is active in port 8579!
+Jul 25, 2024 11:59:27 AM net.adarw.alertListner.Listener run
+INFO: Disabled overdue timer with id db65b583-bc73-4097-aeea-499450b249f7
+Jul 25, 2024 11:59:36 AM net.adarw.Utils.StorageUtils deleteReminder
+INFO: Successfully removed reminder with uuid db65b583-bc73-4097-aeea-499450b249f7
+Jul 25, 2024 12:00:00 PM net.adarw.alertListner.Listener lambda$run$0
+INFO: Triggered Timer 9e770c06-fba1-4659-a133-b985bba754aa for 25-07-2024 12:00
+Jul 25, 2024 12:00:08 PM net.adarw.alertListner.Listener run
+INFO: Disabled overdue timer with id 9e770c06-fba1-4659-a133-b985bba754aa
+Jul 25, 2024 12:06:03 PM net.adarw.Main <init>
+INFO: Initializing Server...
+Jul 25, 2024 12:06:03 PM net.adarw.Main <init>
+INFO: Server is active in port 8579!
+Jul 25, 2024 12:06:08 PM net.adarw.Utils.StorageUtils deleteReminder
+INFO: Successfully removed reminder with uuid 9e770c06-fba1-4659-a133-b985bba754aa
+Jul 25, 2024 12:06:33 PM net.adarw.Utils.MiscUtils openTextEditor
+SEVERE: Exception while trying to open the text editor: The EDIT action is not supported on the current platform!
