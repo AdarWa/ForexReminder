@@ -1,27 +1,56 @@
 package net.adarw.alertListner;
 
-import net.adarw.Reminders;
-import net.adarw.TimerEx;
-import net.adarw.TimerManager;
+import net.adarw.*;
 import net.adarw.Utils.StorageUtils;
+import net.adarw.alertListner.gui.Alert;
+import org.joda.time.DateTime;
+import org.joda.time.format.DateTimeFormatter;
+
+import java.util.Date;
+import java.util.logging.Logger;
 
 public class Listener extends Thread{
+    Logger logger = Logger.getLogger(Listener.class.getName());
+    public static boolean working = false;
 
     @Override
     public void run(){
         while (true){
-            while (!Thread.interrupted());
+            while (!Thread.interrupted()){
+                try
+                {
+                    Thread.sleep(50);
+                }
+                catch (Exception e)
+                {
+//                    logger.severe("Exception while waiting on interrupt: " + e.getMessage());
+                }
+            }
+            working = true;
             Reminders reminders = StorageUtils.getReminders();
             if(reminders == null){
-                System.err.println("Got thread interrupt but with no new data. might want to check it...");
+                logger.severe("Got thread interrupt but with no new data.");
+                working = false;
                 continue;
             }
+            TimerManager.clear();
             for(Reminders.Reminder reminder : reminders.reminders){
+                if(!reminder.enabled){
+                    continue;
+                }
+                if(TimerEx.getDate(reminder.date).before(new Date())){
+                    reminders.reminders.get(reminders.reminders.indexOf(reminder)).enabled = false;
+                    StorageUtils.writeReminders(reminders);
+                    logger.info("Disabled overdue timer with id " + reminder.uuid);
+                    continue;
+                }
                 TimerManager.addTimer(reminder.uuid.toString() ,new TimerEx(()->{
-                    System.out.println("Triggered Timer " + reminder.uuid.toString() + " for " + reminder.date.toString());
+                    logger.info("Triggered Timer " + reminder.uuid.toString() + " for " + reminder.date);
+                    new Alert(reminder);
                     TimerManager.removeTimer(reminder.uuid.toString());
-                }, reminder.date));
+                }, TimerEx.getDate(reminder.date)));
             }
+            working = false;
         }
     }
 }

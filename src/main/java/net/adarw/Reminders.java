@@ -10,14 +10,17 @@ import java.util.UUID;
 
 public class Reminders {
     public static class Reminder{
-        public UUID uuid;
+        public String uuid;
         public ArrayList<KeyValuePair<Template.Component, Object>> entries;
-        public Date date;
+        public boolean enabled;
+        public String date;
+        public String sound;
 
-        public Reminder(UUID uuid, ArrayList<KeyValuePair<Template.Component, Object>> entries, Date date){
+        public Reminder(String uuid, ArrayList<KeyValuePair<Template.Component, Object>> entries, String date, boolean enabled){
             this.uuid = uuid;
             this.entries = entries;
             this.date = date;
+            this.enabled = enabled;
         }
     }
     public ArrayList<Reminder> reminders = new ArrayList<>();

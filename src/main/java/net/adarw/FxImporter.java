@@ -1,0 +1,53 @@
+package net.adarw;
+
+import net.adarw.Utils.KeyValuePair;
+import net.adarw.Utils.StorageUtils;
+import org.apache.commons.csv.CSVFormat;
+import org.apache.commons.csv.CSVRecord;
+import org.joda.time.DateTime;
+
+import java.io.FileNotFoundException;
+import java.io.FileReader;
+import java.io.IOException;
+import java.io.Reader;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.ArrayList;
+import java.util.Date;
+import java.util.UUID;
+
+public class FxImporter {
+
+
+    public static void importFx(String path, ArrayList<KeyValuePair<String, Template.Component>> componentMapping) throws IOException, ParseException {
+        Reader in = new FileReader(path);
+        Iterable<CSVRecord> records = CSVFormat.DEFAULT
+                .withHeader("Id", "Start", "Name", "Impact", "Currency")
+                .withFirstRecordAsHeader()
+                .parse(in);
+        for (CSVRecord record : records) {
+
+            ArrayList<KeyValuePair<Template.Component, Object>> entries = new ArrayList<>();
+            for(KeyValuePair<String, Template.Component> entry : componentMapping){
+                entries.add(new KeyValuePair<Template.Component, Object>(entry.getValue(), record.get(entry.getKey())));
+            }
+
+            SimpleDateFormat parser = new SimpleDateFormat("MM/dd/yyyy HH:mm:ss");
+
+            Reminders.Reminder reminder = new Reminders.Reminder(
+                    record.get("Id"),
+                    entries,
+                    TimerEx.getString(parser.parse(record.get("Start"))),
+                    true
+            );
+
+            Reminders reminders = StorageUtils.getReminders();
+            if(reminders == null){
+                reminders = new Reminders();
+            }
+            reminders.reminders.add(reminder);
+            StorageUtils.writeReminders(reminders);
+        }
+    }
+
+}

@@ -1,31 +1,101 @@
 package net.adarw;
 
+import com.google.common.io.Resources;
+import com.google.gson.Gson;
+import com.j256.simplemagic.ContentType;
+import fi.iki.elonen.NanoHTTPD;
+import net.adarw.Utils.StorageUtils;
+import net.adarw.alertListner.Listener;
 import org.zeromq.SocketType;
 import org.zeromq.ZContext;
 import org.zeromq.ZMQ;
 
-public class Server {
+import java.io.IOException;
+import java.io.InputStream;
+import java.net.MalformedURLException;
+import java.net.URI;
+import java.net.URISyntaxException;
+import java.net.URL;
+import java.nio.charset.Charset;
+import java.nio.charset.StandardCharsets;
+import java.util.HashMap;
+import java.util.Map;
+import java.util.concurrent.Callable;
+import java.util.logging.*;
 
-    public ZContext context = null;
-    public ZMQ.Socket socket = null;
 
-    public Server(ZContext context){
-        this.context = context;
-        socket = context.createSocket(SocketType.REP);
-        socket.bind("tcp://*:5555");
+public class Server extends NanoHTTPD {
+
+    Logger logger = Logger.getLogger(Server.class.getName());
+    MainInterface main;
+
+    public String readResource(final String fileName, Charset charset) {
+        try {
+            return Resources.toString(Resources.getResource(fileName), charset);
+        } catch (IOException e) {
+            String err = "Error while trying to read resource: " + e.getMessage();
+            logger.severe(err);
+            return err;
+        }
     }
 
-    public boolean isActive(){
-        return !Thread.currentThread().isInterrupted();
+    public Server(MainInterface main){
+        super(8579);
+        this.main = main;
+        try {
+            start(NanoHTTPD.SOCKET_READ_TIMEOUT, false);
+        } catch (IOException e) {
+            logger.severe("Error while starting http server, " + e.getMessage());
+        }
     }
 
-    public String receiveMessage(){
-        byte[] msg = socket.recv(0);
-        return new String(msg, ZMQ.CHARSET);
-    }
 
-    public void sendMessage(String msg){
-        socket.send(msg.getBytes(ZMQ.CHARSET), 0);
+    @Override
+    public Response serve(IHTTPSession session) {
+        Map<String, String> params = new HashMap<>();
+        Method method = session.getMethod();
+        if (Method.POST.equals(method)) {
+            try {
+                session.parseBody(params);
+            } catch (IOException ioe) {
+                logger.severe("SERVER INTERNAL ERROR: IOException: " + ioe.getMessage());
+                return newFixedLengthResponse(Response.Status.INTERNAL_ERROR, MIME_PLAINTEXT, "SERVER INTERNAL ERROR: IOException: " + ioe.getMessage());
+            } catch (ResponseException re) {
+                logger.severe("ERROR: " + re.getMessage());
+                return newFixedLengthResponse(re.getStatus(), MIME_PLAINTEXT, re.getMessage());
+            }
+
+            String postBody = params.get("postData");
+            return newFixedLengthResponse(main.OnCommand(postBody));
+        }else if(Method.GET.equals(method)){
+            URI url;
+            try {
+                url = new URI(session.getUri());
+            } catch (URISyntaxException e) {
+                logger.severe("Bad URI: " + e.getMessage());
+                return newFixedLengthResponse("Bad URI: " + e.getMessage());
+            }
+            String path = url.getPath();
+            if(path.equals("/")){
+                Listener.working = true;
+                Main.getInstance().listener.interrupt();
+                return newFixedLengthResponse(readResource("gui/index.html", StandardCharsets.UTF_8)
+                        .replace("{Body}", TemplateParser.getReminderTable())
+                        .replace("{Template}", TemplateParser.getTemplateTable()));
+            }else if(path.equals("/add")){
+                return newFixedLengthResponse(readResource("gui/add.html", StandardCharsets.UTF_8)
+                        .replace("{Template}", new Gson().toJson(StorageUtils.getTemplate(), Template.class))
+                        .replace("{Controls}", TemplateParser.getControlTemplate()));
+            }else if(path.equals("/settings.js")){
+                return newFixedLengthResponse(Response.Status.OK,ContentType.fromFileExtension("js").getMimeType() ,readResource("gui/settings.js", StandardCharsets.UTF_8)
+                        .replace("{minutesPerHeartbeat}", String.valueOf(Settings.current.minutesPerHeartbeat))
+                        .replace("{showDialogOnDelete}", String.valueOf(Settings.current.showDialogOnDelete)));
+            }else{
+                String[] split = path.split("\\.");
+                return newFixedLengthResponse(Response.Status.OK,ContentType.fromFileExtension(split[split.length-1]).getMimeType() ,readResource("gui"+path, StandardCharsets.UTF_8));
+            }
+        }
+        return newFixedLengthResponse("Error!");
     }
 
 }

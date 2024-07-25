@@ -1,23 +1,29 @@
 package net.adarw;
 
 import com.google.gson.Gson;
-import com.google.gson.GsonBuilder;
-import com.google.gson.JsonObject;
 import net.adarw.Utils.JsonUtils;
-import org.joda.time.DateTime;
+import net.adarw.Utils.KeyValuePair;
 import org.json.JSONObject;
 
-import java.util.AbstractMap;
 import java.util.ArrayList;
-import java.util.stream.StreamSupport;
+import java.util.logging.Logger;
 
 public interface Command {
 
     enum CommandType{
         WRITE(WriteCommand.class),
-        READ(null),
+        READ(ReadCommand.class),
         INIT(InitializeCommand.class),
-        EDIT(null);
+        IMPORTFX(ImportFXCommand.class),
+        EDIT(null),
+        CLEAR(ClearCommand.class),
+        READTEMPLATE(ReadTemplateCommand.class),
+        CLEARTEMPLATE(ClearTemplateCommand.class),
+        SETTEMPLATE(SetTemplateCommand.class),
+        DELETE(DeleteCommand.class),
+        CHOOSEFILE(ChooseFileCommand.class),
+        HEARTBEAT(HeartbeatCommand.class),
+        SETTINGS(SettingsCommand.class);
 
         private Class<?> commandClass;
 
@@ -35,6 +41,74 @@ public interface Command {
 
 
 
+    class ReadCommand implements Command {
+
+        @Override
+        public CommandType getType() {
+            return CommandType.READ;
+        }
+    }
+    class ChooseFileCommand implements Command {
+
+        @Override
+        public CommandType getType() {
+            return CommandType.CHOOSEFILE;
+        }
+    }
+
+    class HeartbeatCommand implements Command {
+
+        @Override
+        public CommandType getType() {
+            return CommandType.HEARTBEAT;
+        }
+    }
+
+    class DeleteCommand implements Command{
+        @Override
+        public CommandType getType() { return CommandType.DELETE;}
+
+        public String uuid;
+
+        public DeleteCommand(String uuid){
+            this.uuid = uuid;
+        }
+    }
+
+    class SettingsCommand implements Command{
+        @Override
+        public CommandType getType() { return CommandType.SETTINGS;}
+
+        public String operation;
+
+        public SettingsCommand(String operation){
+            this.operation = operation;
+        }
+    }
+
+    class ClearCommand implements Command {
+
+        @Override
+        public CommandType getType() {
+            return CommandType.CLEAR;
+        }
+    }
+    class ClearTemplateCommand implements Command {
+
+        @Override
+        public CommandType getType() {
+            return CommandType.CLEARTEMPLATE;
+        }
+    }
+
+    class ReadTemplateCommand implements Command {
+
+        @Override
+        public CommandType getType() {
+            return CommandType.READTEMPLATE;
+        }
+    }
+
     class InitializeCommand implements Command {
 
         @Override
@@ -46,6 +120,22 @@ public interface Command {
 
         public InitializeCommand(Template template){
             this.template = template;
+        }
+    }
+
+    class ImportFXCommand implements Command {
+
+        @Override
+        public CommandType getType() {
+            return CommandType.IMPORTFX;
+        }
+
+        public String path;
+        public ArrayList<KeyValuePair<String, Template.Component>> componentMapping;
+
+        public ImportFXCommand(String path, ArrayList<KeyValuePair<String, Template.Component>> componentMapping){
+            this.path = path;
+            this.componentMapping = componentMapping;
         }
     }
 
@@ -65,11 +155,30 @@ public interface Command {
         }
 
     }
+    class SetTemplateCommand implements Command{
+
+        @Override
+        public CommandType getType() {
+            return CommandType.SETTEMPLATE;
+        }
+
+
+        public Template template;
+
+
+        public SetTemplateCommand(Template template){
+            this.template = template;
+        }
+
+    }
 
     class CommandParser{
+        Logger logger = Logger.getLogger(CommandParser.class.getName());
         public Command parseCommand(String command){
-            if(!JsonUtils.isValidJson(command))
+            if(!JsonUtils.isValidJson(command)) {
+                logger.severe("Invalid JSON while parsing command: " + command);
                 return null;
+            }
             try{
                 //workaround because gson doesn't parse interfaces...
                 JSONObject object = new JSONObject(command);
@@ -77,7 +186,7 @@ public interface Command {
 
                 return (Command) new Gson().fromJson(command, type.getCommandClass());
             }catch (Exception e){
-                System.err.println(e.getClass().getSimpleName() + " while parsing command \""+command+"\": " + e.getMessage());
+                logger.severe(e.getClass().getSimpleName() + " while parsing command \""+command+"\": " + e.getMessage());
                 return null;
             }
         }

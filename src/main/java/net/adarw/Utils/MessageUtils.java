@@ -4,6 +4,14 @@ import com.google.gson.JsonObject;
 import org.json.JSONObject;
 
 public class MessageUtils {
+    /*
+        MESSAGE CODES:
+        CODE 0 - SUCCESS
+        CODE 2 - DATA AVAILABLE
+        CODE 3 - GENERAL ERROR
+        CODE 4 - NOT FOUND
+     */
+
 
     public static String getMessage(int code, String message){
         JSONObject object = new JSONObject();
@@ -12,8 +20,19 @@ public class MessageUtils {
         return object.toString();
     }
 
+    public static String getMessage(int code, JSONObject message){
+        JSONObject object = new JSONObject();
+        object.put("code", code);
+        object.put("message", message);
+        return object.toString();
+    }
+
+
+
     public static String getSuccessMessage(){
         return getMessage(0,"Success");
     }
+
+
 
 }

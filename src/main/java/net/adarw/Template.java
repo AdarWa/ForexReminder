@@ -3,12 +3,10 @@ package net.adarw;
 import java.util.ArrayList;
 
 public class Template {
-    static class Component{
-        enum ComponentType{
+    public static class Component{
+        public enum ComponentType{
             BOOLEAN,
             STRING,
-            INT,
-            DOUBLE
         }
         public ComponentType type;
         public String name;

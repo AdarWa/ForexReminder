@@ -1,5 +1,7 @@
 plugins {
+    id 'com.github.johnrengelman.shadow' version '8.0.0'
     id 'java'
+    id 'org.openjfx.javafxplugin' version '0.1.0'
 }
 
 group 'net.adarw'
@@ -7,7 +9,20 @@ version '1.0-SNAPSHOT'
 
 repositories {
     mavenCentral()
+    maven { url 'https://jitpack.io' }
 }
+
+javafx {
+    version = "17.0.1"
+    modules = [ 'javafx.controls', 'javafx.fxml', 'javafx.media' ]
+}
+
+jar {
+    manifest {
+        attributes 'Main-Class': 'net.adarw.Main'
+    }
+}
+
 
 dependencies {
     testImplementation 'org.junit.jupiter:junit-jupiter-api:5.8.1'
@@ -16,6 +31,15 @@ dependencies {
     implementation 'com.google.code.gson:gson:2.10.1'
     implementation "org.json:json:20211205"
     implementation "joda-time:joda-time:2.12.1"
+    implementation "com.formdev:flatlaf:3.0"
+    implementation "org.apache.commons:commons-csv:1.9.0"
+    implementation "org.nanohttpd:nanohttpd:2.2.0"
+    implementation("com.google.guava:guava:33.2.1-jre")
+    implementation "com.j256.simplemagic:simplemagic:1.17"
+    implementation "org.openjfx:javafx-controls:17.0.1"
+    implementation 'com.github.umjammer:jlayer:1.0.2'
+    implementation "com.fasterxml.jackson.dataformat:jackson-dataformat-yaml:2.13.0"
+    implementation group: 'commons-io', name: 'commons-io', version: '2.6'
 }
 
 test {

@@ -1,1 +1,1 @@
-ã{"reminder":{"uuid":"0fc7efdb-2713-4214-a08e-2c66216d0b08","entries":[{"key":{"type":"BOOLEAN","name":"SomeName"},"value":true},{"key":{"type":"STRING","name":"SomeName2"},"value":"Hello"}],"date":"Feb 22, 2023, 10:00:06 PM"}}
+‰{"template":{"components":[{"type":"STRING","name":"AlertName"},{"type":"STRING","name":"Importance"},{"type":"STRING","name":"Curr"}]}}
