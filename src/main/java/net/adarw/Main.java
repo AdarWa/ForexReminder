@@ -6,6 +6,7 @@ import net.adarw.Utils.MessageUtils;
 import net.adarw.Utils.MiscUtils;
 import net.adarw.Utils.StorageUtils;
 import net.adarw.alertListner.Listener;
+import net.adarw.alertListner.SoundPlayer;
 import org.apache.commons.io.FileUtils;
 import org.apache.commons.io.output.TeeOutputStream;
 import org.json.JSONObject;
@@ -24,6 +25,7 @@ public class Main implements MainInterface{
     Logger logger = Logger.getLogger(Main.class.getName());
     Command.CommandParser parser;
     Listener listener;
+    public SoundPlayer player;
     private static Main instance;
 
     public static Main getInstance(){
@@ -55,7 +57,9 @@ public class Main implements MainInterface{
         Server server = new Server(this);
         parser = new Command.CommandParser();
         listener = new Listener();
+        player = new SoundPlayer();
 
+        player.start();
         listener.start();
 
         logger.info("Server is active in port 8579!");
@@ -138,7 +142,7 @@ public class Main implements MainInterface{
                 frame.setLocationRelativeTo(null);
                 frame.requestFocus();
                 FileFilter filter = new FileNameExtensionFilter("WAV File","wav");
-                final JFileChooser fc = new JFileChooser();
+                final JFileChooser fc = new JFileChooser(Settings.current.initialSoundFolder);
                 fc.setFileFilter(filter);
                 int res = fc.showOpenDialog(frame);
                 if(res == JFileChooser.APPROVE_OPTION){

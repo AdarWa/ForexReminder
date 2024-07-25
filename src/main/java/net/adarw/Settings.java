@@ -11,10 +11,12 @@ import java.util.logging.Logger;
 public class Settings {
 
     public String alertTitle = "Alert";
-    public int minutesPerHeartbeat = 1;
+    public double minutesPerHeartbeat = 1;
     public boolean showDialogOnDelete = true;
     public boolean openBrowserOnStart = true;
     public boolean showTrayIcon = true;
+    public double secondsAfterClip = 1;
+    public String initialSoundFolder = System.getProperty("user.home");
 
     public static Settings current;
 

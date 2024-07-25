@@ -1,5 +1,7 @@
 alertTitle: "Alert"
-minutesPerHeartbeat: 1
+minutesPerHeartbeat: 1.0
 showDialogOnDelete: true
 openBrowserOnStart: true
 showTrayIcon: true
+secondsAfterClip: 0.5
+initialSoundFolder: "/home/adarw/sounds"

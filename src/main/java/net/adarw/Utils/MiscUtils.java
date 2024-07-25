@@ -31,7 +31,7 @@ public class MiscUtils {
     public static void openTextEditor(File file){
         try {
             if(Desktop.isDesktopSupported()){
-                Desktop.getDesktop().edit(file);
+                Desktop.getDesktop().open(file);
             }else if (System.getProperty("os.name").toLowerCase().contains("windows")) {
                 String cmd = "rundll32 url.dll,FileProtocolHandler " + file.getCanonicalPath();
                 Runtime.getRuntime().exec(cmd);

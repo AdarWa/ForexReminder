@@ -175,9 +175,11 @@ $("#quit").on("click", function(){
         contentType: "json",
         success: function () {
             heartbeat();
+            close();
         },
         error: function(){
             heartbeat();
+            close();
         }
     });
 });

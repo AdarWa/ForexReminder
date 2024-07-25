@@ -28,22 +28,6 @@ public class Alert extends JDialog {
     private static final int screenHeight =  230;
     private static final String fontName = "Verdana";
     private static final int borderRadius = 15;
-    private static Clip clip = null;
-
-    public static  void playSound(String path) {
-        // the wrapper thread is unnecessary, unless it blocks on the Clip finishing, see comments
-//        new Thread(() -> {
-            try {
-                String url = new File(path).toURI().toURL().toString();
-                System.out.println(url);
-                clip = AudioSystem.getClip();
-                clip.open(AudioSystem.getAudioInputStream(new URL(url)));
-                clip.start();
-            } catch (Exception e) {
-                Logger.getLogger("SoundPlayer").severe("ERROR while trying to play sound: "+e.getMessage());
-            }
-//        }).start();
-    }
 
 
     public Alert(Reminders.Reminder reminder){
@@ -67,14 +51,11 @@ public class Alert extends JDialog {
         addWindowListener(new WindowAdapter() {
             @Override
             public void windowClosing(WindowEvent e) {
-                if(clip != null){
-                    clip.stop();
-                }
                 currentRemindersCount--;
             }
         });
-        if(reminder.sound.isEmpty()) return;
-        playSound(reminder.sound);
+        if(!reminder.sound.isEmpty())
+            Main.getInstance().player.queue.add(reminder.sound);
     }
 
     public void setupWindowDecorations(){
@@ -93,7 +74,7 @@ public class Alert extends JDialog {
     public void createScrollableList(Reminders.Reminder reminder){
         JPanel panel = new JPanel(new BorderLayout());
         ArrayList<String> l = new ArrayList<>();
-        l.add("Date: " + reminder.date);
+        l.add("Time: " + reminder.date.split(" ")[1]);
         for(KeyValuePair<Template.Component, Object> entry : reminder.entries){
             l.add(entry.getKey().name + ": " + entry.getValue().toString());
         }
@@ -122,7 +103,7 @@ public class Alert extends JDialog {
         Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
         Dimension windowSize = getSize();
 
-        setLocation(screenSize.width - windowSize.width, screenSize.height - windowSize.height*currentRemindersCount- 47 * (currentRemindersCount-1));
+        setLocation(screenSize.width - windowSize.width, screenSize.height - windowSize.height*currentRemindersCount);
     }
 
     public void close(ActionEvent e){
