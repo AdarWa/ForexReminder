@@ -1,24 +1,18 @@
 package net.adarw.alertListner.gui;
 
-import com.formdev.flatlaf.FlatLightLaf;
 import net.adarw.Main;
 import net.adarw.Reminders;
 import net.adarw.Settings;
 import net.adarw.Template;
 import net.adarw.Utils.KeyValuePair;
 
-import javax.sound.sampled.AudioSystem;
-import javax.sound.sampled.Clip;
+import javax.annotation.Nullable;
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.*;
 import java.awt.geom.RoundRectangle2D;
-import java.io.File;
-import java.io.FileInputStream;
-import java.net.URL;
 import java.util.ArrayList;
 import java.util.logging.Logger;
-import javazoom.jl.player.Player;
 
 
 public class Alert extends JDialog {
@@ -31,9 +25,12 @@ public class Alert extends JDialog {
 
 
     public Alert(Reminders.Reminder reminder){
-        currentRemindersCount++;
+        init(reminder, false, null);
+    }
 
-        JLabel titleLabel=new JLabel(Settings.current.alertTitle);
+    private void init(Reminders.Reminder reminder, boolean remindBefore, @Nullable String soundPath){
+        currentRemindersCount++;
+        JLabel titleLabel=new JLabel(remindBefore?"Early Alert":Settings.current.alertTitle);
 
         titleLabel.setFont(new Font(fontName, Font.PLAIN, 18));
         titleLabel.setBounds(0,-screenHeight/2+ 25,screenWidth, screenHeight);
@@ -54,8 +51,18 @@ public class Alert extends JDialog {
                 currentRemindersCount--;
             }
         });
-        if(!reminder.sound.isEmpty())
+        if(soundPath != null){
+            Main.getInstance().player.queue.add(soundPath);
+            logger.info("Playing remind before sound");
+        }else if(!reminder.sound.isEmpty()){
+            logger.info("Playing reminder's sound");
             Main.getInstance().player.queue.add(reminder.sound);
+        }
+
+    }
+
+    public Alert(Reminders.Reminder reminder, boolean remindBefore, String soundPath){
+        init(reminder, remindBefore, soundPath);
     }
 
     public void setupWindowDecorations(){
@@ -74,7 +81,7 @@ public class Alert extends JDialog {
     public void createScrollableList(Reminders.Reminder reminder){
         JPanel panel = new JPanel(new BorderLayout());
         ArrayList<String> l = new ArrayList<>();
-        l.add("Time: " + reminder.date.split(" ")[1]);
+        l.add("Event Time: " + reminder.date.split(" ")[1]);
         for(KeyValuePair<Template.Component, Object> entry : reminder.entries){
             l.add(entry.getKey().name + ": " + entry.getValue().toString());
         }

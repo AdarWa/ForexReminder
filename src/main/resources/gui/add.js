@@ -78,7 +78,7 @@ $(document).ready(function(){
     if(params.has("edit")){
         document.title = "Edit Reminder";
         $(".title").text("Edit Reminder");
-        $("#submit").text("Edit");
+        $("#submit").text("Save");
         const uuid = params.get("edit");
         $.post({
             url: "/",

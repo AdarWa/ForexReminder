@@ -25,7 +25,7 @@ import java.util.logging.Logger;
 public class Main implements MainInterface{
     Logger logger = Logger.getLogger(Main.class.getName());
     Command.CommandParser parser;
-    Listener listener;
+    public Listener listener;
     public SoundPlayer player;
     private static Main instance;
 

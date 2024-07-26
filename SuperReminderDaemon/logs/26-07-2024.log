@@ -217,3 +217,80 @@ Jul 26, 2024 12:37:14 PM net.adarw.alertListner.Listener run
 INFO: Disabled overdue timer with id ef0c01f3-6641-4f58-86f4-38339b0f0f65
 Jul 26, 2024 12:37:25 PM net.adarw.Utils.StorageUtils deleteReminder
 INFO: Successfully removed reminder with uuid ef0c01f3-6641-4f58-86f4-38339b0f0f65
+Jul 26, 2024 1:52:16 PM net.adarw.Main <init>
+INFO: Initializing Server...
+Jul 26, 2024 1:52:17 PM net.adarw.Settings$SettingsManager readSettings
+SEVERE: Failed to read settings file: Unrecognized field "alertTitle" (class net.adarw.Settings), not marked as ignorable (7 known properties: "openBrowserOnStart", "Title", "initialSoundFolder", "showTrayIcon", "secondsAfterClip", "minutesPerHeartbeat", "showDialogOnDelete"])
+ at [Source: (File); line: 1, column: 20] (through reference chain: net.adarw.Settings["alertTitle"])
+Jul 26, 2024 1:52:17 PM net.adarw.Main <init>
+INFO: Server is active in port 8579!
+Jul 26, 2024 1:52:39 PM net.adarw.Main <init>
+INFO: Initializing Server...
+Jul 26, 2024 1:52:40 PM net.adarw.Settings$SettingsManager readSettings
+SEVERE: Failed to read settings file: Unrecognized field "Title" (class net.adarw.Settings), not marked as ignorable (7 known properties: "openBrowserOnStart", "initialSoundFolder", "alertTitle", "secondsAfterClip", "minutesPerHeartbeat", "showDialogOnDelete", "showTrayIcon"])
+ at [Source: (File); line: 7, column: 15] (through reference chain: net.adarw.Settings["Title"])
+Jul 26, 2024 1:52:40 PM net.adarw.Main <init>
+INFO: Server is active in port 8579!
+Jul 26, 2024 2:18:17 PM net.adarw.Main <init>
+INFO: Initializing Server...
+Jul 26, 2024 2:18:18 PM net.adarw.Main <init>
+INFO: Server is active in port 8579!
+Jul 26, 2024 2:18:40 PM net.adarw.alertListner.Listener lambda$run$2
+INFO: Triggered Remind Before Timer 4aa250ae-e0cc-4bc7-9acd-caf3f8e368d1 at 26-07-2024 14:09
+Jul 26, 2024 2:18:40 PM net.adarw.alertListner.Listener lambda$run$2
+INFO: Triggered Remind Before Timer 4aa250ae-e0cc-4bc7-9acd-caf3f8e368d1 at 26-07-2024 14:09
+Jul 26, 2024 2:19:00 PM net.adarw.alertListner.Listener lambda$run$1
+INFO: Triggered Remind Before Timer 4aa250ae-e0cc-4bc7-9acd-caf3f8e368d1 at 26-07-2024 14:19
+Jul 26, 2024 2:24:00 PM net.adarw.alertListner.Listener lambda$run$0
+INFO: Triggered Timer 4aa250ae-e0cc-4bc7-9acd-caf3f8e368d1 for 26-07-2024 14:24
+Jul 26, 2024 5:07:52 PM net.adarw.Main <init>
+INFO: Initializing Server...
+Jul 26, 2024 5:07:53 PM net.adarw.Settings$SettingsManager readSettings
+SEVERE: Failed to read settings file: Cannot construct instance of `net.adarw.Settings$RemindBefore` (no Creators, like default constructor, exist): cannot deserialize from Object value (no delegate- or property-based Creator)
+ at [Source: (File); line: 9, column: 3] (through reference chain: net.adarw.Settings["remindBefore1"])
+Jul 26, 2024 5:07:53 PM net.adarw.Main <init>
+INFO: Server is active in port 8579!
+Jul 26, 2024 5:07:53 PM net.adarw.alertListner.Listener run
+INFO: Disabled overdue timer with id 4aa250ae-e0cc-4bc7-9acd-caf3f8e368d1
+Jul 26, 2024 5:08:10 PM net.adarw.Utils.StorageUtils deleteReminder
+INFO: Successfully removed reminder with uuid 4aa250ae-e0cc-4bc7-9acd-caf3f8e368d1
+Jul 26, 2024 5:10:20 PM net.adarw.Main <init>
+INFO: Initializing Server...
+Jul 26, 2024 5:10:20 PM net.adarw.Main <init>
+INFO: Server is active in port 8579!
+Jul 26, 2024 5:10:56 PM net.adarw.Main <init>
+INFO: Initializing Server...
+Jul 26, 2024 5:10:57 PM net.adarw.Main <init>
+INFO: Server is active in port 8579!
+Jul 26, 2024 5:11:00 PM net.adarw.alertListner.Listener lambda$run$0
+INFO: Triggered Timer 048e6a3e-3f70-4194-bc78-a4d065c243c9 for 26-07-2024 17:11
+Jul 26, 2024 5:11:04 PM net.adarw.Utils.StorageUtils deleteReminder
+INFO: Successfully removed reminder with uuid 048e6a3e-3f70-4194-bc78-a4d065c243c9
+Jul 26, 2024 5:12:00 PM net.adarw.alertListner.Listener lambda$run$2
+INFO: Triggered Remind Before Timer 1ec3a652-bff5-485e-a199-0218dfd96d39 at 26-07-2024 17:12
+Jul 26, 2024 5:13:00 PM net.adarw.alertListner.Listener lambda$run$1
+INFO: Triggered Remind Before Timer 1ec3a652-bff5-485e-a199-0218dfd96d39 at 26-07-2024 17:13
+Jul 26, 2024 5:14:00 PM net.adarw.alertListner.Listener lambda$run$0
+INFO: Triggered Timer 1ec3a652-bff5-485e-a199-0218dfd96d39 for 26-07-2024 17:14
+Jul 26, 2024 5:16:15 PM net.adarw.Main <init>
+INFO: Initializing Server...
+Jul 26, 2024 5:16:15 PM net.adarw.Main <init>
+INFO: Server is active in port 8579!
+Jul 26, 2024 5:16:16 PM net.adarw.alertListner.Listener run
+INFO: Disabled overdue timer with id 1ec3a652-bff5-485e-a199-0218dfd96d39
+Jul 26, 2024 5:17:00 PM net.adarw.alertListner.gui.Alert init
+INFO: Playing remind before sound
+Jul 26, 2024 5:17:00 PM net.adarw.alertListner.Listener lambda$run$2
+INFO: Triggered Remind Before Timer 1ec3a652-bff5-485e-a199-0218dfd96d39 at 26-07-2024 17:17
+Jul 26, 2024 5:18:00 PM net.adarw.alertListner.gui.Alert init
+INFO: Playing remind before sound
+Jul 26, 2024 5:18:00 PM net.adarw.alertListner.Listener lambda$run$1
+INFO: Triggered Remind Before Timer 1ec3a652-bff5-485e-a199-0218dfd96d39 at 26-07-2024 17:18
+Jul 26, 2024 5:19:00 PM net.adarw.alertListner.Listener lambda$run$0
+INFO: Triggered Timer 1ec3a652-bff5-485e-a199-0218dfd96d39 for 26-07-2024 17:19
+Jul 26, 2024 5:19:00 PM net.adarw.alertListner.gui.Alert init
+INFO: Playing reminder's sound
+Jul 26, 2024 5:19:10 PM net.adarw.alertListner.Listener run
+INFO: Disabled overdue timer with id 1ec3a652-bff5-485e-a199-0218dfd96d39
+Jul 26, 2024 5:19:24 PM net.adarw.Utils.StorageUtils deleteReminder
+INFO: Successfully removed reminder with uuid 1ec3a652-bff5-485e-a199-0218dfd96d39

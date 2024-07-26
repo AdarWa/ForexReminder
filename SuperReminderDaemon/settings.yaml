@@ -3,5 +3,13 @@ minutesPerHeartbeat: 1.0
 showDialogOnDelete: true
 openBrowserOnStart: true
 showTrayIcon: true
-secondsAfterClip: 0.5
+secondsAfterClip: 1.0
 initialSoundFolder: "/home/adarw/sounds"
+remindBefore1:
+  minutesBeforeAlert: 2.0
+  soundPath: "/home/adarw/sounds/one.wav"
+  enabled: true
+remindBefore2:
+  minutesBeforeAlert: 1.0
+  soundPath: "/home/adarw/sounds/two.wav"
+  enabled: true

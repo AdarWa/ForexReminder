@@ -9,7 +9,6 @@ import java.io.IOException;
 import java.util.logging.Logger;
 
 public class Settings {
-
     public String alertTitle = "Alert";
     public double minutesPerHeartbeat = 1;
     public boolean showDialogOnDelete = true;
@@ -17,6 +16,8 @@ public class Settings {
     public boolean showTrayIcon = true;
     public double secondsAfterClip = 1;
     public String initialSoundFolder = System.getProperty("user.home");
+    public RemindBefore remindBefore1 = new RemindBefore(15, "");
+    public RemindBefore remindBefore2 = new RemindBefore(5, "");
 
     public static Settings current;
 
@@ -42,6 +43,19 @@ public class Settings {
                 logger.severe("Failed to read settings file: " + e.getMessage());
                 return new Settings();
             }
+        }
+    }
+    public static class RemindBefore{
+        public double minutesBeforeAlert;
+        public String soundPath;
+        public boolean enabled = true;
+
+        public RemindBefore(double minutesBeforeAlert, String soundPath){
+            this.minutesBeforeAlert = minutesBeforeAlert;
+            this.soundPath = soundPath;
+        }
+        public RemindBefore(){
+
         }
     }
 }
