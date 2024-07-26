@@ -28,6 +28,12 @@ document.querySelector('form').addEventListener('submit', function(event) {
         }
         
     }
+    let params = new URLSearchParams(window.location.search);
+    if(params.has("edit")){
+        const uuid = params.get("edit");
+        command.reminder.uuid = uuid;
+        command.type = "EDIT";
+    }
     $.post({
         url: "/",
         data:JSON.stringify(command),
@@ -42,7 +48,6 @@ document.querySelector('form').addEventListener('submit', function(event) {
             close();
         }
     });
-    console.log(JSON.stringify(command));
 });    
 
 $("#sound").parent().on("click", function(){
@@ -66,4 +71,46 @@ $("#sound").parent().on("click", function(){
             
         }
     });
+});
+
+$(document).ready(function(){
+    let params = new URLSearchParams(window.location.search);
+    if(params.has("edit")){
+        document.title = "Edit Reminder";
+        $(".title").text("Edit Reminder");
+        $("#submit").text("Edit");
+        const uuid = params.get("edit");
+        $.post({
+            url: "/",
+            timeout: 0,
+            data:JSON.stringify({type:"READ"}),
+            dataType: "json",
+            contentType: "json",
+            success: function (result) {
+                if(result.code != 2){
+                    alert("Code " + result.code + ". Message: " + result.message);
+                    console.log("Code " + result.code + ". Message: " + result.message);
+                    return;
+                }
+                for(reminder of result.message.reminders){
+                    if(reminder.uuid == uuid){
+                        $("#enabled").prop('checked', reminder.enabled);
+                        $(picker._input).val(reminder.date);
+                        $("#sound").val(reminder.sound);
+                        const fields = $(".controls").children();
+                        const entries = reminder.entries;
+                        for (var i = 0; i < fields.length; i++) {
+                            if(entries[i].key.type == "STRING"){
+                                $(fields[i]).find("input").val(entries[i].value);
+                            }else {
+                                $(fields[i]).find("input").prop('checked', entries[i].value);
+                            }
+                        }
+                        break;
+                    }
+                }
+                
+            }
+        });
+    }
 });

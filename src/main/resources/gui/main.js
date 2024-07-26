@@ -1,4 +1,4 @@
-let selected = null;
+let selected = [];
 
 function addReminder(){
     let params = `scrollbars=no,resizable=no,status=no,location=no,toolbar=no,menubar=no,
@@ -83,32 +83,53 @@ $("#clear").on("click", function(){
 });
 
 $(".trash").on("click", function(){
-    if(selected == null) return;
-    trashDialog("Are you sure you want to delete the selected reminder?", function(){
-        const uuid = $(selected).attr("uuid");
-        $.post({
-            url: "/",
-            data:JSON.stringify({type:"DELETE", uuid: uuid}),
-            dataType: "json",
-            contentType: "json",
-            success: function (result) {
-                if(result.code != 0){
-                    alert("Code " + result.code + ". Message: " + result.message);
-                    console.log("Code " + result.code + ". Message: " + result.message);
-                    return;
+    if(selected.length == 0) return;
+    let s = "";
+    if(selected.length > 1){
+        s = "s";
+    }
+    trashDialog("Are you sure you want to delete the selected reminder" + s + "?", function(){
+        for(item of selected){
+            const uuid = $(item).attr("uuid");
+            $.post({
+                url: "/",
+                data:JSON.stringify({type:"DELETE", uuid: uuid}),
+                dataType: "json",
+                contentType: "json",
+                async: false,
+                success: function (result) {
+                    if(result.code != 0){
+                        alert("Code " + result.code + ". Message: " + result.message);
+                        console.log("Code " + result.code + ". Message: " + result.message);
+                        return;
+                    }
                 }
-                location.reload();
-            }
-        });
+            });
+        }
+        location.reload();
     });
 });
 
 $(".reminder").on("click", function(){
-    if(selected != null){
-        $(selected).attr("style", "");
+    if(selected.includes(this)){
+        $(this).attr("style", "");        
+        selected = selected.filter(item => item !== this);
+        return;
     }
     $(this).attr("style", "background-color:antiquewhite !important");
-    selected = this;
+    selected.push(this);
+});
+
+$(".reminder").dblclick(function(){
+    const uuid = $(this).attr("uuid");
+    let params = `scrollbars=no,resizable=no,status=no,location=no,toolbar=no,menubar=no,
+    width=450,height=720,left=750,top=180`;
+
+    const win = open('/add?edit='+uuid, 'Edit Reminder', params);
+
+    win.onbeforeunload = function(){
+        location.reload();
+    }
 });
 
 

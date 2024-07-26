@@ -1,0 +1,219 @@
+Jul 26, 2024 10:05:56 AM net.adarw.Main <init>
+INFO: Initializing Server...
+Jul 26, 2024 10:05:57 AM net.adarw.Main <init>
+INFO: Server is active in port 8579!
+Jul 26, 2024 10:05:58 AM net.adarw.alertListner.Listener run
+INFO: Disabled overdue timer with id f0d72b4f-923b-478d-99d1-f8f24c34e6d9
+Jul 26, 2024 10:05:58 AM net.adarw.alertListner.Listener run
+INFO: Disabled overdue timer with id 42cd51a9-4983-4a02-bc1f-227a7a0b4563
+Jul 26, 2024 10:05:58 AM net.adarw.alertListner.Listener run
+INFO: Disabled overdue timer with id c81b06d6-6fc6-4ce8-8842-3ea1690fef9b
+Jul 26, 2024 10:10:45 AM net.adarw.Main <init>
+INFO: Initializing Server...
+Jul 26, 2024 10:10:45 AM net.adarw.Main <init>
+INFO: Server is active in port 8579!
+Jul 26, 2024 10:10:53 AM net.adarw.Utils.StorageUtils deleteReminder
+INFO: Successfully removed reminder with uuid f0d72b4f-923b-478d-99d1-f8f24c34e6d9
+Jul 26, 2024 10:10:53 AM net.adarw.Utils.StorageUtils deleteReminder
+INFO: Successfully removed reminder with uuid 42cd51a9-4983-4a02-bc1f-227a7a0b4563
+Jul 26, 2024 10:10:57 AM net.adarw.Utils.StorageUtils deleteReminder
+INFO: Successfully removed reminder with uuid c81b06d6-6fc6-4ce8-8842-3ea1690fef9b
+Jul 26, 2024 10:11:08 AM net.adarw.alertListner.Listener run
+INFO: Disabled overdue timer with id 6f149a52-b7b3-4b87-9d9c-6a11a0da9c00
+Jul 26, 2024 10:11:12 AM net.adarw.alertListner.Listener run
+INFO: Disabled overdue timer with id b1bbf816-d506-4def-8e17-68ec783bbc76
+Jul 26, 2024 10:11:20 AM net.adarw.Utils.StorageUtils deleteReminder
+INFO: Successfully removed reminder with uuid b1bbf816-d506-4def-8e17-68ec783bbc76
+Jul 26, 2024 10:11:20 AM net.adarw.Utils.StorageUtils deleteReminder
+INFO: Successfully removed reminder with uuid 6f149a52-b7b3-4b87-9d9c-6a11a0da9c00
+Jul 26, 2024 10:11:22 AM net.adarw.Utils.StorageUtils deleteReminder
+INFO: Successfully removed reminder with uuid 0d38bff1-fa39-45fe-81e9-082bd04ebf10
+Jul 26, 2024 10:11:27 AM net.adarw.alertListner.Listener run
+INFO: Disabled overdue timer with id 0150d761-d8ea-4038-9e3f-a3252b4dc450
+Jul 26, 2024 10:11:41 AM net.adarw.Utils.StorageUtils deleteReminder
+INFO: Successfully removed reminder with uuid 0150d761-d8ea-4038-9e3f-a3252b4dc450
+Jul 26, 2024 10:11:41 AM net.adarw.Utils.StorageUtils deleteReminder
+INFO: Successfully removed reminder with uuid f7fccc9b-2c6b-46a2-9c09-96b81fa67206
+Jul 26, 2024 10:11:41 AM net.adarw.Utils.StorageUtils deleteReminder
+INFO: Successfully removed reminder with uuid 1456879b-8c47-4d6a-8ef1-fbc7467550f8
+Jul 26, 2024 10:13:30 AM net.adarw.Main <init>
+INFO: Initializing Server...
+Jul 26, 2024 10:13:31 AM net.adarw.Main <init>
+INFO: Server is active in port 8579!
+Jul 26, 2024 10:13:45 AM net.adarw.alertListner.Listener run
+INFO: Disabled overdue timer with id 857334b0-4c1f-43ee-af74-ef92c39e51d1
+Jul 26, 2024 10:14:02 AM net.adarw.Utils.StorageUtils deleteReminder
+INFO: Successfully removed reminder with uuid 0fb39ac3-15f6-4952-ac49-b6a31ae74622
+Jul 26, 2024 10:14:02 AM net.adarw.Utils.StorageUtils deleteReminder
+INFO: Successfully removed reminder with uuid 857334b0-4c1f-43ee-af74-ef92c39e51d1
+Jul 26, 2024 10:16:50 AM net.adarw.Main <init>
+INFO: Initializing Server...
+Jul 26, 2024 10:16:50 AM net.adarw.Server <init>
+SEVERE: Error while starting http server, Address already in use
+Jul 26, 2024 10:16:50 AM net.adarw.Server <init>
+SEVERE: Address already in use. Shutting down.
+Jul 26, 2024 11:37:24 AM net.adarw.Main <init>
+INFO: Initializing Server...
+Jul 26, 2024 11:37:25 AM net.adarw.Main <init>
+INFO: Server is active in port 8579!
+Jul 26, 2024 11:37:37 AM net.adarw.alertListner.Listener run
+INFO: Disabled overdue timer with id c33f497c-770d-482c-ad95-42b0302aec0e
+Jul 26, 2024 11:41:46 AM net.adarw.Main <init>
+INFO: Initializing Server...
+Jul 26, 2024 11:41:48 AM net.adarw.Main <init>
+INFO: Server is active in port 8579!
+Jul 26, 2024 11:45:22 AM fi.iki.elonen.NanoHTTPD$Response send
+SEVERE: Could not send response to the client
+java.net.SocketException: Broken pipe
+	at java.base/sun.nio.ch.SocketDispatcher.write0(Native Method)
+	at java.base/sun.nio.ch.SocketDispatcher.write(SocketDispatcher.java:62)
+	at java.base/sun.nio.ch.NioSocketImpl.tryWrite(NioSocketImpl.java:394)
+	at java.base/sun.nio.ch.NioSocketImpl.implWrite(NioSocketImpl.java:410)
+	at java.base/sun.nio.ch.NioSocketImpl.write(NioSocketImpl.java:440)
+	at java.base/sun.nio.ch.NioSocketImpl$2.write(NioSocketImpl.java:819)
+	at java.base/java.net.Socket$SocketOutputStream.write(Socket.java:1195)
+	at java.base/java.io.OutputStream.write(OutputStream.java:124)
+	at fi.iki.elonen.NanoHTTPD$Response$ChunkedOutputStream.write(NanoHTTPD.java:1259)
+	at fi.iki.elonen.NanoHTTPD$Response$ChunkedOutputStream.write(NanoHTTPD.java:1252)
+	at java.base/java.util.zip.GZIPOutputStream.writeHeader(GZIPOutputStream.java:191)
+	at java.base/java.util.zip.GZIPOutputStream.<init>(GZIPOutputStream.java:97)
+	at java.base/java.util.zip.GZIPOutputStream.<init>(GZIPOutputStream.java:112)
+	at fi.iki.elonen.NanoHTTPD$Response.sendBodyWithCorrectEncoding(NanoHTTPD.java:1449)
+	at fi.iki.elonen.NanoHTTPD$Response.sendBodyWithCorrectTransferAndEncoding(NanoHTTPD.java:1440)
+	at fi.iki.elonen.NanoHTTPD$Response.send(NanoHTTPD.java:1429)
+	at fi.iki.elonen.NanoHTTPD$HTTPSession.execute(NanoHTTPD.java:852)
+	at fi.iki.elonen.NanoHTTPD$ClientHandler.run(NanoHTTPD.java:189)
+	at java.base/java.lang.Thread.run(Thread.java:1583)
+
+Jul 26, 2024 11:45:22 AM fi.iki.elonen.NanoHTTPD$Response send
+SEVERE: Could not send response to the client
+java.net.SocketException: Broken pipe
+	at java.base/sun.nio.ch.SocketDispatcher.write0(Native Method)
+	at java.base/sun.nio.ch.SocketDispatcher.write(SocketDispatcher.java:62)
+	at java.base/sun.nio.ch.NioSocketImpl.tryWrite(NioSocketImpl.java:394)
+	at java.base/sun.nio.ch.NioSocketImpl.implWrite(NioSocketImpl.java:410)
+	at java.base/sun.nio.ch.NioSocketImpl.write(NioSocketImpl.java:440)
+	at java.base/sun.nio.ch.NioSocketImpl$2.write(NioSocketImpl.java:819)
+	at java.base/java.net.Socket$SocketOutputStream.write(Socket.java:1195)
+	at java.base/java.io.OutputStream.write(OutputStream.java:124)
+	at fi.iki.elonen.NanoHTTPD$Response$ChunkedOutputStream.write(NanoHTTPD.java:1259)
+	at fi.iki.elonen.NanoHTTPD$Response$ChunkedOutputStream.write(NanoHTTPD.java:1252)
+	at java.base/java.util.zip.GZIPOutputStream.writeHeader(GZIPOutputStream.java:191)
+	at java.base/java.util.zip.GZIPOutputStream.<init>(GZIPOutputStream.java:97)
+	at java.base/java.util.zip.GZIPOutputStream.<init>(GZIPOutputStream.java:112)
+	at fi.iki.elonen.NanoHTTPD$Response.sendBodyWithCorrectEncoding(NanoHTTPD.java:1449)
+	at fi.iki.elonen.NanoHTTPD$Response.sendBodyWithCorrectTransferAndEncoding(NanoHTTPD.java:1440)
+	at fi.iki.elonen.NanoHTTPD$Response.send(NanoHTTPD.java:1429)
+	at fi.iki.elonen.NanoHTTPD$HTTPSession.execute(NanoHTTPD.java:852)
+	at fi.iki.elonen.NanoHTTPD$ClientHandler.run(NanoHTTPD.java:189)
+	at java.base/java.lang.Thread.run(Thread.java:1583)
+
+Jul 26, 2024 11:45:22 AM fi.iki.elonen.NanoHTTPD$Response send
+SEVERE: Could not send response to the client
+java.net.SocketException: Broken pipe
+	at java.base/sun.nio.ch.SocketDispatcher.write0(Native Method)
+	at java.base/sun.nio.ch.SocketDispatcher.write(SocketDispatcher.java:62)
+	at java.base/sun.nio.ch.NioSocketImpl.tryWrite(NioSocketImpl.java:394)
+	at java.base/sun.nio.ch.NioSocketImpl.implWrite(NioSocketImpl.java:410)
+	at java.base/sun.nio.ch.NioSocketImpl.write(NioSocketImpl.java:440)
+	at java.base/sun.nio.ch.NioSocketImpl$2.write(NioSocketImpl.java:819)
+	at java.base/java.net.Socket$SocketOutputStream.write(Socket.java:1195)
+	at fi.iki.elonen.NanoHTTPD$Response.sendBody(NanoHTTPD.java:1480)
+	at fi.iki.elonen.NanoHTTPD$Response.sendBodyWithCorrectEncoding(NanoHTTPD.java:1453)
+	at fi.iki.elonen.NanoHTTPD$Response.sendBodyWithCorrectTransferAndEncoding(NanoHTTPD.java:1443)
+	at fi.iki.elonen.NanoHTTPD$Response.send(NanoHTTPD.java:1429)
+	at fi.iki.elonen.NanoHTTPD$HTTPSession.execute(NanoHTTPD.java:852)
+	at fi.iki.elonen.NanoHTTPD$ClientHandler.run(NanoHTTPD.java:189)
+	at java.base/java.lang.Thread.run(Thread.java:1583)
+
+Jul 26, 2024 11:45:27 AM fi.iki.elonen.NanoHTTPD$Response send
+SEVERE: Could not send response to the client
+java.net.SocketException: Broken pipe
+	at java.base/sun.nio.ch.SocketDispatcher.write0(Native Method)
+	at java.base/sun.nio.ch.SocketDispatcher.write(SocketDispatcher.java:62)
+	at java.base/sun.nio.ch.NioSocketImpl.tryWrite(NioSocketImpl.java:394)
+	at java.base/sun.nio.ch.NioSocketImpl.implWrite(NioSocketImpl.java:410)
+	at java.base/sun.nio.ch.NioSocketImpl.write(NioSocketImpl.java:440)
+	at java.base/sun.nio.ch.NioSocketImpl$2.write(NioSocketImpl.java:819)
+	at java.base/java.net.Socket$SocketOutputStream.write(Socket.java:1195)
+	at java.base/java.io.OutputStream.write(OutputStream.java:124)
+	at fi.iki.elonen.NanoHTTPD$Response$ChunkedOutputStream.write(NanoHTTPD.java:1259)
+	at fi.iki.elonen.NanoHTTPD$Response$ChunkedOutputStream.write(NanoHTTPD.java:1252)
+	at java.base/java.util.zip.GZIPOutputStream.writeHeader(GZIPOutputStream.java:191)
+	at java.base/java.util.zip.GZIPOutputStream.<init>(GZIPOutputStream.java:97)
+	at java.base/java.util.zip.GZIPOutputStream.<init>(GZIPOutputStream.java:112)
+	at fi.iki.elonen.NanoHTTPD$Response.sendBodyWithCorrectEncoding(NanoHTTPD.java:1449)
+	at fi.iki.elonen.NanoHTTPD$Response.sendBodyWithCorrectTransferAndEncoding(NanoHTTPD.java:1440)
+	at fi.iki.elonen.NanoHTTPD$Response.send(NanoHTTPD.java:1429)
+	at fi.iki.elonen.NanoHTTPD$HTTPSession.execute(NanoHTTPD.java:852)
+	at fi.iki.elonen.NanoHTTPD$ClientHandler.run(NanoHTTPD.java:189)
+	at java.base/java.lang.Thread.run(Thread.java:1583)
+
+Jul 26, 2024 11:46:19 AM net.adarw.Main <init>
+INFO: Initializing Server...
+Jul 26, 2024 11:46:20 AM net.adarw.Main <init>
+INFO: Server is active in port 8579!
+Jul 26, 2024 11:50:54 AM net.adarw.Main <init>
+INFO: Initializing Server...
+Jul 26, 2024 11:50:55 AM net.adarw.Main <init>
+INFO: Server is active in port 8579!
+Jul 26, 2024 11:53:17 AM net.adarw.Main <init>
+INFO: Initializing Server...
+Jul 26, 2024 11:53:18 AM net.adarw.Main <init>
+INFO: Server is active in port 8579!
+Jul 26, 2024 12:00:21 PM net.adarw.Main <init>
+INFO: Initializing Server...
+Jul 26, 2024 12:00:21 PM net.adarw.Main <init>
+INFO: Server is active in port 8579!
+Jul 26, 2024 12:03:48 PM net.adarw.Main <init>
+INFO: Initializing Server...
+Jul 26, 2024 12:03:49 PM net.adarw.Main <init>
+INFO: Server is active in port 8579!
+Jul 26, 2024 12:03:53 PM net.adarw.Utils.StorageUtils deleteReminder
+INFO: Successfully removed reminder with uuid c33f497c-770d-482c-ad95-42b0302aec0e
+Jul 26, 2024 12:04:13 PM net.adarw.alertListner.Listener run
+INFO: Disabled overdue timer with id d69233a1-92be-488b-9581-d0d01e32bbe6
+Jul 26, 2024 12:06:59 PM net.adarw.Main <init>
+INFO: Initializing Server...
+Jul 26, 2024 12:07:00 PM net.adarw.Main <init>
+INFO: Server is active in port 8579!
+Jul 26, 2024 12:08:32 PM net.adarw.Main <init>
+INFO: Initializing Server...
+Jul 26, 2024 12:08:32 PM net.adarw.Main <init>
+INFO: Server is active in port 8579!
+Jul 26, 2024 12:11:33 PM net.adarw.Main <init>
+INFO: Initializing Server...
+Jul 26, 2024 12:11:34 PM net.adarw.Main <init>
+INFO: Server is active in port 8579!
+Jul 26, 2024 12:18:12 PM net.adarw.Main <init>
+INFO: Initializing Server...
+Jul 26, 2024 12:18:12 PM net.adarw.Main <init>
+INFO: Server is active in port 8579!
+Jul 26, 2024 12:18:28 PM net.adarw.alertListner.Listener run
+INFO: Disabled overdue timer with id ad5f5f62-6e41-4db0-afe3-b3e4a7b1f99b
+Jul 26, 2024 12:18:49 PM net.adarw.alertListner.Listener run
+INFO: Disabled overdue timer with id 188072cb-ef1e-4999-8cf5-a5f36a17c0ba
+Jul 26, 2024 12:18:58 PM net.adarw.Utils.StorageUtils deleteReminder
+INFO: Successfully removed reminder with uuid 188072cb-ef1e-4999-8cf5-a5f36a17c0ba
+Jul 26, 2024 12:18:58 PM net.adarw.Utils.StorageUtils deleteReminder
+INFO: Successfully removed reminder with uuid ad5f5f62-6e41-4db0-afe3-b3e4a7b1f99b
+Jul 26, 2024 12:19:36 PM net.adarw.Main <init>
+INFO: Initializing Server...
+Jul 26, 2024 12:19:37 PM net.adarw.Main <init>
+INFO: Server is active in port 8579!
+Jul 26, 2024 12:19:52 PM net.adarw.alertListner.Listener run
+INFO: Disabled overdue timer with id de36608e-add3-4680-bf30-a0e9a6fa482d
+Jul 26, 2024 12:20:13 PM net.adarw.Utils.StorageUtils deleteReminder
+INFO: Successfully removed reminder with uuid 21869d96-7b2a-427c-a108-d91d54bd2ab6
+Jul 26, 2024 12:20:13 PM net.adarw.Utils.StorageUtils deleteReminder
+INFO: Successfully removed reminder with uuid de36608e-add3-4680-bf30-a0e9a6fa482d
+Jul 26, 2024 12:35:03 PM net.adarw.Main <init>
+INFO: Initializing Server...
+Jul 26, 2024 12:35:03 PM net.adarw.Main <init>
+INFO: Server is active in port 8579!
+Jul 26, 2024 12:37:00 PM net.adarw.alertListner.Listener lambda$run$0
+INFO: Triggered Timer ef0c01f3-6641-4f58-86f4-38339b0f0f65 for 26-07-2024 12:37
+Jul 26, 2024 12:37:14 PM net.adarw.alertListner.Listener run
+INFO: Disabled overdue timer with id ef0c01f3-6641-4f58-86f4-38339b0f0f65
+Jul 26, 2024 12:37:25 PM net.adarw.Utils.StorageUtils deleteReminder
+INFO: Successfully removed reminder with uuid ef0c01f3-6641-4f58-86f4-38339b0f0f65

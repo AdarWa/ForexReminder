@@ -15,7 +15,7 @@ public interface Command {
         READ(ReadCommand.class),
         INIT(InitializeCommand.class),
         IMPORTFX(ImportFXCommand.class),
-        EDIT(null),
+        EDIT(EditCommand.class),
         CLEAR(ClearCommand.class),
         READTEMPLATE(ReadTemplateCommand.class),
         CLEARTEMPLATE(ClearTemplateCommand.class),
@@ -151,6 +151,22 @@ public interface Command {
 
 
         public WriteCommand(Reminders.Reminder reminder){
+            this.reminder = reminder;
+        }
+
+    }
+    class EditCommand implements Command{
+
+        @Override
+        public CommandType getType() {
+            return CommandType.EDIT;
+        }
+
+
+        public Reminders.Reminder reminder;
+
+
+        public EditCommand(Reminders.Reminder reminder){
             this.reminder = reminder;
         }
 

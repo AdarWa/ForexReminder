@@ -18,6 +18,7 @@ import java.awt.*;
 import java.awt.event.ActionListener;
 import java.io.*;
 import java.nio.file.Paths;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.logging.Logger;
 
@@ -68,7 +69,7 @@ public class Main implements MainInterface{
         if(Settings.current.showTrayIcon) {
             if (SystemTray.isSupported()) {
                 SystemTray tray = SystemTray.getSystemTray();
-                Image image = Toolkit.getDefaultToolkit().getImage(Main.class.getResource("/accept.png"));
+                Image image = Toolkit.getDefaultToolkit().getImage(Main.class.getResource("/trayicon2.png"));
                 ActionListener listener = e -> MiscUtils.openBrowser("http://localhost:8579");
                 TrayIcon trayIcon = new TrayIcon(image, "Super Reminder");
                 trayIcon.addActionListener(listener);
@@ -174,6 +175,23 @@ public class Main implements MainInterface{
                 }else{
                     return MessageUtils.getMessage(3, "Invalid settings operation: " + operation);
                 }
+                return MessageUtils.getSuccessMessage();
+            }else if(command.getType() == Command.CommandType.EDIT){
+                Command.EditCommand cmd = (Command.EditCommand) command;
+                ArrayList<Reminders.Reminder> reminders = StorageUtils.getReminders().reminders;
+                int index = -1;
+                for(Reminders.Reminder reminder : reminders){
+                    if(reminder.uuid.equals(cmd.reminder.uuid)){
+                        index = reminders.indexOf(reminder);
+                        break;
+                    }
+                }
+                if(index < 0) return MessageUtils.getMessage(3, "Couldn't find an already existing reminder with this uuid " + cmd.reminder.uuid);
+                reminders.set(index, cmd.reminder);
+                Reminders obj = new Reminders();
+                obj.reminders = reminders;
+                StorageUtils.writeReminders(obj);
+                listener.interrupt();
                 return MessageUtils.getSuccessMessage();
             }
         }catch (Exception e){

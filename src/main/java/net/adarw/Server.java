@@ -46,6 +46,8 @@ public class Server extends NanoHTTPD {
             start(NanoHTTPD.SOCKET_READ_TIMEOUT, false);
         } catch (IOException e) {
             logger.severe("Error while starting http server, " + e.getMessage());
+            logger.severe("Address already in use. Shutting down.");
+            System.exit(-1);
         }
     }
 
