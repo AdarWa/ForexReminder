@@ -2,12 +2,14 @@ alertTitle: "Alert"
 alertVerticalOffset: 0.0
 minutesPerHeartbeat: 1.0
 showDialogOnDelete: true
-openBrowserOnStart: true
+openBrowserOnStart: false
 showTrayIcon: true
 secondsAfterClip: 1.0
 initialSoundFolder: "/home/adarw/sounds"
 defaultSoundFile: "/home/adarw/sounds/one.wav"
 secondsUntilAlertDisappear: 30
+timeFieldPlacementInAlert: 1
+ImpactFieldColoring: "Importance"
 remindBefore1:
   minutesBeforeAlert: 2.0
   alertTitle: "Early Alert"

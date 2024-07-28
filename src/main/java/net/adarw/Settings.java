@@ -23,6 +23,8 @@ public class Settings {
     public String initialSoundFolder = System.getProperty("user.home");
     public String defaultSoundFile = "";
     public int secondsUntilAlertDisappear = 30;
+    public int timeFieldPlacementInAlert = 1;
+    public String ImpactFieldColoring = "Importance";
     public RemindBefore remindBefore1 = new RemindBefore(15, "");
     public RemindBefore remindBefore2 = new RemindBefore(5, "");
     public ArrayList<ImportMapping> importMappings = new ArrayList<>();

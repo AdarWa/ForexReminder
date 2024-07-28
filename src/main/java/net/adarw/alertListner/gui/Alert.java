@@ -1,9 +1,6 @@
 package net.adarw.alertListner.gui;
 
-import net.adarw.Main;
-import net.adarw.Reminders;
-import net.adarw.Settings;
-import net.adarw.Template;
+import net.adarw.*;
 import net.adarw.Utils.KeyValuePair;
 
 import javax.annotation.Nullable;
@@ -11,6 +8,8 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.*;
 import java.awt.geom.RoundRectangle2D;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.logging.Logger;
@@ -101,11 +100,27 @@ public class Alert extends JDialog {
     public void createScrollableList(Reminders.Reminder reminder){
         JPanel panel = new JPanel(new BorderLayout());
         ArrayList<String> l = new ArrayList<>();
-        l.add("Event Time: " + reminder.date.split(" ")[1]);
+        int i = 0;
+        String match = "";
         for(KeyValuePair<Template.Component, Object> entry : reminder.entries){
+            if(i == Settings.current.timeFieldPlacementInAlert){
+                DateFormat format = new SimpleDateFormat("EEEE");
+                l.add(reminder.date.split(" ")[1] + " " + format.format(TimerEx.getDate(reminder.date)));
+            }
             l.add(entry.getKey().name + ": " + entry.getValue().toString());
+            if(entry.getKey().name.equals(Settings.current.ImpactFieldColoring)){
+                match = entry.getKey().name + ": " + entry.getValue().toString();
+            }
+            i++;
+        }
+        if(reminder.entries.size() < (Settings.current.timeFieldPlacementInAlert+1)){
+            DateFormat format = new SimpleDateFormat("EEEE");
+            l.add(reminder.date.split(" ")[1] + " " + format.format(TimerEx.getDate(reminder.date)));
         }
         final JList<String> list = new JList<>(l.toArray(new String[0]));
+        if(!Settings.current.ImpactFieldColoring.isEmpty()){
+            list.setCellRenderer(new AlertListCellRenderer(match));
+        }
         list.setFont(new Font(fontName, Font.PLAIN, 14));
         JScrollPane scrollPane = new JScrollPane();
         scrollPane.setViewportView(list);
@@ -161,6 +176,31 @@ public class Alert extends JDialog {
 
     public void close(ActionEvent e){
         dispatchEvent(new WindowEvent(this, WindowEvent.WINDOW_CLOSING));
+    }
+
+    static class AlertListCellRenderer extends JLabel implements ListCellRenderer {
+        String match;
+        public AlertListCellRenderer(String match) {
+            this.match = match;
+            setOpaque(true);
+        }
+        public Component getListCellRendererComponent(JList paramlist, Object value, int index, boolean isSelected, boolean cellHasFocus) {
+            setText(value.toString());
+            if (value.toString().equals(match)) {
+                String impact = match.split(":")[1];
+                if(impact.equals(" LOW")){
+                    setForeground(Color.decode("#008000"));
+                }else if(impact.equals(" MEDIUM")){
+                    setForeground(Color.decode("#ffa500"));
+                }else if(impact.equals(" HIGH")){
+                    setForeground(Color.decode("#AA4A44"));
+                }
+            }else{
+                setForeground(Color.BLACK);
+            }
+            setBackground(Color.WHITE);
+            return this;
+        }
     }
 
 }
