@@ -532,3 +532,7 @@ Jul 28, 2024 5:19:01 PM net.adarw.Main <init>
 INFO: Hello
 Jul 28, 2024 5:19:02 PM net.adarw.Main <init>
 INFO: Hello
+Jul 28, 2024 6:36:39 PM net.adarw.Main <init>
+INFO: Initializing Server...
+Jul 28, 2024 6:36:41 PM net.adarw.Main <init>
+INFO: Server is active in port 8579!

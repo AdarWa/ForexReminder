@@ -18,12 +18,15 @@ import java.util.logging.Logger;
 
 public class Alert extends JDialog {
     Logger logger = Logger.getLogger(Main.class.getName());
-    private static int currentRemindersCount = 0;
-    private static final int screenWidth = 400;
-    private static final int screenHeight =  230;
+    private static final int screenWidth = 250;
+    private static final int screenHeight =  180;
     private static final String fontName = "Verdana";
     private static final int borderRadius = 15;
     private static ArrayList<KeyValuePair<String, Boolean>> currentReminders = new ArrayList<>();
+    private static final int screenFrameWidth = 8;
+    private static final int screenFrameHeight = 18;
+    private static final int textBoxHeightOffset = 10;
+    private static final int alertTitleOffset = 15;
 
 
     public Alert(Reminders.Reminder reminder){
@@ -34,8 +37,8 @@ public class Alert extends JDialog {
 //        currentRemindersCount++;
         JLabel titleLabel=new JLabel(remindBefore?title:Settings.current.alertTitle);
 
-        titleLabel.setFont(new Font(fontName, Font.PLAIN, 18));
-        titleLabel.setBounds(0,-screenHeight/2+ 25,screenWidth, screenHeight);
+        titleLabel.setFont(new Font(fontName, Font.BOLD, 16));
+        titleLabel.setBounds(0,-screenHeight/2+ alertTitleOffset,screenWidth, screenHeight);
         titleLabel.setHorizontalAlignment(JLabel.CENTER);
         setupWindowDecorations();
         createScrollableList(reminder);
@@ -108,16 +111,17 @@ public class Alert extends JDialog {
         scrollPane.setViewportView(list);
         list.setLayoutOrientation(JList.VERTICAL);
         panel.add(scrollPane);
-        final int width = 300;
-        final int height = 120;
-        panel.setBounds(screenWidth/2 - width/2,50, width,height);
+        final int width = screenWidth - screenFrameWidth*2;
+        final int height = screenHeight - screenFrameHeight*2;
+        panel.setBounds(screenWidth/2 - width/2,screenHeight/2 - height/2 + textBoxHeightOffset, width, height);
         add(panel);
     }
 
     public void createXButton(){
-        final int width = 20;
-        final int height = 20;
+        final int width = 15;
+        final int height = 15;
         JButton btn = new JButton("X");
+        btn.setFont(new Font("Arial",Font.BOLD, 14));
         btn.setBounds(screenWidth - width, 0, width, height);
         btn.addActionListener(this::close);
         add(btn);
