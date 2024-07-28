@@ -54,7 +54,7 @@ $("#sound").parent().on("click", function(){
     $.post({
         url: "/",
         timeout: 0,
-        data:JSON.stringify({type:"CHOOSEFILE"}),
+        data:JSON.stringify({type:"CHOOSEFILE", file:"wav"}),
         dataType: "json",
         contentType: "json",
         success: function (result) {
@@ -102,6 +102,7 @@ $(document).ready(function(){
                         for (var i = 0; i < fields.length; i++) {
                             if(entries[i].key.type == "STRING"){
                                 $(fields[i]).find("input").val(entries[i].value);
+                                $(fields[i]).find("select").val(entries[i].value);
                             }else {
                                 $(fields[i]).find("input").prop('checked', entries[i].value);
                             }

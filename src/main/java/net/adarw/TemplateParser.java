@@ -37,12 +37,25 @@ public class TemplateParser {
         Template template = StorageUtils.getTemplate();
         for(Template.Component comp : template.components){
             if(comp.type == Template.Component.ComponentType.STRING){
-                String name = comp.name;
-                String id = name.replace(" ", "_");
-                str += "<div class=\"form-group\">\n" +
-                        "            <label for=\""+id+"\">"+name+"</label>\n" +
-                        "            <input type=\"text\" class=\"form-control template-control\" id=\""+id+"\" placeholder=\"Enter "+name+"\">\n" +
-                        "          </div>";
+                if(comp.choices.isEmpty()) {
+                    String name = comp.name;
+                    String id = name.replace(" ", "_");
+                    str += "<div class=\"form-group\">\n" +
+                            "            <label for=\"" + id + "\">" + name + "</label>\n" +
+                            "            <input type=\"text\" class=\"form-control template-control\" id=\"" + id + "\" placeholder=\"Enter " + name + "\">\n" +
+                            "          </div>";
+                }else{
+                    String name = comp.name;
+                    String id = name.replace(" ", "_");
+                    str += "<div class=\"form-group\" style=\"cursor: pointer;\">\n" +
+                            "            <label for=\""+id+"\">"+name+"</label>\n" +
+                            "            <select class=\"form-select\" id=\""+id+"\">\n";
+                    for(String choice : comp.choices){
+                        str += "<option value=\""+choice+"\">"+choice+"</option>\n";
+                    }
+                    str += "              </select>\n" +
+                            "        </div>";
+                }
             }else {
                 String name = comp.name;
                 String id = name.replace(" ", "_");

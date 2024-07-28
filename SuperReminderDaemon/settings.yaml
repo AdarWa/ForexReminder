@@ -1,15 +1,29 @@
 alertTitle: "Alert"
+alertVerticalOffset: 0.0
 minutesPerHeartbeat: 1.0
 showDialogOnDelete: true
 openBrowserOnStart: true
 showTrayIcon: true
 secondsAfterClip: 1.0
 initialSoundFolder: "/home/adarw/sounds"
+defaultSoundFile: "/home/adarw/sounds/one.wav"
+secondsUntilAlertDisappear: 30
 remindBefore1:
   minutesBeforeAlert: 2.0
+  alertTitle: "Early Alert"
+  secondsUntilAlertDisappear: 30
   soundPath: "/home/adarw/sounds/one.wav"
   enabled: true
 remindBefore2:
   minutesBeforeAlert: 1.0
+  alertTitle: "Early Alert"
+  secondsUntilAlertDisappear: 30
   soundPath: "/home/adarw/sounds/two.wav"
   enabled: true
+importMappings:
+- templateName: "Subject"
+  csvName: "Name"
+- templateName: "Importance"
+  csvName: "Impact"
+- templateName: "Currency"
+  csvName: "Currency"

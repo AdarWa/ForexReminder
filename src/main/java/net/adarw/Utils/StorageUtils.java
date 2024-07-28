@@ -31,7 +31,7 @@ public class StorageUtils {
             if (!template.toFile().exists()){
                 template.toFile().createNewFile();
                 Template t = new Template();
-                t.components.add(new Template.Component(Template.Component.ComponentType.STRING, "Description"));
+                t.components.add(new Template.Component(Template.Component.ComponentType.STRING, "Subject"));
                 t.components.add(new Template.Component(Template.Component.ComponentType.STRING, "Importance"));
                 t.components.add(new Template.Component(Template.Component.ComponentType.STRING, "Currency"));
                 setTemplate(t);

@@ -299,3 +299,41 @@ $("#openDir").on("click", function(){
         }
     });
 });
+
+$(".import").on("click", function(){
+    $.post({
+        url: "/",
+        data:JSON.stringify({type:"CHOOSEFILE", file:"csv"}),
+        dataType: "json",
+        contentType: "json",
+        success: function (result) {
+            if(result.code != 0 && result.code != 2){
+                alert("Code " + result.code + ". Message: " + result.message);
+                console.log("Code " + result.code + ". Message: " + result.message);
+                return;
+            }
+            if(result.code == 2){
+                $.post({
+                    url: "/",
+                    data:JSON.stringify({type:"IMPORTFX", path:result.message}),
+                    dataType: "json",
+                    contentType: "json",
+                    success: function (r) {
+                        if(r.code != 0){
+                            alert("Code " + r.code + ". Message: " + r.message);
+                            console.log("Code " + r.code + ". Message: " + r.message);
+                            return;
+                        }
+                        location.reload();
+                    },
+                    error: function(){
+                        heartbeat();
+                    }
+                });
+            }
+        },
+        error: function(){
+            heartbeat();
+        }
+    });
+});

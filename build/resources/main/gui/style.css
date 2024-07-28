@@ -76,6 +76,10 @@
     float: right;
     margin-right: 50px;
 }
+.import{
+    float: right;
+    margin-right: 10px;
+}
 
 .error{
     position: absolute;

@@ -12,6 +12,7 @@ import java.awt.*;
 import java.awt.event.*;
 import java.awt.geom.RoundRectangle2D;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.logging.Logger;
 
 
@@ -22,15 +23,16 @@ public class Alert extends JDialog {
     private static final int screenHeight =  230;
     private static final String fontName = "Verdana";
     private static final int borderRadius = 15;
+    private static ArrayList<KeyValuePair<String, Boolean>> currentReminders = new ArrayList<>();
 
 
     public Alert(Reminders.Reminder reminder){
-        init(reminder, false, null);
+        init(reminder, false, null, "", -1);
     }
 
-    private void init(Reminders.Reminder reminder, boolean remindBefore, @Nullable String soundPath){
-        currentRemindersCount++;
-        JLabel titleLabel=new JLabel(remindBefore?"Early Alert":Settings.current.alertTitle);
+    private void init(Reminders.Reminder reminder, boolean remindBefore, @Nullable String soundPath, String title, int closeTime){
+//        currentRemindersCount++;
+        JLabel titleLabel=new JLabel(remindBefore?title:Settings.current.alertTitle);
 
         titleLabel.setFont(new Font(fontName, Font.PLAIN, 18));
         titleLabel.setBounds(0,-screenHeight/2+ 25,screenWidth, screenHeight);
@@ -40,17 +42,25 @@ public class Alert extends JDialog {
         createXButton();
         add(titleLabel);
         setSize(screenWidth,screenHeight);
-        setPosition();
+        setPosition(reminder.uuid, remindBefore);
         setLayout(null);
         setVisible(true);
         setAlwaysOnTop(true);
 
+
         addWindowListener(new WindowAdapter() {
             @Override
             public void windowClosing(WindowEvent e) {
-                currentRemindersCount--;
+                for(KeyValuePair<String, Boolean> entry : currentReminders){
+                    if(entry.getKey().equals(reminder.uuid)){
+                        currentReminders.set(currentReminders.indexOf(entry), new KeyValuePair<>(reminder.uuid, false));
+                        break;
+                    }
+                }
             }
         });
+
+
         if(soundPath != null){
             Main.getInstance().player.queue.add(soundPath);
             logger.info("Playing remind before sound");
@@ -58,11 +68,18 @@ public class Alert extends JDialog {
             logger.info("Playing reminder's sound");
             Main.getInstance().player.queue.add(reminder.sound);
         }
-
+        if((Settings.current.secondsUntilAlertDisappear > 0 && !remindBefore)|| (closeTime > 0 && remindBefore)){
+            try {
+                Thread.sleep((remindBefore?closeTime:Settings.current.secondsUntilAlertDisappear)* 1000L);
+            } catch (InterruptedException e) {
+                logger.severe("Interrupted sleep");
+            }
+            dispatchEvent(new WindowEvent(this, WindowEvent.WINDOW_CLOSING));
+        }
     }
 
-    public Alert(Reminders.Reminder reminder, boolean remindBefore, String soundPath){
-        init(reminder, remindBefore, soundPath);
+    public Alert(Reminders.Reminder reminder, boolean remindBefore, String soundPath, String title, int closeTime){
+        init(reminder, remindBefore, soundPath, title, closeTime);
     }
 
     public void setupWindowDecorations(){
@@ -106,11 +123,36 @@ public class Alert extends JDialog {
         add(btn);
     }
 
-    public void setPosition(){
+    public void setPosition(String uuid, boolean remindBefore){
         Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
         Dimension windowSize = getSize();
-
-        setLocation(screenSize.width - windowSize.width, screenSize.height - windowSize.height*currentRemindersCount);
+        int index = 0;
+        for(KeyValuePair<String, Boolean> entry : currentReminders){
+            if(entry.getKey().equals(uuid) && entry.getValue()){
+                index = currentReminders.indexOf(entry)+1;
+                break;
+            }
+        }
+        for(KeyValuePair<String, Boolean> entry : currentReminders){
+            if(index == 0) break;
+            if(!entry.getValue()){
+                index = currentReminders.indexOf(entry)+1;
+                currentReminders.set(index-1, new KeyValuePair<>(uuid, true));
+                break;
+            }
+        }
+        if(index == 0){
+            index = currentReminders.size()+1;
+            currentReminders.add(new KeyValuePair<>(uuid, true));
+        }
+        int y = screenSize.height - windowSize.height*index - ((int)Settings.current.alertVerticalOffset);
+        int x = 1;
+        if(y < 0){
+            int alertsPerWindow = screenSize.height/windowSize.height;
+            x = index/alertsPerWindow+1;
+            y = screenSize.height - windowSize.height*(index-alertsPerWindow*(x-1)) - ((int)Settings.current.alertVerticalOffset);
+        }
+        setLocation(screenSize.width - windowSize.width*x, y);
     }
 
     public void close(ActionEvent e){

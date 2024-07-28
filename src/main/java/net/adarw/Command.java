@@ -50,9 +50,15 @@ public interface Command {
     }
     class ChooseFileCommand implements Command {
 
+        public String file;
+
         @Override
         public CommandType getType() {
             return CommandType.CHOOSEFILE;
+        }
+
+        public ChooseFileCommand(String file){
+            this.file = file;
         }
     }
 
@@ -131,11 +137,9 @@ public interface Command {
         }
 
         public String path;
-        public ArrayList<KeyValuePair<String, Template.Component>> componentMapping;
 
-        public ImportFXCommand(String path, ArrayList<KeyValuePair<String, Template.Component>> componentMapping){
+        public ImportFXCommand(String path){
             this.path = path;
-            this.componentMapping = componentMapping;
         }
     }
 

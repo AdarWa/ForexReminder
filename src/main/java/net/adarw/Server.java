@@ -87,7 +87,8 @@ public class Server extends NanoHTTPD {
             }else if(path.equals("/add")){
                 return newFixedLengthResponse(readResource("gui/add.html", StandardCharsets.UTF_8)
                         .replace("{Template}", new Gson().toJson(StorageUtils.getTemplate(), Template.class))
-                        .replace("{Controls}", TemplateParser.getControlTemplate()));
+                        .replace("{Controls}", TemplateParser.getControlTemplate())
+                        .replace("{sound}", Settings.current.defaultSoundFile));
             }else if(path.equals("/settings.js")){
                 return newFixedLengthResponse(Response.Status.OK,ContentType.fromFileExtension("js").getMimeType() ,readResource("gui/settings.js", StandardCharsets.UTF_8)
                         .replace("{minutesPerHeartbeat}", String.valueOf(Settings.current.minutesPerHeartbeat))

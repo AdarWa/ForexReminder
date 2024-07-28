@@ -10,6 +10,7 @@ public class Template {
         }
         public ComponentType type;
         public String name;
+        public ArrayList<String> choices = new ArrayList<>();
 
         public Component(ComponentType type, String name){
             this.type = type;

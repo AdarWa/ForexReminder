@@ -7,6 +7,7 @@ import net.adarw.Utils.MiscUtils;
 import net.adarw.Utils.StorageUtils;
 import net.adarw.alertListner.Listener;
 import net.adarw.alertListner.SoundPlayer;
+import net.adarw.alertListner.gui.Alert;
 import org.apache.commons.io.FileUtils;
 import org.apache.commons.io.output.TeeOutputStream;
 import org.json.JSONObject;
@@ -20,6 +21,7 @@ import java.io.*;
 import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.UUID;
 import java.util.logging.Logger;
 
 public class Main implements MainInterface{
@@ -109,7 +111,7 @@ public class Main implements MainInterface{
                 return MessageUtils.getSuccessMessage();
             }else if(command.getType() == Command.CommandType.IMPORTFX){
                 Command.ImportFXCommand cmd = (Command.ImportFXCommand) command;
-                FxImporter.importFx(cmd.path, cmd.componentMapping);
+                FxImporter.importFx(cmd.path, Settings.current.generateComponentMappings());
                 listener.interrupt();
                 return MessageUtils.getSuccessMessage();
             }else if(command.getType() == Command.CommandType.READ){
@@ -137,12 +139,13 @@ public class Main implements MainInterface{
                 Main.getInstance().listener.interrupt();
                 return MessageUtils.getSuccessMessage();
             }else if(command.getType() == Command.CommandType.CHOOSEFILE){
+                Command.ChooseFileCommand cmd = (Command.ChooseFileCommand) command;
                 final JFrame frame = new JFrame();
                 frame.setAlwaysOnTop(true);
                 frame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
                 frame.setLocationRelativeTo(null);
                 frame.requestFocus();
-                FileFilter filter = new FileNameExtensionFilter("WAV File","wav");
+                FileFilter filter = new FileNameExtensionFilter(cmd.file.toUpperCase()+" File",cmd.file);
                 final JFileChooser fc = new JFileChooser(Settings.current.initialSoundFolder);
                 fc.setFileFilter(filter);
                 int res = fc.showOpenDialog(frame);

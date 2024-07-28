@@ -52,7 +52,7 @@ public class Listener extends Thread{
                     date.setTime((long) (date.getTime()- Settings.current.remindBefore2.minutesBeforeAlert*60000));
                     if(!date.before(new Date())){
                         TimerManager.addTimer(reminder.uuid, new TimerEx(()->{
-                            new Alert(reminder,true, Settings.current.remindBefore2.soundPath);
+                            new Alert(reminder,true, Settings.current.remindBefore2.soundPath, Settings.current.remindBefore2.alertTitle, Settings.current.remindBefore2.secondsUntilAlertDisappear);
                             logger.info("Triggered Remind Before Timer " + reminder.uuid + " at " + TimerEx.getString(date));
                             Main.getInstance().listener.interrupt();
                         }, date));
@@ -64,7 +64,7 @@ public class Listener extends Thread{
                     date.setTime((long) (date.getTime()- Settings.current.remindBefore1.minutesBeforeAlert*60000));
                     if(!date.before(new Date())){
                         TimerManager.addTimer(reminder.uuid, new TimerEx(()->{
-                            new Alert(reminder,true, Settings.current.remindBefore1.soundPath);
+                            new Alert(reminder,true, Settings.current.remindBefore1.soundPath, Settings.current.remindBefore1.alertTitle,Settings.current.remindBefore1.secondsUntilAlertDisappear);
                             logger.info("Triggered Remind Before Timer " + reminder.uuid + " at " + TimerEx.getString(date));
                             Main.getInstance().listener.interrupt();
                         }, date));

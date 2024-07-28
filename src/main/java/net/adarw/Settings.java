@@ -3,21 +3,47 @@ package net.adarw;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.dataformat.yaml.YAMLFactory;
 import com.fasterxml.jackson.dataformat.yaml.YAMLGenerator;
+import net.adarw.Utils.KeyValuePair;
+import net.adarw.Utils.MiscUtils;
 import net.adarw.Utils.StorageUtils;
 
+import java.awt.*;
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.logging.Logger;
 
 public class Settings {
     public String alertTitle = "Alert";
+    public double alertVerticalOffset = 0;
     public double minutesPerHeartbeat = 1;
     public boolean showDialogOnDelete = true;
     public boolean openBrowserOnStart = true;
     public boolean showTrayIcon = true;
     public double secondsAfterClip = 1;
     public String initialSoundFolder = System.getProperty("user.home");
+    public String defaultSoundFile = "";
+    public int secondsUntilAlertDisappear = 30;
     public RemindBefore remindBefore1 = new RemindBefore(15, "");
     public RemindBefore remindBefore2 = new RemindBefore(5, "");
+    public ArrayList<ImportMapping> importMappings = new ArrayList<>();
+
+    public Settings(){
+        importMappings.add(new ImportMapping("Importance", "Level"));
+        if(MiscUtils.getOperatingSystemType() == MiscUtils.OSType.WINDOWS){
+            Dimension scrnSize = Toolkit.getDefaultToolkit().getScreenSize();
+            Rectangle winSize = GraphicsEnvironment.getLocalGraphicsEnvironment().getMaximumWindowBounds();
+
+            alertVerticalOffset = scrnSize.height - winSize.height;
+        }
+    }
+
+    public ArrayList<KeyValuePair<String, Template.Component>> generateComponentMappings() {
+        ArrayList<KeyValuePair<String, Template.Component>> map = new ArrayList<>();
+        for(ImportMapping mapping : importMappings){
+            map.add(new KeyValuePair<>(mapping.csvName, new Template.Component(Template.Component.ComponentType.STRING,mapping.templateName)));
+        }
+        return map;
+    }
 
     public static Settings current;
 
@@ -47,6 +73,8 @@ public class Settings {
     }
     public static class RemindBefore{
         public double minutesBeforeAlert;
+        public String alertTitle = "Early Alert";
+        public int secondsUntilAlertDisappear = 30;
         public String soundPath;
         public boolean enabled = true;
 
@@ -55,6 +83,18 @@ public class Settings {
             this.soundPath = soundPath;
         }
         public RemindBefore(){
+
+        }
+    }
+    public static class ImportMapping{
+        public String templateName = "";
+        public String csvName = "";
+
+        public ImportMapping(String templateName, String csvName){
+            this.templateName = templateName;
+            this.csvName = csvName;
+        }
+        public ImportMapping(){
 
         }
     }

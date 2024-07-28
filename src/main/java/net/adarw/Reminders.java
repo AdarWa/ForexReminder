@@ -14,7 +14,7 @@ public class Reminders {
         public ArrayList<KeyValuePair<Template.Component, Object>> entries;
         public boolean enabled;
         public String date;
-        public String sound;
+        public String sound = "";
 
         public Reminder(String uuid, ArrayList<KeyValuePair<Template.Component, Object>> entries, String date, boolean enabled){
             this.uuid = uuid;

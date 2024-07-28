@@ -5,10 +5,20 @@ import java.io.File;
 import java.io.IOException;
 import java.net.URI;
 import java.net.URISyntaxException;
+import java.util.Locale;
 import java.util.logging.Logger;
 
 public class MiscUtils {
     private static Logger logger = Logger.getLogger(MiscUtils.class.getName());
+
+    public enum OSType{
+        LINUX,
+        WINDOWS,
+        MAC,
+        OTHER
+    }
+
+    private static OSType detectedOS = null;
 
     public static void openBrowser(String url){
         if(Desktop.isDesktopSupported() && Desktop.getDesktop().isSupported(Desktop.Action.BROWSE)){
@@ -51,5 +61,21 @@ public class MiscUtils {
         }else {
             logger.severe("The Desktop interface isn't supported on this machine!");
         }
+    }
+
+    public static OSType getOperatingSystemType() {
+        if (detectedOS == null) {
+            String OS = System.getProperty("os.name", "generic").toLowerCase(Locale.ENGLISH);
+            if ((OS.indexOf("mac") >= 0) || (OS.indexOf("darwin") >= 0)) {
+                detectedOS = OSType.MAC;
+            } else if (OS.indexOf("win") >= 0) {
+                detectedOS = OSType.WINDOWS;
+            } else if (OS.indexOf("nux") >= 0) {
+                detectedOS = OSType.LINUX;
+            } else {
+                detectedOS = OSType.OTHER;
+            }
+        }
+        return detectedOS;
     }
 }

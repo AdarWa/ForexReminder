@@ -25,11 +25,12 @@ public class FxImporter {
                 .withHeader("Id", "Start", "Name", "Impact", "Currency")
                 .withFirstRecordAsHeader()
                 .parse(in);
+        Reminders reminders = StorageUtils.getReminders();
         for (CSVRecord record : records) {
 
             ArrayList<KeyValuePair<Template.Component, Object>> entries = new ArrayList<>();
             for(KeyValuePair<String, Template.Component> entry : componentMapping){
-                entries.add(new KeyValuePair<Template.Component, Object>(entry.getValue(), record.get(entry.getKey())));
+                entries.add(new KeyValuePair<>(entry.getValue(), record.get(entry.getKey())));
             }
 
             SimpleDateFormat parser = new SimpleDateFormat("MM/dd/yyyy HH:mm:ss");
@@ -40,14 +41,11 @@ public class FxImporter {
                     TimerEx.getString(parser.parse(record.get("Start"))),
                     true
             );
+            reminder.sound = Settings.current.defaultSoundFile;
 
-            Reminders reminders = StorageUtils.getReminders();
-            if(reminders == null){
-                reminders = new Reminders();
-            }
             reminders.reminders.add(reminder);
-            StorageUtils.writeReminders(reminders);
         }
+        StorageUtils.writeReminders(reminders);
     }
 
 }

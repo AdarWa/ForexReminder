@@ -1,1 +1,1 @@
-{"reminders":[]}
+{"reminders":[{"uuid":"24d3e2db-4a85-40be-8bbc-ce621afcaea5","entries":[{"key":{"type":"STRING","name":"Subject","choices":[]},"value":"ddasdas"},{"key":{"type":"STRING","name":"Importance","choices":["LOW","MEDIUM","HIGH"]},"value":"LOW"},{"key":{"type":"STRING","name":"Currency","choices":[]},"value":"ddd"}],"enabled":false,"date":"09-07-2024 12:00","sound":"/home/adarw/sounds/one.wav"}]}
