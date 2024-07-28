@@ -29,6 +29,7 @@ public class Alert extends JDialog {
 
 
     public Alert(Reminders.Reminder reminder){
+        super();
         init(reminder, false, null, "", -1);
     }
 
@@ -48,7 +49,7 @@ public class Alert extends JDialog {
         setLayout(null);
         setVisible(true);
         setAlwaysOnTop(true);
-
+        getContentPane().setBackground(new Color(200,100, 50));
 
         addWindowListener(new WindowAdapter() {
             @Override
@@ -187,6 +188,7 @@ public class Alert extends JDialog {
         public Component getListCellRendererComponent(JList paramlist, Object value, int index, boolean isSelected, boolean cellHasFocus) {
             setText(value.toString());
             if (value.toString().equals(match)) {
+                setFont(new Font("Arial", Font.BOLD, 14));
                 String impact = match.split(":")[1];
                 if(impact.equals(" LOW")){
                     setForeground(Color.decode("#008000"));
@@ -196,6 +198,7 @@ public class Alert extends JDialog {
                     setForeground(Color.decode("#AA4A44"));
                 }
             }else{
+                setFont(new Font("Arial", Font.PLAIN, 12));
                 setForeground(Color.BLACK);
             }
             setBackground(Color.WHITE);

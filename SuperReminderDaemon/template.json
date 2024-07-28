@@ -1,1 +1,1 @@
-{"components":[{"type":"STRING","name":"Subject","choices":[]},{"type":"STRING","name":"Importance","choices":["LOW", "MEDIUM", "HIGH"]},{"type":"STRING","name":"Currency","choices":[]}]}
+{"components":[{"type":"STRING","name":"Impact","choices":["LOW", "MEDIUM", "HIGH"]},{"type":"STRING","name":"Currency","choices":["USD", "CAD"]},{"type":"STRING","name":"Subject","choices":[]}]}

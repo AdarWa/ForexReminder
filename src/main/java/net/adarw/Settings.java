@@ -19,9 +19,9 @@ public class Settings {
     public boolean showDialogOnDelete = true;
     public boolean openBrowserOnStart = true;
     public boolean showTrayIcon = true;
-    public double secondsAfterClip = 1;
+    public double sequentialSoundInterval = 1;
     public String initialSoundFolder = System.getProperty("user.home");
-    public String defaultSoundFile = "";
+    public String alertDefaultSoundFile = "";
     public int secondsUntilAlertDisappear = 30;
     public int timeFieldPlacementInAlert = 1;
     public String ImpactFieldColoring = "Importance";

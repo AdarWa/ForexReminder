@@ -38,7 +38,7 @@ public class SoundPlayer extends Thread{
                         }
                     }
                     try {
-                        Thread.sleep((long) (1000* Settings.current.secondsAfterClip));
+                        Thread.sleep((long) (1000* Settings.current.sequentialSoundInterval));
                     } catch (InterruptedException e) {
                         logger.severe("Sleep interrupted. " + e.getMessage());
                     }

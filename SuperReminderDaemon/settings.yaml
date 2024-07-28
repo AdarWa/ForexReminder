@@ -1,31 +1,31 @@
 alertTitle: "Alert"
-alertVerticalOffset: 0.0
+alertVerticalOffset: 40.0
 minutesPerHeartbeat: 1.0
 showDialogOnDelete: true
 openBrowserOnStart: false
 showTrayIcon: true
-secondsAfterClip: 1.0
-initialSoundFolder: "/home/adarw/sounds"
-defaultSoundFile: "/home/adarw/sounds/one.wav"
+sequentialSoundInterval: 1.0
+initialSoundFolder: "C:\\Users\\Erez"
+alertDefaultSoundFile: ""
 secondsUntilAlertDisappear: 30
 timeFieldPlacementInAlert: 1
-ImpactFieldColoring: "Importance"
+ImpactFieldColoring: "Impact"
 remindBefore1:
-  minutesBeforeAlert: 2.0
-  alertTitle: "Early Alert"
+  minutesBeforeAlert: 15.0
+  alertTitle: "Early Alert 1"
   secondsUntilAlertDisappear: 30
-  soundPath: "/home/adarw/sounds/one.wav"
+  soundPath: ""
   enabled: true
 remindBefore2:
-  minutesBeforeAlert: 1.0
-  alertTitle: "Early Alert"
+  minutesBeforeAlert: 5.0
+  alertTitle: "Early Alert 2"
   secondsUntilAlertDisappear: 30
-  soundPath: "/home/adarw/sounds/two.wav"
+  soundPath: ""
   enabled: true
 importMappings:
-- templateName: "Subject"
-  csvName: "Name"
-- templateName: "Importance"
+- templateName: "Impact"
   csvName: "Impact"
 - templateName: "Currency"
   csvName: "Currency"
+- templateName: "Subject"
+  csvName: "Name"

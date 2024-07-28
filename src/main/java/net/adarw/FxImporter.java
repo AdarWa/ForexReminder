@@ -4,17 +4,13 @@ import net.adarw.Utils.KeyValuePair;
 import net.adarw.Utils.StorageUtils;
 import org.apache.commons.csv.CSVFormat;
 import org.apache.commons.csv.CSVRecord;
-import org.joda.time.DateTime;
 
-import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
 import java.io.Reader;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
-import java.util.Date;
-import java.util.UUID;
 
 public class FxImporter {
 
@@ -41,7 +37,7 @@ public class FxImporter {
                     TimerEx.getString(parser.parse(record.get("Start"))),
                     true
             );
-            reminder.sound = Settings.current.defaultSoundFile;
+            reminder.sound = Settings.current.alertDefaultSoundFile;
 
             reminders.reminders.add(reminder);
         }

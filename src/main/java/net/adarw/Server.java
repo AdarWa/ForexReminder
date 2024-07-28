@@ -6,21 +6,14 @@ import com.j256.simplemagic.ContentType;
 import fi.iki.elonen.NanoHTTPD;
 import net.adarw.Utils.StorageUtils;
 import net.adarw.alertListner.Listener;
-import org.zeromq.SocketType;
-import org.zeromq.ZContext;
-import org.zeromq.ZMQ;
 
 import java.io.IOException;
-import java.io.InputStream;
-import java.net.MalformedURLException;
 import java.net.URI;
 import java.net.URISyntaxException;
-import java.net.URL;
 import java.nio.charset.Charset;
 import java.nio.charset.StandardCharsets;
 import java.util.HashMap;
 import java.util.Map;
-import java.util.concurrent.Callable;
 import java.util.logging.*;
 
 
@@ -88,7 +81,7 @@ public class Server extends NanoHTTPD {
                 return newFixedLengthResponse(readResource("gui/add.html", StandardCharsets.UTF_8)
                         .replace("{Template}", new Gson().toJson(StorageUtils.getTemplate(), Template.class))
                         .replace("{Controls}", TemplateParser.getControlTemplate())
-                        .replace("{sound}", Settings.current.defaultSoundFile));
+                        .replace("{sound}", Settings.current.alertDefaultSoundFile));
             }else if(path.equals("/settings.js")){
                 return newFixedLengthResponse(Response.Status.OK,ContentType.fromFileExtension("js").getMimeType() ,readResource("gui/settings.js", StandardCharsets.UTF_8)
                         .replace("{minutesPerHeartbeat}", String.valueOf(Settings.current.minutesPerHeartbeat))
