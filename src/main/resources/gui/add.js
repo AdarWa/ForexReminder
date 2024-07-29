@@ -95,7 +95,8 @@ $(document).ready(function(){
                 for(reminder of result.message.reminders){
                     if(reminder.uuid == uuid){
                         $("#enabled").prop('checked', reminder.enabled);
-                        $(picker._input).val(reminder.date);
+                        // $(picker._input).val(reminder.date);
+                        picker.setDate(reminder.date);
                         $("#sound").val(reminder.sound);
                         const fields = $(".controls").children();
                         const entries = reminder.entries;

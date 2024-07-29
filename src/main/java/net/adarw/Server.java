@@ -74,6 +74,11 @@ public class Server extends NanoHTTPD {
             if(path.equals("/")){
                 Listener.working = true;
                 Main.getInstance().listener.interrupt();
+                try {
+                    Thread.sleep(60);
+                } catch (InterruptedException e) {
+                    logger.severe("Sleep Interrupted");
+                }
                 return newFixedLengthResponse(readResource("gui/index.html", StandardCharsets.UTF_8)
                         .replace("{Body}", TemplateParser.getReminderTable())
                         .replace("{Template}", TemplateParser.getTemplateTable()));

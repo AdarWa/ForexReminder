@@ -3,10 +3,13 @@ package net.adarw;
 import net.adarw.Utils.KeyValuePair;
 import net.adarw.Utils.StorageUtils;
 
+import java.util.Comparator;
+
 public class TemplateParser {
     public static String getReminderTable(){
         String str = "";
         Reminders reminders = StorageUtils.getReminders();
+        reminders.reminders.sort(Comparator.comparing(o -> TimerEx.getDate(o.date)));
         for (Reminders.Reminder reminder : reminders.reminders){
             String reminderStr = "<tr class=\"reminder\" uuid=\""+reminder.uuid+"\"><td>";
             reminderStr += "<input class=\"form-check-input\" type=\"checkbox\" "+ (reminder.enabled ? "checked " : "")+"disabled></td><td>";

@@ -5,6 +5,7 @@ showDialogOnDelete: true
 openBrowserOnStart: false
 showTrayIcon: true
 sequentialSoundInterval: 1.0
+showExampleAlertOnStart: true
 initialSoundFolder: "C:\\Users\\Erez"
 alertDefaultSoundFile: ""
 secondsUntilAlertDisappear: 30

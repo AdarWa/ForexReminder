@@ -20,6 +20,7 @@ public class Settings {
     public boolean openBrowserOnStart = true;
     public boolean showTrayIcon = true;
     public double sequentialSoundInterval = 1;
+    public boolean showExampleAlertOnStart = false;
     public String initialSoundFolder = System.getProperty("user.home");
     public String alertDefaultSoundFile = "";
     public int secondsUntilAlertDisappear = 30;
