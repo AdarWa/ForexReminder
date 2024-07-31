@@ -143,7 +143,7 @@ public class Alert extends JDialog {
     }
 
     public void setPosition(String uuid, boolean remindBefore){
-        Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
+        Dimension screenSize = Settings.current.screenSize;
         Dimension windowSize = getSize();
         int index = 0;
         for(KeyValuePair<String, Boolean> entry : currentReminders){

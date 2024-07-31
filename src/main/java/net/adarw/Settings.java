@@ -25,17 +25,19 @@ public class Settings {
     public String alertDefaultSoundFile = "";
     public int secondsUntilAlertDisappear = 30;
     public int timeFieldPlacementInAlert = 1;
+    public Dimension screenSize = new Dimension(0,0);
     public String ImpactFieldColoring = "Importance";
     public RemindBefore remindBefore1 = new RemindBefore(15, "");
     public RemindBefore remindBefore2 = new RemindBefore(5, "");
     public ArrayList<ImportMapping> importMappings = new ArrayList<>();
 
+
     public Settings(){
         importMappings.add(new ImportMapping("Importance", "Level"));
         if(MiscUtils.getOperatingSystemType() == MiscUtils.OSType.WINDOWS){
             Dimension scrnSize = Toolkit.getDefaultToolkit().getScreenSize();
+            screenSize = scrnSize;
             Rectangle winSize = GraphicsEnvironment.getLocalGraphicsEnvironment().getMaximumWindowBounds();
-
             alertVerticalOffset = scrnSize.height - winSize.height;
         }
     }
