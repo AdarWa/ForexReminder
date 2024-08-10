@@ -1,0 +1,14 @@
+Aug 02, 2024 11:39:33 PM net.adarw.Main <init>
+INFO: Initializing Server...
+Aug 02, 2024 11:39:34 PM net.adarw.Main <init>
+INFO: Server is active in port 8579!
+Exception in thread "Thread-3" java.lang.ArithmeticException: / by zero
+	at net.adarw.alertListner.gui.Alert.setPosition(Alert.java:171)
+	at net.adarw.alertListner.gui.Alert.init(Alert.java:47)
+	at net.adarw.alertListner.gui.Alert.<init>(Alert.java:32)
+	at net.adarw.Main.lambda$new$1(Main.java:88)
+	at java.base/java.lang.Thread.run(Thread.java:1583)
+Aug 02, 2024 11:40:32 PM net.adarw.Main <init>
+INFO: Initializing Server...
+Aug 02, 2024 11:40:33 PM net.adarw.Main <init>
+INFO: Server is active in port 8579!

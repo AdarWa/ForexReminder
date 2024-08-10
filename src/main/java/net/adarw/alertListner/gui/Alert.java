@@ -143,8 +143,10 @@ public class Alert extends JDialog {
     }
 
     public void setPosition(String uuid, boolean remindBefore){
+        logger.info("setPosition " + uuid + " " + remindBefore);
         Dimension screenSize = Settings.current.screenSize;
         Dimension windowSize = getSize();
+        logger.info("size " + screenSize.toString());
         int index = 0;
         for(KeyValuePair<String, Boolean> entry : currentReminders){
             if(entry.getKey().equals(uuid) && entry.getValue()){
@@ -172,6 +174,12 @@ public class Alert extends JDialog {
             y = screenSize.height - windowSize.height*(index-alertsPerWindow*(x-1)) - ((int)Settings.current.alertVerticalOffset);
         }
         setLocation(screenSize.width - windowSize.width*x, y);
+    }
+
+    @Override
+    public void setLocation(int x,int y){
+        super.setLocation(x,y);
+        logger.info("setLocation " + x + "," + y);
     }
 
     public void close(ActionEvent e){

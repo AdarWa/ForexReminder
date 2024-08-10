@@ -10,6 +10,9 @@ initialSoundFolder: "C:\\Users\\Erez"
 alertDefaultSoundFile: ""
 secondsUntilAlertDisappear: 30
 timeFieldPlacementInAlert: 1
+screenSize:
+  width: 1920.0
+  height: 1080.0
 ImpactFieldColoring: "Impact"
 remindBefore1:
   minutesBeforeAlert: 15.0
