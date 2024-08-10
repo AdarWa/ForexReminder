@@ -178,7 +178,9 @@ public class Alert extends JDialog {
 
     @Override
     public void setLocation(int x,int y){
-        super.setLocation(x,y);
+        revalidate();
+        setVisible(true);
+        SwingUtilities.invokeLater(()-> super.setLocation(x,y));
         logger.info("setLocation " + x + "," + y);
     }
 

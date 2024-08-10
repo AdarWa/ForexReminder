@@ -1,0 +1,30 @@
+Aug 10, 2024 8:53:06 PM net.adarw.Main <init>
+INFO: Initializing Server...
+Aug 10, 2024 8:53:07 PM net.adarw.Main <init>
+INFO: Server is active in port 8579!
+Aug 10, 2024 8:53:07 PM net.adarw.alertListner.gui.Alert setPosition
+INFO: setPosition 4ff5f3a5-cd69-467a-a6ab-48ca1975e285 false
+Aug 10, 2024 8:53:07 PM net.adarw.alertListner.gui.Alert setPosition
+INFO: size java.awt.Dimension[width=1920,height=1080]
+Aug 10, 2024 8:53:07 PM net.adarw.alertListner.gui.Alert setLocation
+INFO: setLocation 1670,860
+Aug 10, 2024 9:14:59 PM net.adarw.Main <init>
+INFO: Initializing Server...
+Aug 10, 2024 9:15:00 PM net.adarw.Main <init>
+INFO: Server is active in port 8579!
+Aug 10, 2024 9:15:00 PM net.adarw.alertListner.gui.Alert setPosition
+INFO: setPosition 04c140a1-bdd4-45fa-b124-ec8634aa436b false
+Aug 10, 2024 9:15:00 PM net.adarw.alertListner.gui.Alert setPosition
+INFO: size java.awt.Dimension[width=1920,height=1080]
+Aug 10, 2024 9:15:00 PM net.adarw.alertListner.gui.Alert setLocation
+INFO: setLocation 1670,860
+Aug 10, 2024 9:28:14 PM net.adarw.Main <init>
+INFO: Initializing Server...
+Aug 10, 2024 9:28:15 PM net.adarw.Main <init>
+INFO: Server is active in port 8579!
+Aug 10, 2024 9:28:15 PM net.adarw.alertListner.gui.Alert setPosition
+INFO: setPosition b0e85308-6a4f-4830-ba6f-cefa9c6706f2 false
+Aug 10, 2024 9:28:15 PM net.adarw.alertListner.gui.Alert setPosition
+INFO: size java.awt.Dimension[width=1920,height=1080]
+Aug 10, 2024 9:28:15 PM net.adarw.alertListner.gui.Alert setLocation
+INFO: setLocation 1670,860
