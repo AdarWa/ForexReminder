@@ -1,0 +1,287 @@
+Aug 12, 2024 3:25:21 PM net.adarw.Main <init>
+INFO: Initializing Server...
+Aug 12, 2024 3:25:22 PM net.adarw.Main <init>
+INFO: Server is active in port 8579!
+Aug 12, 2024 3:25:22 PM net.adarw.alertListner.gui.Alert setPosition
+INFO: setPosition 8ff67711-4a24-4fe2-b07d-c2ed5b03b792 false
+Aug 12, 2024 3:25:22 PM net.adarw.alertListner.gui.Alert setPosition
+INFO: size java.awt.Dimension[width=1920,height=1080]
+Exception in thread "Thread-3" java.lang.NullPointerException: Cannot invoke "java.awt.Container.getSize()" because the return value of "net.adarw.alertListner.gui.Alert$AlertListCellRenderer.getParent()" is null
+	at net.adarw.alertListner.gui.Alert$AlertListCellRenderer.getListCellRendererComponent(Alert.java:198)
+	at java.desktop/javax.swing.plaf.basic.BasicListUI.updateLayoutState(BasicListUI.java:1444)
+	at java.desktop/javax.swing.plaf.basic.BasicListUI.maybeUpdateLayoutState(BasicListUI.java:1394)
+	at java.desktop/javax.swing.plaf.basic.BasicListUI.getPreferredSize(BasicListUI.java:653)
+	at java.desktop/javax.swing.JComponent.getPreferredSize(JComponent.java:1734)
+	at java.desktop/javax.swing.ScrollPaneLayout.layoutContainer(ScrollPaneLayout.java:799)
+	at java.desktop/java.awt.Container.layout(Container.java:1541)
+	at java.desktop/java.awt.Container.doLayout(Container.java:1530)
+	at java.desktop/java.awt.Container.validateTree(Container.java:1725)
+	at java.desktop/java.awt.Container.validateTree(Container.java:1734)
+	at java.desktop/java.awt.Container.validateTree(Container.java:1734)
+	at java.desktop/java.awt.Container.validateTree(Container.java:1734)
+	at java.desktop/java.awt.Container.validateTree(Container.java:1734)
+	at java.desktop/java.awt.Container.validateTree(Container.java:1734)
+	at java.desktop/java.awt.Container.validate(Container.java:1660)
+	at java.desktop/java.awt.Container.validateUnconditionally(Container.java:1697)
+	at java.desktop/java.awt.Dialog.conditionalShow(Dialog.java:918)
+	at java.desktop/java.awt.Dialog.show(Dialog.java:1047)
+	at java.desktop/java.awt.Component.show(Component.java:1728)
+	at java.desktop/java.awt.Component.setVisible(Component.java:1675)
+	at java.desktop/java.awt.Window.setVisible(Window.java:1036)
+	at java.desktop/java.awt.Dialog.setVisible(Dialog.java:1015)
+	at net.adarw.alertListner.gui.Alert.setLocation(Alert.java:182)
+	at net.adarw.alertListner.gui.Alert.setPosition(Alert.java:176)
+	at net.adarw.alertListner.gui.Alert.init(Alert.java:47)
+	at net.adarw.alertListner.gui.Alert.<init>(Alert.java:32)
+	at net.adarw.Main.lambda$new$1(Main.java:88)
+	at java.base/java.lang.Thread.run(Thread.java:1583)
+Aug 12, 2024 3:26:49 PM net.adarw.Main <init>
+INFO: Initializing Server...
+Aug 12, 2024 3:26:51 PM net.adarw.Main <init>
+INFO: Server is active in port 8579!
+Aug 12, 2024 3:26:52 PM net.adarw.alertListner.gui.Alert setPosition
+INFO: setPosition 197b7231-4f5f-4ba8-a6a0-5c570013209b false
+Aug 12, 2024 3:26:52 PM net.adarw.alertListner.gui.Alert setPosition
+INFO: size java.awt.Dimension[width=1920,height=1080]
+Aug 12, 2024 3:26:52 PM net.adarw.alertListner.gui.Alert setLocation
+INFO: setLocation 1670,860
+Aug 12, 2024 3:28:15 PM net.adarw.Main <init>
+INFO: Initializing Server...
+Aug 12, 2024 3:28:16 PM net.adarw.Main <init>
+INFO: Server is active in port 8579!
+Aug 12, 2024 3:28:17 PM net.adarw.alertListner.gui.Alert setPosition
+INFO: setPosition 27d5d032-4f08-4485-97f6-d79db83c647a false
+Aug 12, 2024 3:28:17 PM net.adarw.alertListner.gui.Alert setPosition
+INFO: size java.awt.Dimension[width=1920,height=1080]
+Aug 12, 2024 3:28:17 PM net.adarw.alertListner.gui.Alert setLocation
+INFO: setLocation 1670,860
+Aug 12, 2024 3:29:12 PM net.adarw.Main <init>
+INFO: Initializing Server...
+Aug 12, 2024 3:29:13 PM net.adarw.Main <init>
+INFO: Server is active in port 8579!
+Aug 12, 2024 3:29:14 PM net.adarw.alertListner.gui.Alert setPosition
+INFO: setPosition 46aa4666-4744-460b-b04a-e213f4b71b51 false
+Aug 12, 2024 3:29:14 PM net.adarw.alertListner.gui.Alert setPosition
+INFO: size java.awt.Dimension[width=1920,height=1080]
+Aug 12, 2024 3:29:14 PM net.adarw.alertListner.gui.Alert setLocation
+INFO: setLocation 1670,860
+Aug 12, 2024 3:30:22 PM net.adarw.Main <init>
+INFO: Initializing Server...
+Aug 12, 2024 3:30:23 PM net.adarw.Main <init>
+INFO: Server is active in port 8579!
+Aug 12, 2024 3:30:23 PM net.adarw.alertListner.gui.Alert setPosition
+INFO: setPosition 7aed945b-adc0-4f1a-8092-ab561fa7d7ba false
+Aug 12, 2024 3:30:23 PM net.adarw.alertListner.gui.Alert setPosition
+INFO: size java.awt.Dimension[width=1920,height=1080]
+Aug 12, 2024 3:30:23 PM net.adarw.alertListner.gui.Alert setLocation
+INFO: setLocation 1670,860
+Aug 12, 2024 3:30:39 PM net.adarw.Main <init>
+INFO: Initializing Server...
+Aug 12, 2024 3:30:40 PM net.adarw.Main <init>
+INFO: Server is active in port 8579!
+Aug 12, 2024 3:30:40 PM net.adarw.alertListner.gui.Alert setPosition
+INFO: setPosition e164038a-8ce4-4987-b9f4-29350a220b83 false
+Aug 12, 2024 3:30:40 PM net.adarw.alertListner.gui.Alert setPosition
+INFO: size java.awt.Dimension[width=1920,height=1080]
+Aug 12, 2024 3:30:41 PM net.adarw.alertListner.gui.Alert setLocation
+INFO: setLocation 1670,860
+Aug 12, 2024 3:31:03 PM net.adarw.Main <init>
+INFO: Initializing Server...
+Aug 12, 2024 3:31:04 PM net.adarw.Main <init>
+INFO: Server is active in port 8579!
+Aug 12, 2024 3:31:04 PM net.adarw.alertListner.gui.Alert setPosition
+INFO: setPosition 365bbc7e-5e74-45f0-8691-8d0b9766509d false
+Aug 12, 2024 3:31:04 PM net.adarw.alertListner.gui.Alert setPosition
+INFO: size java.awt.Dimension[width=1920,height=1080]
+Aug 12, 2024 3:31:04 PM net.adarw.alertListner.gui.Alert setLocation
+INFO: setLocation 1670,860
+Aug 12, 2024 3:31:17 PM net.adarw.Main <init>
+INFO: Initializing Server...
+Aug 12, 2024 3:31:18 PM net.adarw.Main <init>
+INFO: Server is active in port 8579!
+Aug 12, 2024 3:31:18 PM net.adarw.alertListner.gui.Alert setPosition
+INFO: setPosition 2077c187-ebaf-4538-b91b-1dc9f7cd2cc6 false
+Aug 12, 2024 3:31:18 PM net.adarw.alertListner.gui.Alert setPosition
+INFO: size java.awt.Dimension[width=1920,height=1080]
+Aug 12, 2024 3:31:18 PM net.adarw.alertListner.gui.Alert setLocation
+INFO: setLocation 1670,860
+Aug 12, 2024 3:31:46 PM net.adarw.Main <init>
+INFO: Initializing Server...
+Aug 12, 2024 3:31:47 PM net.adarw.Main <init>
+INFO: Server is active in port 8579!
+Aug 12, 2024 3:31:47 PM net.adarw.alertListner.gui.Alert setPosition
+INFO: setPosition 293e9bad-2903-4f91-84ed-d413ce791655 false
+Aug 12, 2024 3:31:47 PM net.adarw.alertListner.gui.Alert setPosition
+INFO: size java.awt.Dimension[width=1920,height=1080]
+Aug 12, 2024 3:31:47 PM net.adarw.alertListner.gui.Alert setLocation
+INFO: setLocation 1670,860
+Aug 12, 2024 3:32:47 PM net.adarw.Main <init>
+INFO: Initializing Server...
+Aug 12, 2024 3:32:48 PM net.adarw.Main <init>
+INFO: Server is active in port 8579!
+Aug 12, 2024 3:32:48 PM net.adarw.alertListner.gui.Alert setPosition
+INFO: setPosition 90c47196-c14d-4995-84f7-1f06cf60640e false
+Aug 12, 2024 3:32:48 PM net.adarw.alertListner.gui.Alert setPosition
+INFO: size java.awt.Dimension[width=1920,height=1080]
+-1
+-1
+-1
+-1
+Aug 12, 2024 3:32:48 PM net.adarw.alertListner.gui.Alert setLocation
+INFO: setLocation 1670,860
+-1
+-1
+-1
+-1
+-1
+-1
+-1
+-1
+-1
+-1
+-1
+-1
+-1
+Aug 12, 2024 3:34:31 PM net.adarw.Main <init>
+INFO: Initializing Server...
+Aug 12, 2024 3:34:32 PM net.adarw.Main <init>
+INFO: Server is active in port 8579!
+Aug 12, 2024 3:34:32 PM net.adarw.alertListner.gui.Alert setPosition
+INFO: setPosition f7051ec2-1eeb-434a-8a61-40c7ce55fb5c false
+Aug 12, 2024 3:34:32 PM net.adarw.alertListner.gui.Alert setPosition
+INFO: size java.awt.Dimension[width=1920,height=1080]
+0
+0
+0
+0
+Aug 12, 2024 3:34:32 PM net.adarw.alertListner.gui.Alert setLocation
+INFO: setLocation 1670,860
+222
+222
+222
+222
+222
+222
+222
+222
+Aug 12, 2024 3:34:48 PM net.adarw.Main <init>
+INFO: Initializing Server...
+Aug 12, 2024 3:34:49 PM net.adarw.Main <init>
+INFO: Server is active in port 8579!
+Aug 12, 2024 3:34:49 PM net.adarw.alertListner.gui.Alert setPosition
+INFO: setPosition ea41c04a-15ff-4614-a0c6-8f8e3d008ffa false
+Aug 12, 2024 3:34:49 PM net.adarw.alertListner.gui.Alert setPosition
+INFO: size java.awt.Dimension[width=1920,height=1080]
+Aug 12, 2024 3:34:49 PM net.adarw.alertListner.gui.Alert setLocation
+INFO: setLocation 1670,860
+Aug 12, 2024 3:36:38 PM net.adarw.Main <init>
+INFO: Initializing Server...
+Aug 12, 2024 3:36:38 PM net.adarw.Main <init>
+INFO: Server is active in port 8579!
+Aug 12, 2024 3:36:38 PM net.adarw.alertListner.gui.Alert setPosition
+INFO: setPosition da32785e-47f1-4285-9acf-b59894a7465e false
+Aug 12, 2024 3:36:38 PM net.adarw.alertListner.gui.Alert setPosition
+INFO: size java.awt.Dimension[width=1920,height=1080]
+Exception in thread "Thread-3" java.lang.NullPointerException: Cannot invoke "javax.swing.text.View.setSize(float, float)" because "view" is null
+	at net.adarw.alertListner.gui.Alert$AlertListCellRenderer.getListCellRendererComponent(Alert.java:204)
+	at java.desktop/javax.swing.plaf.basic.BasicListUI.updateLayoutState(BasicListUI.java:1444)
+	at java.desktop/javax.swing.plaf.basic.BasicListUI.maybeUpdateLayoutState(BasicListUI.java:1394)
+	at java.desktop/javax.swing.plaf.basic.BasicListUI.getPreferredSize(BasicListUI.java:653)
+	at java.desktop/javax.swing.JComponent.getPreferredSize(JComponent.java:1734)
+	at java.desktop/javax.swing.ScrollPaneLayout.layoutContainer(ScrollPaneLayout.java:799)
+	at java.desktop/java.awt.Container.layout(Container.java:1541)
+	at java.desktop/java.awt.Container.doLayout(Container.java:1530)
+	at java.desktop/java.awt.Container.validateTree(Container.java:1725)
+	at java.desktop/java.awt.Container.validateTree(Container.java:1734)
+	at java.desktop/java.awt.Container.validateTree(Container.java:1734)
+	at java.desktop/java.awt.Container.validateTree(Container.java:1734)
+	at java.desktop/java.awt.Container.validateTree(Container.java:1734)
+	at java.desktop/java.awt.Container.validateTree(Container.java:1734)
+	at java.desktop/java.awt.Container.validate(Container.java:1660)
+	at java.desktop/java.awt.Container.validateUnconditionally(Container.java:1697)
+	at java.desktop/java.awt.Dialog.conditionalShow(Dialog.java:918)
+	at java.desktop/java.awt.Dialog.show(Dialog.java:1047)
+	at java.desktop/java.awt.Component.show(Component.java:1728)
+	at java.desktop/java.awt.Component.setVisible(Component.java:1675)
+	at java.desktop/java.awt.Window.setVisible(Window.java:1036)
+	at java.desktop/java.awt.Dialog.setVisible(Dialog.java:1015)
+	at net.adarw.alertListner.gui.Alert.setLocation(Alert.java:184)
+	at net.adarw.alertListner.gui.Alert.setPosition(Alert.java:178)
+	at net.adarw.alertListner.gui.Alert.init(Alert.java:49)
+	at net.adarw.alertListner.gui.Alert.<init>(Alert.java:34)
+	at net.adarw.Main.lambda$new$1(Main.java:88)
+	at java.base/java.lang.Thread.run(Thread.java:1583)
+Aug 12, 2024 3:37:09 PM net.adarw.Main <init>
+INFO: Initializing Server...
+Aug 12, 2024 3:37:10 PM net.adarw.Main <init>
+INFO: Server is active in port 8579!
+Aug 12, 2024 3:37:10 PM net.adarw.alertListner.gui.Alert setPosition
+INFO: setPosition 98d76437-3acc-4432-9d61-d6b5c7b914e5 false
+Aug 12, 2024 3:37:10 PM net.adarw.alertListner.gui.Alert setPosition
+INFO: size java.awt.Dimension[width=1920,height=1080]
+Exception in thread "Thread-3" java.lang.NullPointerException: Cannot invoke "javax.swing.text.View.setSize(float, float)" because "view" is null
+	at net.adarw.alertListner.gui.Alert$AlertListCellRenderer.getListCellRendererComponent(Alert.java:203)
+	at java.desktop/javax.swing.plaf.basic.BasicListUI.updateLayoutState(BasicListUI.java:1444)
+	at java.desktop/javax.swing.plaf.basic.BasicListUI.maybeUpdateLayoutState(BasicListUI.java:1394)
+	at java.desktop/javax.swing.plaf.basic.BasicListUI.getPreferredSize(BasicListUI.java:653)
+	at java.desktop/javax.swing.JComponent.getPreferredSize(JComponent.java:1734)
+	at java.desktop/javax.swing.ScrollPaneLayout.layoutContainer(ScrollPaneLayout.java:799)
+	at java.desktop/java.awt.Container.layout(Container.java:1541)
+	at java.desktop/java.awt.Container.doLayout(Container.java:1530)
+	at java.desktop/java.awt.Container.validateTree(Container.java:1725)
+	at java.desktop/java.awt.Container.validateTree(Container.java:1734)
+	at java.desktop/java.awt.Container.validateTree(Container.java:1734)
+	at java.desktop/java.awt.Container.validateTree(Container.java:1734)
+	at java.desktop/java.awt.Container.validateTree(Container.java:1734)
+	at java.desktop/java.awt.Container.validateTree(Container.java:1734)
+	at java.desktop/java.awt.Container.validate(Container.java:1660)
+	at java.desktop/java.awt.Container.validateUnconditionally(Container.java:1697)
+	at java.desktop/java.awt.Dialog.conditionalShow(Dialog.java:918)
+	at java.desktop/java.awt.Dialog.show(Dialog.java:1047)
+	at java.desktop/java.awt.Component.show(Component.java:1728)
+	at java.desktop/java.awt.Component.setVisible(Component.java:1675)
+	at java.desktop/java.awt.Window.setVisible(Window.java:1036)
+	at java.desktop/java.awt.Dialog.setVisible(Dialog.java:1015)
+	at net.adarw.alertListner.gui.Alert.setLocation(Alert.java:184)
+	at net.adarw.alertListner.gui.Alert.setPosition(Alert.java:178)
+	at net.adarw.alertListner.gui.Alert.init(Alert.java:49)
+	at net.adarw.alertListner.gui.Alert.<init>(Alert.java:34)
+	at net.adarw.Main.lambda$new$1(Main.java:88)
+	at java.base/java.lang.Thread.run(Thread.java:1583)
+Aug 12, 2024 3:38:54 PM net.adarw.Main <init>
+INFO: Initializing Server...
+Aug 12, 2024 3:38:55 PM net.adarw.Main <init>
+INFO: Server is active in port 8579!
+Aug 12, 2024 3:38:55 PM net.adarw.alertListner.gui.Alert setPosition
+INFO: setPosition ba52c0a9-5b6f-49b0-8d36-9634ca8e922e false
+Aug 12, 2024 3:38:55 PM net.adarw.alertListner.gui.Alert setPosition
+INFO: size java.awt.Dimension[width=1920,height=1080]
+Exception in thread "Thread-3" java.lang.NullPointerException: Cannot invoke "javax.swing.text.View.setSize(float, float)" because "view" is null
+	at net.adarw.alertListner.gui.Alert$AlertListCellRenderer.getListCellRendererComponent(Alert.java:204)
+	at java.desktop/javax.swing.plaf.basic.BasicListUI.updateLayoutState(BasicListUI.java:1444)
+	at java.desktop/javax.swing.plaf.basic.BasicListUI.maybeUpdateLayoutState(BasicListUI.java:1394)
+	at java.desktop/javax.swing.plaf.basic.BasicListUI.getPreferredSize(BasicListUI.java:653)
+	at java.desktop/javax.swing.JComponent.getPreferredSize(JComponent.java:1734)
+	at java.desktop/javax.swing.ScrollPaneLayout.layoutContainer(ScrollPaneLayout.java:799)
+	at java.desktop/java.awt.Container.layout(Container.java:1541)
+	at java.desktop/java.awt.Container.doLayout(Container.java:1530)
+	at java.desktop/java.awt.Container.validateTree(Container.java:1725)
+	at java.desktop/java.awt.Container.validateTree(Container.java:1734)
+	at java.desktop/java.awt.Container.validateTree(Container.java:1734)
+	at java.desktop/java.awt.Container.validateTree(Container.java:1734)
+	at java.desktop/java.awt.Container.validateTree(Container.java:1734)
+	at java.desktop/java.awt.Container.validateTree(Container.java:1734)
+	at java.desktop/java.awt.Container.validate(Container.java:1660)
+	at java.desktop/java.awt.Container.validateUnconditionally(Container.java:1697)
+	at java.desktop/java.awt.Dialog.conditionalShow(Dialog.java:918)
+	at java.desktop/java.awt.Dialog.show(Dialog.java:1047)
+	at java.desktop/java.awt.Component.show(Component.java:1728)
+	at java.desktop/java.awt.Component.setVisible(Component.java:1675)
+	at java.desktop/java.awt.Window.setVisible(Window.java:1036)
+	at java.desktop/java.awt.Dialog.setVisible(Dialog.java:1015)
+	at net.adarw.alertListner.gui.Alert.setLocation(Alert.java:184)
+	at net.adarw.alertListner.gui.Alert.setPosition(Alert.java:178)
+	at net.adarw.alertListner.gui.Alert.init(Alert.java:49)
+	at net.adarw.alertListner.gui.Alert.<init>(Alert.java:34)
+	at net.adarw.Main.lambda$new$1(Main.java:88)
+	at java.base/java.lang.Thread.run(Thread.java:1583)

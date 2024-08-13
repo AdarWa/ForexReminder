@@ -37,7 +37,7 @@ public class Main implements MainInterface{
 
 
 
-    public Main() {
+    public Main() throws InterruptedException {
         StorageUtils.initStorage();
         try {
             File file = Paths.get(StorageUtils.logsDir.toString(), TimerEx.getString(new Date()).split(" ")[0] + ".log").toFile();
@@ -86,10 +86,14 @@ public class Main implements MainInterface{
         }
         if (Settings.current.showExampleAlertOnStart){
             new Thread(()-> new Alert(new Reminders.Reminder(UUID.randomUUID().toString(), StorageUtils.getReminders().reminders.get(0).entries, "29-07-2024 17:16", true))).start();
+            Thread.sleep(1000);
+            new Thread(()-> new Alert(new Reminders.Reminder(UUID.randomUUID().toString(), StorageUtils.getReminders().reminders.get(0).entries, "29-07-2024 17:16", true))).start();
+            Thread.sleep(1000);
+            new Thread(()-> new Alert(new Reminders.Reminder(UUID.randomUUID().toString(), StorageUtils.getReminders().reminders.get(0).entries, "29-07-2024 17:16", true))).start();
         }
     }
 
-    public static void main(String[] args) {
+    public static void main(String[] args) throws InterruptedException {
 
         new Main();
     }

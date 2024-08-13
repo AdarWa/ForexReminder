@@ -25,12 +25,15 @@ public class Settings {
     public String alertDefaultSoundFile = "";
     public int secondsUntilAlertDisappear = 30;
     public int timeFieldPlacementInAlert = 1;
+    public String descFieldName = "Subject";
+    public int charsToBreakAfter = 30;
+    public String alertBgColor = "#bed6c5";
+    public int alertOpacity = 80;
     public Dimension screenSize = new Dimension(0,0);
     public String ImpactFieldColoring = "Importance";
     public RemindBefore remindBefore1 = new RemindBefore(15, "");
     public RemindBefore remindBefore2 = new RemindBefore(5, "");
     public ArrayList<ImportMapping> importMappings = new ArrayList<>();
-
 
     public Settings(){
         importMappings.add(new ImportMapping("Importance", "Level"));

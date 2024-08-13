@@ -10,6 +10,10 @@ initialSoundFolder: "C:\\Users\\Erez"
 alertDefaultSoundFile: ""
 secondsUntilAlertDisappear: 30
 timeFieldPlacementInAlert: 1
+descFieldName: "Subject"
+charsToBreakAfter: 30
+alertBgColor: "#bed6c5"
+alertOpacity: 80
 screenSize:
   width: 1920.0
   height: 1080.0
