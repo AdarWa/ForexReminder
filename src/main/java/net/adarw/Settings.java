@@ -70,6 +70,15 @@ public class Settings {
             }
         }
 
+        public static String getSettingsString(Settings settings){
+            try {
+                return mapper.writeValueAsString(settings);
+            } catch (IOException e) {
+                logger.severe("Failed to write to settings file: " + e.getMessage());
+                return "";
+            }
+        }
+
         public static Settings readSettings(){
             try {
                 return mapper.readValue(StorageUtils.settings.toFile(), Settings.class);

@@ -18,6 +18,8 @@ import javax.swing.filechooser.FileNameExtensionFilter;
 import java.awt.*;
 import java.awt.event.ActionListener;
 import java.io.*;
+import java.nio.charset.StandardCharsets;
+import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.Date;
@@ -56,7 +58,19 @@ public class Main implements MainInterface{
             logger.severe( "Failed to initialize LaF");
         }
         Settings.current = Settings.SettingsManager.readSettings();
-        Settings.SettingsManager.writeSettings(Settings.current);
+        try {
+            if (!Settings.SettingsManager.getSettingsString(Settings.current).equals(Files.readString(StorageUtils.settings, StandardCharsets.UTF_8))) {
+                int result = JOptionPane.showOptionDialog(null,
+                        "Found a problem in the format of the settings.yaml file.\nDo you want to automatically fix it?",
+                        "Found a problem in the settings",
+                        JOptionPane.YES_NO_OPTION, JOptionPane.WARNING_MESSAGE, null, null, null);
+                if(result == JOptionPane.YES_OPTION){
+                    Settings.SettingsManager.writeSettings(Settings.current);
+                }
+            }
+        }catch (Exception e){
+            logger.severe("Exception while trying to fix problem in settings file.");
+        }
         Server server = new Server(this);
         parser = new Command.CommandParser();
         listener = new Listener();

@@ -21,6 +21,7 @@ public class FxImporter {
                 .withHeader("Id", "Start", "Name", "Impact", "Currency")
                 .withFirstRecordAsHeader()
                 .parse(in);
+        in.close();
         Reminders reminders = StorageUtils.getReminders();
         for (CSVRecord record : records) {
 
