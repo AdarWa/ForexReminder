@@ -11,6 +11,7 @@ import java.io.Reader;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 
 public class FxImporter {
 
@@ -30,11 +31,12 @@ public class FxImporter {
             }
 
             SimpleDateFormat parser = new SimpleDateFormat("MM/dd/yyyy HH:mm:ss");
-
+            Date date = parser.parse(record.get("Start"));
+            date.setTime(date.getTime() + (1000*60*60)*(Settings.current.gmt + (Settings.current.daylightSaving ? 1 : 0)));
             Reminders.Reminder reminder = new Reminders.Reminder(
                     record.get("Id"),
                     entries,
-                    TimerEx.getString(parser.parse(record.get("Start"))),
+                    TimerEx.getString(date),
                     true
             );
             reminder.sound = Settings.current.alertDefaultSoundFile;

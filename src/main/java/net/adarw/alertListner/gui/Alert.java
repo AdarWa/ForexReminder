@@ -67,6 +67,11 @@ public class Alert extends JDialog {
 //                        break;
 //                    }
 //                }
+                try {
+                    Thread.sleep((long)(Math.random() * 400 + 1));
+                } catch (InterruptedException ex) {
+                    throw new RuntimeException(ex);
+                }
                 reminderCount--;
             }
         });
@@ -182,7 +187,7 @@ public class Alert extends JDialog {
 //            x = index/alertsPerWindow+1;
 //            y = screenSize.height - windowSize.height*(index-alertsPerWindow*(x-1)) - ((int)Settings.current.alertVerticalOffset);
 //        }
-        setLocation(screenSize.width - windowSize.width, screenSize.height - windowSize.height*reminderCount);
+        setLocation(screenSize.width - windowSize.width, screenSize.height - windowSize.height*reminderCount - ((int)Settings.current.alertVerticalOffset));
     }
 
     @Override

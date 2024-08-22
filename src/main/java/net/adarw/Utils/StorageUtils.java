@@ -103,20 +103,22 @@ public class StorageUtils {
     }
 
     public static void clearReminders(){
-        if(reminders.toFile().delete()){
-            try {
-                if(reminders.toFile().createNewFile()){
-                    writeReminders(new Reminders());
-                    logger.info("Successfully cleared all reminders!");
-                }else{
-                    logger.severe("Had a problem while trying to clear all reminders.");
-                }
-            } catch (IOException e) {
-                logger.severe("Had a problem while trying to clear all reminders: " + e.getMessage());
-            }
-        }else {
-            logger.severe("Had a problem while trying to clear all reminders.");
-        }
+//        if(reminders.toFile().delete()){
+//            try {
+//                if(reminders.toFile().createNewFile()){
+//                    writeReminders(new Reminders());
+//                    logger.info("Successfully cleared all reminders!");
+//                }else{
+//                    logger.severe("Had a problem while trying to clear all reminders. Unable to create new file.");
+//                }
+//            } catch (IOException e) {
+//                logger.severe("Had a problem while trying to clear all reminders: " + e.getMessage());
+//            }
+//        }else {
+//            logger.severe("Had a problem while trying to clear all reminders. Can't delete file.");
+//        }
+        writeReminders(new Reminders());
+        logger.info("Successfully cleared all reminders!");
     }
     public static void clearTemplate(){
         if(template.toFile().delete()){

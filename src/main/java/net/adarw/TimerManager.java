@@ -11,12 +11,13 @@ public class TimerManager {
     public static ArrayList<KeyValuePair<String,TimerEx>> timers = new ArrayList<>();
 
     private static TimerEx noCollision(TimerEx timer){
-        for (KeyValuePair<String, TimerEx> entry : timers) {
-            if(entry.getValue().date.getTime() == timer.date.getTime()){
-                timer.date.setTime(timer.date.getTime()+1000);
-                return noCollision(timer);
-            }
-        }
+//        for (KeyValuePair<String, TimerEx> entry : timers) {
+//            if(entry.getValue().date.getTime() == timer.date.getTime()){
+//                timer.date.setTime(timer.date.getTime()+1000);
+//                return noCollision(timer);
+//            }
+//        }
+//        return timer;
         return timer;
     }
 

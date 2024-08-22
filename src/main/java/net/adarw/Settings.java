@@ -29,6 +29,8 @@ public class Settings {
     public int charsToBreakAfter = 30;
     public String alertBgColor = "#bed6c5";
     public int alertOpacity = 80;
+    public int gmt = 2;
+    public boolean daylightSaving = false;
     public Dimension screenSize = new Dimension(0,0);
     public String ImpactFieldColoring = "Importance";
     public RemindBefore remindBefore1 = new RemindBefore(15, "");
