@@ -242,3 +242,150 @@ Aug 13, 2024 12:51:51 PM net.adarw.Main <init>
 INFO: 1
 Aug 13, 2024 12:51:51 PM net.adarw.Main <init>
 INFO: Server is active in port 8579!
+Aug 13, 2024 1:27:26 PM net.adarw.Main <init>
+INFO: Initializing Server...
+Aug 13, 2024 1:27:27 PM net.adarw.Settings$SettingsManager readSettings
+SEVERE: Failed to read settings file: while scanning a double-quoted scalar
+ in 'reader', line 9, column 21:
+    initialSoundFolder: "C:\Users\Erez"
+                        ^
+expected escape sequence of 8 hexadecimal numbers, but found: sers\Ere
+ in 'reader', line 9, column 26:
+    initialSoundFolder: "C:\Users\Erez"
+                             ^
+
+ at [Source: (File); line: 9, column: 19]
+Aug 13, 2024 1:27:30 PM net.adarw.Main <init>
+INFO: Server is active in port 8579!
+Aug 13, 2024 1:27:32 PM net.adarw.alertListner.Listener run
+INFO: Disabled overdue timer with id 2d3e3729-d8b2-4518-9505-db178c82b084
+Aug 13, 2024 1:27:33 PM net.adarw.alertListner.Listener run
+INFO: Disabled overdue timer with id 34fd34f9-a0cf-48be-a9a7-07001d8e50d1
+Aug 13, 2024 1:27:33 PM net.adarw.alertListner.Listener run
+INFO: Disabled overdue timer with id d830715c-5600-48a6-9131-434ca88d8731
+Aug 13, 2024 1:27:33 PM net.adarw.alertListner.Listener run
+INFO: Disabled overdue timer with id 28caa374-5511-469e-9587-c3c56ce7b3b9
+Aug 13, 2024 1:27:33 PM net.adarw.alertListner.Listener run
+INFO: Disabled overdue timer with id 553420d0-0398-40c4-a62d-152212c9875d
+Aug 13, 2024 1:27:33 PM net.adarw.alertListner.Listener run
+INFO: Disabled overdue timer with id 5b0f7de8-f6e3-424e-a2b6-0bed47a010b5
+Aug 13, 2024 1:27:33 PM net.adarw.alertListner.Listener run
+INFO: Disabled overdue timer with id d5cf9150-c4dd-4cdf-9ea9-4dd63aa007aa
+Aug 13, 2024 1:27:33 PM net.adarw.alertListner.Listener run
+INFO: Disabled overdue timer with id 119b04dc-90dc-4307-9abc-f5f352996621
+Aug 13, 2024 1:27:33 PM net.adarw.alertListner.Listener run
+INFO: Disabled overdue timer with id 089828c8-f06e-4b83-8c3b-c23825260f94
+Aug 13, 2024 1:27:33 PM net.adarw.alertListner.Listener run
+INFO: Disabled overdue timer with id 821fe98d-0762-4988-a9bc-fae93902350f
+Aug 13, 2024 1:27:33 PM net.adarw.alertListner.Listener run
+INFO: Disabled overdue timer with id 09d13b28-6800-4af0-9c77-9322bb6d1ea3
+Aug 13, 2024 1:27:33 PM net.adarw.alertListner.Listener run
+INFO: Disabled overdue timer with id fc8a0cee-918e-482c-9950-69bcaccaa33d
+Aug 13, 2024 1:27:33 PM net.adarw.alertListner.Listener run
+INFO: Disabled overdue timer with id 46578237-0dde-4ad4-bc0a-e9bf6ecbfadb
+Aug 13, 2024 1:27:33 PM net.adarw.alertListner.Listener run
+INFO: Disabled overdue timer with id d593f60c-e01d-445d-b8a2-8adb24402ab1
+Aug 13, 2024 1:27:33 PM net.adarw.alertListner.Listener run
+INFO: Disabled overdue timer with id 89581bab-9bfd-484a-b568-d71e3f5d6f1b
+Aug 13, 2024 1:27:33 PM net.adarw.alertListner.Listener run
+INFO: Disabled overdue timer with id c0eab153-02cb-4bc7-8d02-a24330310080
+Aug 13, 2024 1:27:33 PM net.adarw.alertListner.Listener run
+INFO: Disabled overdue timer with id 5308543e-ea16-4b59-88c1-5628109be7dd
+Aug 13, 2024 1:27:33 PM net.adarw.alertListner.Listener run
+INFO: Disabled overdue timer with id d74348b3-4e74-435a-8ece-bc29927cf597
+Aug 13, 2024 1:27:33 PM net.adarw.alertListner.Listener run
+INFO: Disabled overdue timer with id 2e289d99-d3be-4d46-8e27-66a13c3db121
+Aug 13, 2024 1:27:33 PM net.adarw.alertListner.Listener run
+INFO: Disabled overdue timer with id be81d8c2-3408-4708-afc2-f2e83f45a80c
+Aug 13, 2024 1:27:33 PM net.adarw.alertListner.Listener run
+INFO: Disabled overdue timer with id 560a3be9-e643-4399-bdc5-f3020b42d6c9
+Aug 13, 2024 1:27:33 PM net.adarw.alertListner.Listener run
+INFO: Disabled overdue timer with id ea881dc2-39f9-48af-a9dd-884099f03af7
+Aug 13, 2024 1:27:33 PM net.adarw.alertListner.Listener run
+INFO: Disabled overdue timer with id ea24ea69-e5bf-4d92-aa7c-35b6b4732b6c
+Aug 13, 2024 1:27:33 PM net.adarw.alertListner.Listener run
+INFO: Disabled overdue timer with id 9587d0a2-9a9a-4f32-9699-216fdf90eacd
+Aug 13, 2024 1:27:34 PM net.adarw.alertListner.Listener run
+INFO: Disabled overdue timer with id 279b702e-bde7-4b00-babe-410e19a5cbf5
+Aug 13, 2024 1:27:34 PM net.adarw.alertListner.Listener run
+INFO: Disabled overdue timer with id 24fde614-310e-4411-a80d-de4b8d716904
+Aug 13, 2024 1:27:34 PM net.adarw.alertListner.Listener run
+INFO: Disabled overdue timer with id 881f897d-da90-40d4-9b08-5e219f097bf8
+Aug 13, 2024 1:27:34 PM net.adarw.alertListner.Listener run
+INFO: Disabled overdue timer with id aa80ae08-5139-40f4-8459-fc2ae88b628a
+Aug 13, 2024 1:27:34 PM net.adarw.alertListner.Listener run
+INFO: Disabled overdue timer with id d47d30ea-4768-4780-94f6-107109dbbf89
+Aug 13, 2024 1:27:34 PM net.adarw.alertListner.Listener run
+INFO: Disabled overdue timer with id 5a6d5513-656d-4e36-bf1c-ad722ba1c7f4
+Aug 13, 2024 1:27:34 PM net.adarw.alertListner.Listener run
+INFO: Disabled overdue timer with id 435eb8bc-6776-4b47-a009-96ec25da0213
+Aug 13, 2024 1:27:34 PM net.adarw.alertListner.Listener run
+INFO: Disabled overdue timer with id 0eeae1d6-eada-4d50-8d81-44d5236c3d5a
+Aug 13, 2024 1:27:43 PM net.adarw.Main <init>
+INFO: Initializing Server...
+Aug 13, 2024 1:27:44 PM net.adarw.Main <init>
+INFO: Server is active in port 8579!
+Aug 13, 2024 1:29:32 PM net.adarw.Main <init>
+INFO: Initializing Server...
+Aug 13, 2024 1:29:34 PM net.adarw.Main <init>
+INFO: Server is active in port 8579!
+Aug 13, 2024 1:30:08 PM net.adarw.Main <init>
+INFO: Initializing Server...
+Aug 13, 2024 1:30:09 PM net.adarw.Main <init>
+INFO: Server is active in port 8579!
+Aug 13, 2024 1:31:07 PM net.adarw.Main <init>
+INFO: Initializing Server...
+Aug 13, 2024 1:31:08 PM net.adarw.Main <init>
+INFO: Server is active in port 8579!
+Aug 13, 2024 1:31:21 PM net.adarw.Main <init>
+INFO: Initializing Server...
+Aug 13, 2024 1:31:22 PM net.adarw.Main <init>
+INFO: Server is active in port 8579!
+Aug 13, 2024 1:32:07 PM net.adarw.Main <init>
+INFO: Initializing Server...
+Aug 13, 2024 1:32:09 PM net.adarw.Main <init>
+INFO: Server is active in port 8579!
+Aug 13, 2024 1:32:28 PM net.adarw.Main <init>
+INFO: Initializing Server...
+Aug 13, 2024 1:32:29 PM net.adarw.Main <init>
+INFO: Server is active in port 8579!
+Aug 13, 2024 1:32:59 PM net.adarw.Main <init>
+INFO: Initializing Server...
+Aug 13, 2024 1:33:00 PM net.adarw.Main <init>
+INFO: Server is active in port 8579!
+Aug 13, 2024 1:33:15 PM net.adarw.Main <init>
+INFO: Initializing Server...
+Aug 13, 2024 1:33:16 PM net.adarw.Main <init>
+INFO: Server is active in port 8579!
+Aug 13, 2024 1:33:50 PM net.adarw.Main <init>
+INFO: Initializing Server...
+Aug 13, 2024 1:33:50 PM net.adarw.Main <init>
+INFO: Server is active in port 8579!
+Aug 13, 2024 1:34:27 PM net.adarw.Main <init>
+INFO: Initializing Server...
+Aug 13, 2024 1:34:28 PM net.adarw.Main <init>
+INFO: Server is active in port 8579!
+Aug 13, 2024 1:34:40 PM net.adarw.Main <init>
+INFO: Initializing Server...
+Aug 13, 2024 1:34:40 PM net.adarw.Main <init>
+INFO: Server is active in port 8579!
+Aug 13, 2024 1:34:50 PM net.adarw.Main <init>
+INFO: Initializing Server...
+Aug 13, 2024 1:34:51 PM net.adarw.Main <init>
+INFO: Server is active in port 8579!
+Aug 13, 2024 1:35:00 PM net.adarw.Main <init>
+INFO: Initializing Server...
+Aug 13, 2024 1:35:01 PM net.adarw.Main <init>
+INFO: Server is active in port 8579!
+Aug 13, 2024 1:40:37 PM net.adarw.Main <init>
+INFO: Initializing Server...
+Aug 13, 2024 1:40:38 PM net.adarw.Main <init>
+INFO: Server is active in port 8579!
+Aug 13, 2024 1:41:12 PM net.adarw.Main <init>
+INFO: Initializing Server...
+Aug 13, 2024 1:41:13 PM net.adarw.Main <init>
+INFO: Server is active in port 8579!
+Aug 13, 2024 1:41:34 PM net.adarw.Main <init>
+INFO: Initializing Server...
+Aug 13, 2024 1:41:35 PM net.adarw.Main <init>
+INFO: Server is active in port 8579!

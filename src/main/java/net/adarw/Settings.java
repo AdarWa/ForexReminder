@@ -59,7 +59,11 @@ public class Settings {
         private static final ObjectMapper mapper;
         private static final Logger logger = Logger.getLogger(SettingsManager.class.getName());
         static {
-            mapper = new ObjectMapper(new YAMLFactory().disable(YAMLGenerator.Feature.WRITE_DOC_START_MARKER));
+            YAMLFactory factory = new YAMLFactory()
+                    .disable(YAMLGenerator.Feature.WRITE_DOC_START_MARKER)
+                    .disable(YAMLGenerator.Feature.SPLIT_LINES)
+                    .enable(YAMLGenerator.Feature.LITERAL_BLOCK_STYLE);
+            mapper = new ObjectMapper(factory);
         }
 
         public static void writeSettings(Settings settings){

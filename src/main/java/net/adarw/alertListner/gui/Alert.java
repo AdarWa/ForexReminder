@@ -5,15 +5,12 @@ import net.adarw.Utils.KeyValuePair;
 
 import javax.annotation.Nullable;
 import javax.swing.*;
-import javax.swing.plaf.basic.BasicHTML;
-import javax.swing.text.View;
 import java.awt.*;
 import java.awt.event.*;
 import java.awt.geom.RoundRectangle2D;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.logging.Logger;
 
 
@@ -28,7 +25,7 @@ public class Alert extends JDialog {
     private static final int screenFrameWidth = 8;
     private static final int screenFrameHeight = 18;
     private static final int textBoxHeightOffset = 10;
-    private static final int alertTitleOffset = 15;
+    private static final int alertTitleOffset =15;
 
 
     public Alert(Reminders.Reminder reminder){
@@ -37,23 +34,29 @@ public class Alert extends JDialog {
 
     private void init(Reminders.Reminder reminder, boolean remindBefore, @Nullable String soundPath, String title, int closeTime){
 //        currentRemindersCount++;
+        try {
+            Thread.sleep((long)(Math.random() * 1000 + 1));
+        } catch (InterruptedException e) {
+            throw new RuntimeException(e);
+        }
         reminderCount++;
         JLabel titleLabel=new JLabel(remindBefore?title:Settings.current.alertTitle);
 
         titleLabel.setFont(new Font(fontName, Font.BOLD, 16));
         titleLabel.setBounds(0,-screenHeight/2+ alertTitleOffset,screenWidth, screenHeight);
         titleLabel.setHorizontalAlignment(JLabel.CENTER);
+        setLayout(null);
         setupWindowDecorations();
+        add(titleLabel);
         createScrollableList(reminder);
         createXButton();
-        add(titleLabel);
         setSize(screenWidth,screenHeight);
         setPosition(reminder.uuid, remindBefore);
-        setLayout(null);
         setVisible(true);
         setAlwaysOnTop(true);
         getContentPane().setBackground(Color.decode(Settings.current.alertBgColor));
         setOpacity(Settings.current.alertOpacity /100f);
+
 
         addWindowListener(new WindowAdapter() {
             @Override
@@ -77,12 +80,14 @@ public class Alert extends JDialog {
             Main.getInstance().player.queue.add(reminder.sound);
         }
         if((Settings.current.secondsUntilAlertDisappear > 0 && !remindBefore)|| (closeTime > 0 && remindBefore)){
-            try {
-                Thread.sleep((remindBefore?closeTime:Settings.current.secondsUntilAlertDisappear)* 1000L);
-            } catch (InterruptedException e) {
-                logger.severe("Interrupted sleep");
-            }
-            dispatchEvent(new WindowEvent(this, WindowEvent.WINDOW_CLOSING));
+            new Thread(()->{
+                try {
+                    Thread.sleep((remindBefore?closeTime:Settings.current.secondsUntilAlertDisappear)* 1000L);
+                } catch (InterruptedException e) {
+                    logger.severe("Interrupted sleep");
+                }
+                dispatchEvent(new WindowEvent(this, WindowEvent.WINDOW_CLOSING));
+            }).start();
         }
     }
 

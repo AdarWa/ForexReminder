@@ -1,12 +1,12 @@
 alertTitle: "Alert"
-alertVerticalOffset: 40.0
+alertVerticalOffset: 0.0
 minutesPerHeartbeat: 1.0
 showDialogOnDelete: true
 openBrowserOnStart: false
 showTrayIcon: true
 sequentialSoundInterval: 1.0
 showExampleAlertOnStart: true
-initialSoundFolder: "C:\\Users\\Erez"
+initialSoundFolder: "/home/adarw"
 alertDefaultSoundFile: ""
 secondsUntilAlertDisappear: 30
 timeFieldPlacementInAlert: 1
@@ -17,23 +17,19 @@ alertOpacity: 80
 screenSize:
   width: 1920.0
   height: 1080.0
-ImpactFieldColoring: "Impact"
+ImpactFieldColoring: "Importance"
 remindBefore1:
   minutesBeforeAlert: 15.0
-  alertTitle: "Early Alert 1"
+  alertTitle: "Early Alert"
   secondsUntilAlertDisappear: 30
   soundPath: ""
   enabled: true
 remindBefore2:
   minutesBeforeAlert: 5.0
-  alertTitle: "Early Alert 2"
+  alertTitle: "Early Alert"
   secondsUntilAlertDisappear: 30
   soundPath: ""
   enabled: true
 importMappings:
-- templateName: "Impact"
-  csvName: "Impact"
-- templateName: "Currency"
-  csvName: "Currency"
-- templateName: "Subject"
-  csvName: "Name"
+- templateName: "Importance"
+  csvName: "Level"
