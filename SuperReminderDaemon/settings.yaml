@@ -14,6 +14,8 @@ descFieldName: "Subject"
 charsToBreakAfter: 30
 alertBgColor: "#bed6c5"
 alertOpacity: 80
+gmt: 2
+daylightSaving: false
 screenSize:
   width: 1920.0
   height: 1080.0

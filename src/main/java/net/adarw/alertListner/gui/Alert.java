@@ -11,6 +11,8 @@ import java.awt.geom.RoundRectangle2D;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Queue;
+import java.util.concurrent.ConcurrentLinkedQueue;
 import java.util.logging.Logger;
 
 
@@ -21,11 +23,13 @@ public class Alert extends JDialog {
     private static final String fontName = "Verdana";
     private static final int borderRadius = 15;
     private static ArrayList<KeyValuePair<String, Boolean>> currentReminders = new ArrayList<>();
-    private static int reminderCount = 0;
+    private static volatile int reminderCount = 0;
     private static final int screenFrameWidth = 8;
     private static final int screenFrameHeight = 18;
     private static final int textBoxHeightOffset = 10;
     private static final int alertTitleOffset =15;
+    public static volatile Queue<String> queue = new ConcurrentLinkedQueue<>();
+    public int localCount = 0;
 
 
     public Alert(Reminders.Reminder reminder){
@@ -34,12 +38,17 @@ public class Alert extends JDialog {
 
     private void init(Reminders.Reminder reminder, boolean remindBefore, @Nullable String soundPath, String title, int closeTime){
 //        currentRemindersCount++;
+        if(!queue.isEmpty()){
+            queue.add(reminder.uuid);
+            while(queue.contains(reminder.uuid));
+        }
+        reminderCount++;
+        localCount = reminderCount;
         try {
-            Thread.sleep((long)(Math.random() * 1000 + 1));
+            Thread.sleep((long)(Math.random() * 2000 + 1));
         } catch (InterruptedException e) {
             throw new RuntimeException(e);
         }
-        reminderCount++;
         JLabel titleLabel=new JLabel(remindBefore?title:Settings.current.alertTitle);
 
         titleLabel.setFont(new Font(fontName, Font.BOLD, 16));
@@ -83,6 +92,9 @@ public class Alert extends JDialog {
         }else if(!reminder.sound.isEmpty()){
             logger.info("Playing reminder's sound");
             Main.getInstance().player.queue.add(reminder.sound);
+        }
+        if(!queue.isEmpty()){
+            queue.poll();
         }
         if((Settings.current.secondsUntilAlertDisappear > 0 && !remindBefore)|| (closeTime > 0 && remindBefore)){
             new Thread(()->{
@@ -161,6 +173,7 @@ public class Alert extends JDialog {
     public void setPosition(String uuid, boolean remindBefore){
         Dimension screenSize = Settings.current.screenSize;
         Dimension windowSize = getSize();
+        double maxRemindersPerRow = Math.floor((screenSize.height-Settings.current.alertVerticalOffset)/windowSize.height);
 //        int index = 0;
 //        for(KeyValuePair<String, Boolean> entry : currentReminders){
 //            if(entry.getKey().equals(uuid) && entry.getValue()){
@@ -187,7 +200,8 @@ public class Alert extends JDialog {
 //            x = index/alertsPerWindow+1;
 //            y = screenSize.height - windowSize.height*(index-alertsPerWindow*(x-1)) - ((int)Settings.current.alertVerticalOffset);
 //        }
-        setLocation(screenSize.width - windowSize.width, screenSize.height - windowSize.height*reminderCount - ((int)Settings.current.alertVerticalOffset));
+        int x = (int) (Math.floor(localCount/maxRemindersPerRow)+1);
+        setLocation(screenSize.width - (windowSize.width*x), (int) (screenSize.height - windowSize.height*(localCount-(x-1)*maxRemindersPerRow) - ((int)Settings.current.alertVerticalOffset)));
     }
 
     @Override

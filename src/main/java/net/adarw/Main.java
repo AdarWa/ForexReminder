@@ -100,9 +100,15 @@ public class Main implements MainInterface{
         }
         if (Settings.current.showExampleAlertOnStart){
             new Thread(()-> new Alert(new Reminders.Reminder(UUID.randomUUID().toString(), StorageUtils.getReminders().reminders.get(0).entries, "29-07-2024 17:16", true))).start();
-            Thread.sleep(1000);
             new Thread(()-> new Alert(new Reminders.Reminder(UUID.randomUUID().toString(), StorageUtils.getReminders().reminders.get(0).entries, "29-07-2024 17:16", true))).start();
-            Thread.sleep(1000);
+            new Thread(()-> new Alert(new Reminders.Reminder(UUID.randomUUID().toString(), StorageUtils.getReminders().reminders.get(0).entries, "29-07-2024 17:16", true))).start();
+            new Thread(()-> new Alert(new Reminders.Reminder(UUID.randomUUID().toString(), StorageUtils.getReminders().reminders.get(0).entries, "29-07-2024 17:16", true))).start();
+            new Thread(()-> new Alert(new Reminders.Reminder(UUID.randomUUID().toString(), StorageUtils.getReminders().reminders.get(0).entries, "29-07-2024 17:16", true))).start();
+            new Thread(()-> new Alert(new Reminders.Reminder(UUID.randomUUID().toString(), StorageUtils.getReminders().reminders.get(0).entries, "29-07-2024 17:16", true))).start();
+            new Thread(()-> new Alert(new Reminders.Reminder(UUID.randomUUID().toString(), StorageUtils.getReminders().reminders.get(0).entries, "29-07-2024 17:16", true))).start();
+            new Thread(()-> new Alert(new Reminders.Reminder(UUID.randomUUID().toString(), StorageUtils.getReminders().reminders.get(0).entries, "29-07-2024 17:16", true))).start();
+            new Thread(()-> new Alert(new Reminders.Reminder(UUID.randomUUID().toString(), StorageUtils.getReminders().reminders.get(0).entries, "29-07-2024 17:16", true))).start();
+            new Thread(()-> new Alert(new Reminders.Reminder(UUID.randomUUID().toString(), StorageUtils.getReminders().reminders.get(0).entries, "29-07-2024 17:16", true))).start();
             new Thread(()-> new Alert(new Reminders.Reminder(UUID.randomUUID().toString(), StorageUtils.getReminders().reminders.get(0).entries, "29-07-2024 17:16", true))).start();
         }
     }
