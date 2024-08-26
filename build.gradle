@@ -16,6 +16,11 @@ javafx {
     version = "17.0.1"
     modules = [ 'javafx.controls', 'javafx.fxml', 'javafx.media' ]
 }
+shadowJar {
+    archiveBaseName.set('SuperReminder')
+    archiveClassifier.set('')
+    archiveVersion.set('v1')
+}
 
 jar {
     manifest {
