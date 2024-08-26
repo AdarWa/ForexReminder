@@ -1,0 +1,262 @@
+Aug 26, 2024 2:36:14 PM net.adarw.Main <init>
+INFO: Initializing Server...
+Aug 26, 2024 2:36:14 PM net.adarw.Main <init>
+INFO: Server is active in port 8579!
+Aug 26, 2024 2:36:14 PM net.adarw.Main <init>
+INFO: --- Printing Queue ---
+Aug 26, 2024 2:36:14 PM net.adarw.Main <init>
+INFO: --- End of Queue ---
+Aug 26, 2024 2:37:41 PM net.adarw.Main <init>
+INFO: Initializing Server...
+Aug 26, 2024 2:37:41 PM net.adarw.Main <init>
+INFO: Server is active in port 8579!
+Aug 26, 2024 2:37:41 PM net.adarw.Main <init>
+INFO: --- Printing Queue ---
+Aug 26, 2024 2:37:41 PM net.adarw.Main <init>
+INFO: --- End of Queue ---
+Aug 26, 2024 2:39:56 PM net.adarw.Main <init>
+INFO: Initializing Server...
+Aug 26, 2024 2:39:56 PM net.adarw.Main <init>
+INFO: Server is active in port 8579!
+Aug 26, 2024 2:39:56 PM net.adarw.Main <init>
+INFO: --- Printing Queue ---
+Aug 26, 2024 2:39:56 PM net.adarw.Main <init>
+INFO: --- End of Queue ---
+Aug 26, 2024 2:40:39 PM net.adarw.Main <init>
+INFO: Initializing Server...
+Aug 26, 2024 2:40:40 PM net.adarw.Main <init>
+INFO: Server is active in port 8579!
+Aug 26, 2024 2:40:40 PM net.adarw.Main <init>
+INFO: --- Printing Queue ---
+Aug 26, 2024 2:40:40 PM net.adarw.Main <init>
+INFO: --- End of Queue ---
+Aug 26, 2024 2:40:40 PM net.adarw.alertListner.gui.Alert init
+INFO: 5
+Aug 26, 2024 2:40:52 PM net.adarw.Main <init>
+INFO: Initializing Server...
+Aug 26, 2024 2:40:53 PM net.adarw.Main <init>
+INFO: Server is active in port 8579!
+Aug 26, 2024 2:40:53 PM net.adarw.Main <init>
+INFO: --- Printing Queue ---
+Aug 26, 2024 2:40:53 PM net.adarw.Main <init>
+INFO: --- End of Queue ---
+Aug 26, 2024 2:40:53 PM net.adarw.alertListner.gui.Alert init
+INFO: 6
+Aug 26, 2024 2:41:04 PM net.adarw.Main <init>
+INFO: Initializing Server...
+Aug 26, 2024 2:41:05 PM net.adarw.Main <init>
+INFO: Server is active in port 8579!
+Aug 26, 2024 2:41:05 PM net.adarw.Main <init>
+INFO: --- Printing Queue ---
+Aug 26, 2024 2:41:05 PM net.adarw.Main <init>
+INFO: --- End of Queue ---
+Aug 26, 2024 2:41:05 PM net.adarw.alertListner.gui.Alert init
+INFO: 2
+Aug 26, 2024 2:41:05 PM net.adarw.alertListner.gui.Alert init
+INFO: 4
+Aug 26, 2024 2:41:05 PM net.adarw.alertListner.gui.Alert init
+INFO: 6
+Aug 26, 2024 2:41:05 PM net.adarw.alertListner.gui.Alert init
+INFO: 11
+Aug 26, 2024 2:41:05 PM net.adarw.alertListner.gui.Alert init
+INFO: 1
+Aug 26, 2024 2:41:05 PM net.adarw.alertListner.gui.Alert init
+INFO: 5
+Aug 26, 2024 2:41:06 PM net.adarw.alertListner.gui.Alert init
+INFO: 8
+Aug 26, 2024 2:41:06 PM net.adarw.alertListner.gui.Alert init
+INFO: 10
+Aug 26, 2024 2:41:06 PM net.adarw.alertListner.gui.Alert init
+INFO: 3
+Aug 26, 2024 2:41:06 PM net.adarw.alertListner.gui.Alert init
+INFO: 7
+Aug 26, 2024 2:41:06 PM net.adarw.alertListner.gui.Alert init
+INFO: 9
+Aug 26, 2024 2:47:10 PM net.adarw.Main <init>
+INFO: Initializing Server...
+Aug 26, 2024 2:47:11 PM net.adarw.Main <init>
+INFO: Server is active in port 8579!
+Aug 26, 2024 2:47:11 PM net.adarw.alertListner.gui.Alert init
+INFO: 7
+Aug 26, 2024 2:47:11 PM net.adarw.alertListner.gui.Alert init
+INFO: 8
+Aug 26, 2024 2:47:11 PM net.adarw.alertListner.gui.Alert init
+INFO: 1
+Aug 26, 2024 2:47:11 PM net.adarw.alertListner.gui.Alert init
+INFO: 3
+Aug 26, 2024 2:47:12 PM net.adarw.alertListner.gui.Alert init
+INFO: 4
+Aug 26, 2024 2:47:12 PM net.adarw.alertListner.gui.Alert setPosition
+SEVERE: Invalid Y position on reminder with uuid 9
+Aug 26, 2024 2:47:12 PM net.adarw.alertListner.gui.Alert init
+INFO: 9
+Aug 26, 2024 2:47:12 PM net.adarw.alertListner.gui.Alert init
+INFO: 5
+Aug 26, 2024 2:47:12 PM net.adarw.alertListner.gui.Alert init
+INFO: 2
+Aug 26, 2024 2:47:12 PM net.adarw.alertListner.gui.Alert init
+INFO: 11
+Aug 26, 2024 2:47:12 PM net.adarw.alertListner.gui.Alert init
+INFO: 10
+Aug 26, 2024 2:47:12 PM net.adarw.alertListner.gui.Alert init
+INFO: 6
+Aug 26, 2024 2:48:14 PM net.adarw.Main <init>
+INFO: Initializing Server...
+Aug 26, 2024 2:48:14 PM net.adarw.Main <init>
+INFO: Server is active in port 8579!
+Aug 26, 2024 2:48:15 PM net.adarw.alertListner.gui.Alert init
+INFO: 3
+Aug 26, 2024 2:48:15 PM net.adarw.alertListner.gui.Alert init
+INFO: 9
+Aug 26, 2024 2:48:15 PM net.adarw.alertListner.gui.Alert init
+INFO: 8
+Aug 26, 2024 2:48:15 PM net.adarw.alertListner.gui.Alert init
+INFO: 10
+Aug 26, 2024 2:48:15 PM net.adarw.alertListner.gui.Alert init
+INFO: 5
+Aug 26, 2024 2:48:15 PM net.adarw.alertListner.gui.Alert setPosition
+SEVERE: Invalid Y position on reminder with uuid 6
+Aug 26, 2024 2:48:15 PM net.adarw.alertListner.gui.Alert init
+INFO: 6
+Aug 26, 2024 2:48:15 PM net.adarw.alertListner.gui.Alert init
+INFO: 4
+Aug 26, 2024 2:48:15 PM net.adarw.alertListner.gui.Alert init
+INFO: 2
+Aug 26, 2024 2:48:15 PM net.adarw.alertListner.gui.Alert init
+INFO: 7
+Aug 26, 2024 2:48:15 PM net.adarw.alertListner.gui.Alert init
+INFO: 1
+Aug 26, 2024 2:48:15 PM net.adarw.alertListner.gui.Alert init
+INFO: 11
+Aug 26, 2024 2:48:23 PM net.adarw.Main <init>
+INFO: Initializing Server...
+Aug 26, 2024 2:48:23 PM net.adarw.Main <init>
+INFO: Server is active in port 8579!
+Aug 26, 2024 2:53:27 PM net.adarw.Main <init>
+INFO: Initializing Server...
+Aug 26, 2024 2:53:28 PM net.adarw.Main <init>
+INFO: Server is active in port 8579!
+Aug 26, 2024 2:54:15 PM net.adarw.alertListner.gui.Alert init
+INFO: 5
+Aug 26, 2024 2:54:19 PM net.adarw.alertListner.gui.Alert init
+INFO: 2
+Aug 26, 2024 2:54:23 PM net.adarw.alertListner.gui.Alert init
+INFO: 9
+Aug 26, 2024 2:54:28 PM net.adarw.alertListner.gui.Alert init
+INFO: 8
+Aug 26, 2024 2:54:35 PM net.adarw.alertListner.gui.Alert init
+INFO: 1
+Aug 26, 2024 2:54:36 PM net.adarw.alertListner.gui.Alert setPosition
+SEVERE: Invalid Y position on reminder with uuid 7
+Aug 26, 2024 2:54:51 PM net.adarw.alertListner.gui.Alert init
+INFO: 7
+Aug 26, 2024 2:55:18 PM net.adarw.Main <init>
+INFO: Initializing Server...
+Aug 26, 2024 2:55:26 PM net.adarw.Main <init>
+INFO: Initializing Server...
+Aug 26, 2024 2:55:27 PM net.adarw.Main <init>
+INFO: Server is active in port 8579!
+Aug 26, 2024 2:55:28 PM net.adarw.alertListner.gui.Alert init
+INFO: 4
+Aug 26, 2024 2:55:28 PM net.adarw.alertListner.gui.Alert init
+INFO: 5
+Aug 26, 2024 2:55:28 PM net.adarw.alertListner.gui.Alert init
+INFO: 1
+Aug 26, 2024 2:55:28 PM net.adarw.alertListner.gui.Alert init
+INFO: 6
+Aug 26, 2024 2:55:28 PM net.adarw.alertListner.gui.Alert setPosition
+SEVERE: Invalid Y position on reminder with uuid 2
+Aug 26, 2024 2:55:28 PM net.adarw.alertListner.gui.Alert init
+INFO: 2
+Aug 26, 2024 2:55:28 PM net.adarw.alertListner.gui.Alert init
+INFO: 10
+Aug 26, 2024 2:55:28 PM net.adarw.alertListner.gui.Alert init
+INFO: 3
+Aug 26, 2024 2:55:28 PM net.adarw.alertListner.gui.Alert init
+INFO: 7
+Aug 26, 2024 2:55:28 PM net.adarw.alertListner.gui.Alert init
+INFO: 8
+Aug 26, 2024 2:55:28 PM net.adarw.alertListner.gui.Alert setPosition
+SEVERE: Invalid Y position on reminder with uuid 11
+Aug 26, 2024 2:55:28 PM net.adarw.alertListner.gui.Alert init
+INFO: 11
+Aug 26, 2024 2:55:28 PM net.adarw.alertListner.gui.Alert init
+INFO: 9
+Aug 26, 2024 2:59:06 PM net.adarw.Main <init>
+INFO: Initializing Server...
+Aug 26, 2024 2:59:07 PM net.adarw.Main <init>
+INFO: Server is active in port 8579!
+Aug 26, 2024 2:59:08 PM net.adarw.alertListner.gui.Alert init
+INFO: 9
+Aug 26, 2024 2:59:09 PM net.adarw.alertListner.gui.Alert init
+INFO: 1
+Aug 26, 2024 2:59:09 PM net.adarw.alertListner.gui.Alert init
+INFO: 2
+Aug 26, 2024 2:59:09 PM net.adarw.alertListner.gui.Alert init
+INFO: 6
+Aug 26, 2024 2:59:09 PM net.adarw.alertListner.gui.Alert init
+INFO: 11
+Aug 26, 2024 2:59:09 PM net.adarw.alertListner.gui.Alert init
+INFO: 8
+Aug 26, 2024 2:59:09 PM net.adarw.alertListner.gui.Alert init
+INFO: 4
+Aug 26, 2024 2:59:09 PM net.adarw.alertListner.gui.Alert init
+INFO: 7
+Aug 26, 2024 2:59:09 PM net.adarw.alertListner.gui.Alert init
+INFO: 5
+Aug 26, 2024 2:59:09 PM net.adarw.alertListner.gui.Alert init
+INFO: 3
+Aug 26, 2024 2:59:10 PM net.adarw.alertListner.gui.Alert init
+INFO: 10
+Aug 26, 2024 3:28:28 PM net.adarw.Main <init>
+INFO: Initializing Server...
+Aug 26, 2024 3:28:29 PM net.adarw.Main <init>
+INFO: Server is active in port 8579!
+Aug 26, 2024 3:28:30 PM net.adarw.alertListner.gui.Alert init
+INFO: 10
+Aug 26, 2024 3:28:30 PM net.adarw.alertListner.gui.Alert init
+INFO: 5
+Aug 26, 2024 3:28:31 PM net.adarw.alertListner.gui.Alert init
+INFO: 6
+Aug 26, 2024 3:28:31 PM net.adarw.alertListner.gui.Alert init
+INFO: 8
+Aug 26, 2024 3:28:31 PM net.adarw.alertListner.gui.Alert init
+INFO: 7
+Aug 26, 2024 3:28:31 PM net.adarw.alertListner.gui.Alert init
+INFO: 1
+Aug 26, 2024 3:28:31 PM net.adarw.alertListner.gui.Alert init
+INFO: 3
+Aug 26, 2024 3:28:31 PM net.adarw.alertListner.gui.Alert init
+INFO: 9
+Aug 26, 2024 3:28:31 PM net.adarw.alertListner.gui.Alert init
+INFO: 11
+Aug 26, 2024 3:28:31 PM net.adarw.alertListner.gui.Alert init
+INFO: 4
+Aug 26, 2024 3:28:31 PM net.adarw.alertListner.gui.Alert init
+INFO: 2
+Aug 26, 2024 3:29:38 PM net.adarw.Main <init>
+INFO: Initializing Server...
+Aug 26, 2024 3:29:39 PM net.adarw.Main <init>
+INFO: Server is active in port 8579!
+Aug 26, 2024 3:29:40 PM net.adarw.alertListner.gui.Alert init
+INFO: 7
+Aug 26, 2024 3:29:40 PM net.adarw.alertListner.gui.Alert init
+INFO: 6
+Aug 26, 2024 3:29:40 PM net.adarw.alertListner.gui.Alert init
+INFO: 9
+Aug 26, 2024 3:29:40 PM net.adarw.alertListner.gui.Alert init
+INFO: 11
+Aug 26, 2024 3:29:41 PM net.adarw.alertListner.gui.Alert init
+INFO: 8
+Aug 26, 2024 3:29:41 PM net.adarw.alertListner.gui.Alert init
+INFO: 5
+Aug 26, 2024 3:29:41 PM net.adarw.alertListner.gui.Alert init
+INFO: 3
+Aug 26, 2024 3:29:41 PM net.adarw.alertListner.gui.Alert init
+INFO: 2
+Aug 26, 2024 3:29:41 PM net.adarw.alertListner.gui.Alert init
+INFO: 4
+Aug 26, 2024 3:29:41 PM net.adarw.alertListner.gui.Alert init
+INFO: 10
+Aug 26, 2024 3:29:41 PM net.adarw.alertListner.gui.Alert init
+INFO: 1

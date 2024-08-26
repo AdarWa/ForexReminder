@@ -2,6 +2,7 @@ package net.adarw.alertListner.gui;
 
 import net.adarw.*;
 import net.adarw.Utils.KeyValuePair;
+import net.adarw.alertListner.AlertQueuer;
 
 import javax.annotation.Nullable;
 import javax.swing.*;
@@ -30,25 +31,22 @@ public class Alert extends JDialog {
     private static final int alertTitleOffset =15;
     public static volatile Queue<String> queue = new ConcurrentLinkedQueue<>();
     public int localCount = 0;
-
+    public static volatile boolean working = false;
+    public Reminders.Reminder reminder;
 
     public Alert(Reminders.Reminder reminder){
-        init(reminder, false, null, "", -1);
+        AlertQueuer.queue.add(()->init(reminder, false, null, "", -1));
     }
 
     private void init(Reminders.Reminder reminder, boolean remindBefore, @Nullable String soundPath, String title, int closeTime){
 //        currentRemindersCount++;
+        this.reminder = reminder;
         if(!queue.isEmpty()){
             queue.add(reminder.uuid);
             while(queue.contains(reminder.uuid));
         }
         reminderCount++;
         localCount = reminderCount;
-        try {
-            Thread.sleep((long)(Math.random() * 2000 + 1));
-        } catch (InterruptedException e) {
-            throw new RuntimeException(e);
-        }
         JLabel titleLabel=new JLabel(remindBefore?title:Settings.current.alertTitle);
 
         titleLabel.setFont(new Font(fontName, Font.BOLD, 16));
@@ -76,11 +74,6 @@ public class Alert extends JDialog {
 //                        break;
 //                    }
 //                }
-                try {
-                    Thread.sleep((long)(Math.random() * 400 + 1));
-                } catch (InterruptedException ex) {
-                    throw new RuntimeException(ex);
-                }
                 reminderCount--;
             }
         });
@@ -96,6 +89,8 @@ public class Alert extends JDialog {
         if(!queue.isEmpty()){
             queue.poll();
         }
+        working = false;
+        logger.info(reminder.uuid);
         if((Settings.current.secondsUntilAlertDisappear > 0 && !remindBefore)|| (closeTime > 0 && remindBefore)){
             new Thread(()->{
                 try {
@@ -109,7 +104,7 @@ public class Alert extends JDialog {
     }
 
     public Alert(Reminders.Reminder reminder, boolean remindBefore, String soundPath, String title, int closeTime){
-        init(reminder, remindBefore, soundPath, title, closeTime);
+        AlertQueuer.queue.add(()->init(reminder, remindBefore, soundPath, title, closeTime));
     }
 
     public void setupWindowDecorations(){
@@ -200,8 +195,21 @@ public class Alert extends JDialog {
 //            x = index/alertsPerWindow+1;
 //            y = screenSize.height - windowSize.height*(index-alertsPerWindow*(x-1)) - ((int)Settings.current.alertVerticalOffset);
 //        }
-        int x = (int) (Math.floor(localCount/maxRemindersPerRow)+1);
-        setLocation(screenSize.width - (windowSize.width*x), (int) (screenSize.height - windowSize.height*(localCount-(x-1)*maxRemindersPerRow) - ((int)Settings.current.alertVerticalOffset)));
+        boolean invalid = false;
+        int count = reminderCount;
+        int x = (int) (Math.floor((reminderCount-1)/maxRemindersPerRow)+1);
+        int finalX = screenSize.width - (windowSize.width*x);
+        int finalY = (int) (screenSize.height - windowSize.height*(reminderCount-(x-1)*(maxRemindersPerRow)) - ((int)Settings.current.alertVerticalOffset));
+        if(finalY > screenSize.height-windowSize.height){
+            logger.severe("Invalid Y position on reminder with uuid " + reminder.uuid);
+            invalid = true;
+        }
+        if(finalX > screenSize.width-windowSize.width){
+            logger.severe("Invalid X position on reminder with uuid " + reminder.uuid);
+            invalid = true;
+        }
+        if(!invalid)
+            setLocation(finalX, finalY);
     }
 
     @Override

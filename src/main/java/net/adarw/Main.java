@@ -5,6 +5,7 @@ import com.google.gson.Gson;
 import net.adarw.Utils.MessageUtils;
 import net.adarw.Utils.MiscUtils;
 import net.adarw.Utils.StorageUtils;
+import net.adarw.alertListner.AlertQueuer;
 import net.adarw.alertListner.Listener;
 import net.adarw.alertListner.SoundPlayer;
 import net.adarw.alertListner.gui.Alert;
@@ -25,6 +26,8 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.UUID;
 import java.util.logging.Logger;
+
+import static net.adarw.alertListner.gui.Alert.queue;
 
 public class Main implements MainInterface{
     Logger logger = Logger.getLogger(Main.class.getName());
@@ -75,6 +78,7 @@ public class Main implements MainInterface{
         parser = new Command.CommandParser();
         listener = new Listener();
         player = new SoundPlayer();
+        new AlertQueuer().start();
 
         player.start();
         listener.start();
@@ -99,17 +103,19 @@ public class Main implements MainInterface{
             }
         }
         if (Settings.current.showExampleAlertOnStart){
-            new Thread(()-> new Alert(new Reminders.Reminder(UUID.randomUUID().toString(), StorageUtils.getReminders().reminders.get(0).entries, "29-07-2024 17:16", true))).start();
-            new Thread(()-> new Alert(new Reminders.Reminder(UUID.randomUUID().toString(), StorageUtils.getReminders().reminders.get(0).entries, "29-07-2024 17:16", true))).start();
-            new Thread(()-> new Alert(new Reminders.Reminder(UUID.randomUUID().toString(), StorageUtils.getReminders().reminders.get(0).entries, "29-07-2024 17:16", true))).start();
-            new Thread(()-> new Alert(new Reminders.Reminder(UUID.randomUUID().toString(), StorageUtils.getReminders().reminders.get(0).entries, "29-07-2024 17:16", true))).start();
-            new Thread(()-> new Alert(new Reminders.Reminder(UUID.randomUUID().toString(), StorageUtils.getReminders().reminders.get(0).entries, "29-07-2024 17:16", true))).start();
-            new Thread(()-> new Alert(new Reminders.Reminder(UUID.randomUUID().toString(), StorageUtils.getReminders().reminders.get(0).entries, "29-07-2024 17:16", true))).start();
-            new Thread(()-> new Alert(new Reminders.Reminder(UUID.randomUUID().toString(), StorageUtils.getReminders().reminders.get(0).entries, "29-07-2024 17:16", true))).start();
-            new Thread(()-> new Alert(new Reminders.Reminder(UUID.randomUUID().toString(), StorageUtils.getReminders().reminders.get(0).entries, "29-07-2024 17:16", true))).start();
-            new Thread(()-> new Alert(new Reminders.Reminder(UUID.randomUUID().toString(), StorageUtils.getReminders().reminders.get(0).entries, "29-07-2024 17:16", true))).start();
-            new Thread(()-> new Alert(new Reminders.Reminder(UUID.randomUUID().toString(), StorageUtils.getReminders().reminders.get(0).entries, "29-07-2024 17:16", true))).start();
-            new Thread(()-> new Alert(new Reminders.Reminder(UUID.randomUUID().toString(), StorageUtils.getReminders().reminders.get(0).entries, "29-07-2024 17:16", true))).start();
+            new Thread(()-> new Alert(new Reminders.Reminder("1", StorageUtils.getReminders().reminders.get(0).entries, "29-07-2024 17:16", true))).start();
+            new Thread(()-> new Alert(new Reminders.Reminder("2", StorageUtils.getReminders().reminders.get(0).entries, "29-07-2024 17:16", true))).start();
+            new Thread(()-> new Alert(new Reminders.Reminder("3", StorageUtils.getReminders().reminders.get(0).entries, "29-07-2024 17:16", true))).start();
+            new Thread(()-> new Alert(new Reminders.Reminder("4", StorageUtils.getReminders().reminders.get(0).entries, "29-07-2024 17:16", true))).start();
+            new Thread(()-> new Alert(new Reminders.Reminder("5", StorageUtils.getReminders().reminders.get(0).entries, "29-07-2024 17:16", true))).start();
+            new Thread(()-> new Alert(new Reminders.Reminder("6", StorageUtils.getReminders().reminders.get(0).entries, "29-07-2024 17:16", true))).start();
+            new Thread(()-> new Alert(new Reminders.Reminder("7", StorageUtils.getReminders().reminders.get(0).entries, "29-07-2024 17:16", true))).start();
+            new Thread(()-> new Alert(new Reminders.Reminder("8", StorageUtils.getReminders().reminders.get(0).entries, "29-07-2024 17:16", true))).start();
+            new Thread(()-> new Alert(new Reminders.Reminder("9", StorageUtils.getReminders().reminders.get(0).entries, "29-07-2024 17:16", true))).start();
+            new Thread(()-> new Alert(new Reminders.Reminder("10", StorageUtils.getReminders().reminders.get(0).entries, "29-07-2024 17:16", true))).start();
+            new Thread(()-> new Alert(new Reminders.Reminder("11", StorageUtils.getReminders().reminders.get(0).entries, "29-07-2024 17:16", true))).start();
+
+
         }
     }
 
