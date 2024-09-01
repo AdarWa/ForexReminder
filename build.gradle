@@ -19,7 +19,7 @@ javafx {
 shadowJar {
     archiveBaseName.set('SuperReminder')
     archiveClassifier.set('')
-    archiveVersion.set('v1')
+    archiveVersion.set('v1.1')
 }
 
 jar {

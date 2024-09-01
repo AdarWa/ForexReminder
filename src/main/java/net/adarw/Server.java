@@ -91,6 +91,9 @@ public class Server extends NanoHTTPD {
                 return newFixedLengthResponse(Response.Status.OK,ContentType.fromFileExtension("js").getMimeType() ,readResource("gui/settings.js", StandardCharsets.UTF_8)
                         .replace("{minutesPerHeartbeat}", String.valueOf(Settings.current.minutesPerHeartbeat))
                         .replace("{showDialogOnDelete}", String.valueOf(Settings.current.showDialogOnDelete)));
+            }else if(path.equals("/main.js")){
+                return newFixedLengthResponse(Response.Status.OK,ContentType.fromFileExtension("js").getMimeType() ,readResource("gui/main.js", StandardCharsets.UTF_8)
+                        .replace("{{interval}}", String.valueOf(Settings.current.pageReloadMinutesInterval*60*1000)));
             }else{
                 String[] split = path.split("\\.");
                 return newFixedLengthResponse(Response.Status.OK,ContentType.fromFileExtension(split[split.length-1]).getMimeType() ,readResource("gui"+path, StandardCharsets.UTF_8));

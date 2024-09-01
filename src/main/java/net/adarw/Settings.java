@@ -23,6 +23,7 @@ public class Settings {
     public boolean showExampleAlertOnStart = false;
     public String initialSoundFolder = System.getProperty("user.home");
     public String alertDefaultSoundFile = "";
+    public int pageReloadMinutesInterval = 2;
     public int secondsUntilAlertDisappear = 30;
     public int timeFieldPlacementInAlert = 1;
     public String descFieldName = "Subject";

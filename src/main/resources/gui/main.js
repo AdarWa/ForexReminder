@@ -337,3 +337,7 @@ $(".import").on("click", function(){
         }
     });
 });
+
+setInterval(function(){
+    location.reload();
+}, {{interval}})

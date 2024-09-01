@@ -8,6 +8,7 @@ sequentialSoundInterval: 1.0
 showExampleAlertOnStart: true
 initialSoundFolder: "/home/adarw"
 alertDefaultSoundFile: ""
+pageReloadMinutesInterval: 2
 secondsUntilAlertDisappear: 30
 timeFieldPlacementInAlert: 1
 descFieldName: "Subject"
