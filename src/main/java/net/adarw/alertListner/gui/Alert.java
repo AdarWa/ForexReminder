@@ -30,9 +30,9 @@ public class Alert extends JDialog {
     private static final int textBoxHeightOffset = 10;
     private static final int alertTitleOffset =15;
     public static volatile Queue<String> queue = new ConcurrentLinkedQueue<>();
-    public int localCount = 0;
     public static volatile boolean working = false;
     public Reminders.Reminder reminder;
+    public boolean closed = false;
 
     public Alert(Reminders.Reminder reminder){
         AlertQueuer.queue.add(()->init(reminder, false, null, "", -1));
@@ -41,12 +41,7 @@ public class Alert extends JDialog {
     private void init(Reminders.Reminder reminder, boolean remindBefore, @Nullable String soundPath, String title, int closeTime){
 //        currentRemindersCount++;
         this.reminder = reminder;
-        if(!queue.isEmpty()){
-            queue.add(reminder.uuid);
-            while(queue.contains(reminder.uuid));
-        }
         reminderCount++;
-        localCount = reminderCount;
         JLabel titleLabel=new JLabel(remindBefore?title:Settings.current.alertTitle);
 
         titleLabel.setFont(new Font(fontName, Font.BOLD, 16));
@@ -74,7 +69,10 @@ public class Alert extends JDialog {
 //                        break;
 //                    }
 //                }
-                reminderCount--;
+                if(!closed){
+                    reminderCount--;
+                    closed = true;
+                }
             }
         });
 
@@ -86,9 +84,6 @@ public class Alert extends JDialog {
             logger.info("Playing reminder's sound");
             Main.getInstance().player.queue.add(reminder.sound);
         }
-        if(!queue.isEmpty()){
-            queue.poll();
-        }
         working = false;
         logger.info(reminder.uuid);
         if((Settings.current.secondsUntilAlertDisappear > 0 && !remindBefore)|| (closeTime > 0 && remindBefore)){
@@ -98,7 +93,9 @@ public class Alert extends JDialog {
                 } catch (InterruptedException e) {
                     logger.severe("Interrupted sleep");
                 }
-                dispatchEvent(new WindowEvent(this, WindowEvent.WINDOW_CLOSING));
+                if(!closed){
+                    dispatchEvent(new WindowEvent(this, WindowEvent.WINDOW_CLOSING));
+                }
             }).start();
         }
     }

@@ -28,6 +28,11 @@ public class AlertQueuer extends Thread{
                     logger.severe("Exception in AlertQueuer. " + e.getMessage());
                 }
             }
+            try {
+                Thread.sleep(100);
+            } catch (InterruptedException e) {
+                throw new RuntimeException(e);
+            }
         }
     }
 }
