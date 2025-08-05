@@ -265,8 +265,38 @@
       });
 
       $('#save-settings').click(function () {
-        const newSettings = deserialize(settingsTemplate);
-        $('#output').text(JSON.stringify(newSettings, null, 2));
+        $('#save-settings').click(function () {
+          const newSettings = deserialize(settingsTemplate);
+          const jsonString = JSON.stringify(newSettings);
+
+          $('#output').text(jsonString);
+
+          $.ajax({
+            url: '/save_settings',
+            method: 'POST',
+            contentType: 'application/json',
+            data: JSON.stringify({type:"SAVE_SETTINGS", settings: jsonString}),
+            timeout: 10000, // 10 seconds timeout
+            success: function(response) {
+              alert('Settings saved successfully!');
+              // Optionally handle server response
+            },
+            error: function(xhr, status, error) {
+              let errorMessage = 'Failed to save settings.';
+              if (status === 'timeout') {
+                errorMessage += ' The request timed out.';
+              } else if (xhr.status === 0) {
+                errorMessage += ' Could not connect to the server.';
+              } else if (xhr.responseJSON && xhr.responseJSON.message) {
+                errorMessage += ' ' + xhr.responseJSON.message;
+              } else {
+                errorMessage += ' ' + error;
+              }
+              alert(errorMessage);
+              console.error('Save settings error:', xhr, status, error);
+            }
+          });
+        });
       });
     });
 </script>

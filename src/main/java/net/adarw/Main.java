@@ -231,6 +231,14 @@ public class Main implements MainInterface{
                 StorageUtils.writeReminders(obj);
                 listener.interrupt();
                 return MessageUtils.getSuccessMessage();
+            }else if(command.getType() == Command.CommandType.SAVE_SETTINGS){
+                Command.SaveSettingsCommand cmd = (Command.SaveSettingsCommand) command;
+                Settings desSettings = Settings.deserialize(cmd.settings);
+                if (desSettings == null)
+                    return MessageUtils.getMessage(3, "Couldn't deserialize settings.");
+                Settings.current = desSettings;
+                Settings.SettingsManager.writeSettings(Settings.current);
+                return MessageUtils.getSuccessMessage();
             }
         }catch (Exception e){
             String err = e.getClass().getSimpleName() + " while in main loop: " + e.getMessage();

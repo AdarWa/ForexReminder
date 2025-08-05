@@ -23,7 +23,8 @@ public interface Command {
         DELETE(DeleteCommand.class),
         CHOOSEFILE(ChooseFileCommand.class),
         HEARTBEAT(HeartbeatCommand.class),
-        SETTINGS(SettingsCommand.class);
+        SETTINGS(SettingsCommand.class),
+        SAVE_SETTINGS(SaveSettingsCommand.class);
 
         private Class<?> commandClass;
 
@@ -190,6 +191,20 @@ public interface Command {
             this.template = template;
         }
 
+    }
+
+    class SaveSettingsCommand implements Command {
+
+        @Override
+        public CommandType getType() {
+            return CommandType.SAVE_SETTINGS;
+        }
+
+        public String settings;
+
+        public SaveSettingsCommand(String settings) {
+            this.settings = settings;
+        }
     }
 
     class CommandParser{

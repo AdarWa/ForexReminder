@@ -3,6 +3,8 @@ package net.adarw;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
+import com.fasterxml.jackson.databind.module.SimpleModule;
 import com.fasterxml.jackson.databind.node.*;
 import com.fasterxml.jackson.dataformat.yaml.YAMLFactory;
 import com.fasterxml.jackson.dataformat.yaml.YAMLGenerator;
@@ -128,6 +130,15 @@ public class Settings {
     }
 
     public static Settings current;
+
+    public static Settings deserialize(String jsonConfig) throws JsonProcessingException {
+        SimpleModule module = new SimpleModule();
+        module.addDeserializer(Settings.class, new RecursiveSettingsDeserializer(Settings.class));
+        ObjectMapper mapper = new ObjectMapper();
+        mapper.registerModule(module);
+
+        return mapper.readValue(jsonConfig, Settings.class);
+    }
 
     public static class SettingsManager{
         private static final ObjectMapper mapper;

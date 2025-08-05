@@ -2,15 +2,15 @@ package net.adarw.Utils;
 
 import com.google.gson.JsonObject;
 import org.json.JSONObject;
-
+/**
+    MESSAGE CODES:
+    CODE 0 - SUCCESS
+    CODE 2 - DATA AVAILABLE
+    CODE 3 - GENERAL ERROR
+    CODE 4 - NOT FOUND
+ **/
 public class MessageUtils {
-    /*
-        MESSAGE CODES:
-        CODE 0 - SUCCESS
-        CODE 2 - DATA AVAILABLE
-        CODE 3 - GENERAL ERROR
-        CODE 4 - NOT FOUND
-     */
+
 
 
     public static String getMessage(int code, String message){
