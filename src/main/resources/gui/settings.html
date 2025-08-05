@@ -1,0 +1,274 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <title>Settings Editor</title>
+    <link rel="stylesheet" href="bootstrap/css/bootstrap.min.css" />
+    <style>
+        .form-section { margin-bottom: 1.5rem; }
+        .nested-card { margin-top: 1rem; margin-left: 1rem; }
+        .key-label { font-weight: bold; }
+        .form-text-help {
+          font-size: 0.875em;
+          color: #6c757d;
+          margin-top: 0.25rem;
+          margin-bottom: 0.75rem;
+          display: block;
+        }
+    </style>
+</head>
+<body class="p-4 bg-light">
+<div class="container">
+    <h2 class="mb-4">Settings Editor</h2>
+    <form id="settings-form"></form>
+    <button class="btn btn-primary mt-3" id="save-settings">Save Settings</button>
+    <h4 class="mt-4">Serialized Output</h4>
+    <pre id="output" class="bg-white p-3 border"></pre>
+</div>
+
+<script src="jquery/jquery.min.js"></script>
+<script src="bootstrap/js/bootstrap.bundle.min.js"></script>
+
+<script>
+    // Your template object goes here
+    const settingsTemplate = {settingsTemplate}
+
+    // Helper to deep clone objects (to create new empty items)
+    function deepClone(obj) {
+        return JSON.parse(JSON.stringify(obj));
+    }
+
+    // Create input HTML for each property
+    function createInput(key, entry, path) {
+      const value = entry.value;
+      const id = path.join(".");
+      const name = entry.name || key;
+      const help = entry.help || '';
+
+      if (typeof value === 'boolean') {
+        return `
+          <div class="form-check form-switch mb-3">
+            <input class="form-check-input" type="checkbox" id="${id}" ${value ? 'checked' : ''} aria-describedby="${id}-help">
+            <label class="form-check-label" for="${id}" data-bs-toggle="tooltip" title="${help}">${name}</label>
+            <div id="${id}-help" class="form-text form-text-help">${help}</div>
+          </div>`;
+      }
+
+      if (typeof value === 'number') {
+        return `
+          <div class="mb-3">
+            <label for="${id}" class="form-label" data-bs-toggle="tooltip" title="${help}">${name}</label>
+            <input type="number" step="any" class="form-control" id="${id}" value="${value}" aria-describedby="${id}-help">
+            <div id="${id}-help" class="form-text form-text-help">${help}</div>
+          </div>`;
+      }
+
+      if (typeof value === 'string') {
+        return `
+          <div class="mb-3">
+            <label for="${id}" class="form-label" data-bs-toggle="tooltip" title="${help}">${name}</label>
+            <input type="text" class="form-control" id="${id}" value="${value}" aria-describedby="${id}-help">
+            <div id="${id}-help" class="form-text form-text-help">${help}</div>
+          </div>`;
+      }
+
+      if (typeof value === 'object' && !Array.isArray(value)) {
+        const nested = renderSettings(value, path);
+        return `
+          <div class="card nested-card">
+            <div class="card-header">${name}</div>
+            <div class="card-body">${nested}</div>
+          </div>`;
+      }
+
+      if (Array.isArray(value)) {
+        const items = value.map((item, i) => {
+          const rendered = renderSettings(item, [...path, i]);
+          return `<div class="card nested-card array-item" data-path="${[...path, i].join('.')}">
+                    <div class="card-header d-flex justify-content-between align-items-center">
+                      <span>${name} [${i + 1}]</span>
+                      <button type="button" class="btn btn-sm btn-danger remove-array-item">Remove</button>
+                    </div>
+                    <div class="card-body">${rendered}</div>
+                  </div>`;
+        }).join("");
+
+        return `
+          <div class="array-container mb-3" data-path="${path.join('.')}">
+            ${items}
+            <button type="button" class="btn btn-sm btn-success add-array-item" data-path="${path.join('.')}">Add ${name}</button>
+          </div>`;
+      }
+
+      return '';
+    }
+
+    // Render the whole settings form recursively
+    function renderSettings(obj, path = []) {
+      return Object.entries(obj).map(([key, val]) =>
+        createInput(key, val, [...path, key])
+      ).join('');
+    }
+
+    // Read values from inputs by id
+    function getValueById(id) {
+      const el = document.getElementById(id);
+      if (!el) return undefined;
+      if (el.type === 'checkbox') return el.checked;
+      if (el.type === 'number') return parseFloat(el.value);
+      return el.value;
+    }
+
+    // Deserialize the form into an object matching the template structure
+    function deserialize(template, path = []) {
+      const result = {};
+      for (const [key, value] of Object.entries(template)) {
+        const fullPath = [...path, key];
+        if (typeof value.value === 'object' && !Array.isArray(value.value)) {
+          result[key] = {
+            name: value.name,
+            help: value.help,
+            value: deserialize(value.value, fullPath)
+          };
+        } else if (Array.isArray(value.value)) {
+          // find current DOM elements for array items
+          const containerSelector = `[data-path="${fullPath.join('.')}"]`;
+          const container = document.querySelector(containerSelector);
+          if (!container) {
+            // fallback to template value
+            result[key] = {
+              name: value.name,
+              help: value.help,
+              value: value.value.map((item, index) =>
+                deserialize(item, [...fullPath, index])
+              )
+            };
+            continue;
+          }
+
+          const items = Array.from(container.querySelectorAll(".array-item"));
+          const values = items.map((itemEl, idx) => {
+            // deserialize each array item by path
+            return deserialize(value.value[0], [...fullPath, idx]);
+          });
+
+          result[key] = {
+            name: value.name,
+            help: value.help,
+            value: values
+          };
+        } else {
+          result[key] = {
+            name: value.name,
+            help: value.help,
+            value: getValueById(fullPath.join("."))
+          };
+        }
+      }
+      return result;
+    }
+
+    // Add new array item (empty based on first item in template)
+    function addArrayItem(path, template) {
+      const containerSelector = `[data-path="${path.join('.') }"]`;
+      const container = document.querySelector(containerSelector);
+      console.log('Add array item:', path, container);
+      if (!container) return;
+
+      const arrayTemplate = getNestedValue(template, path);
+      console.log('Array template:', arrayTemplate);
+      if (!arrayTemplate || !Array.isArray(arrayTemplate.value) || arrayTemplate.value.length === 0) return;
+
+      const newItemTemplate = deepClone(arrayTemplate.value[0]);
+      console.log('New item template:', newItemTemplate);
+
+      const currentCount = container.querySelectorAll('.array-item').length;
+
+      const newItemHtml = `
+        <div class="card nested-card array-item" data-path="${path.join('.')}.${currentCount}">
+          <div class="card-header d-flex justify-content-between align-items-center">
+            <span>${arrayTemplate.name} [${currentCount + 1}]</span>
+            <button type="button" class="btn btn-sm btn-danger remove-array-item">Remove</button>
+          </div>
+          <div class="card-body">${renderSettings(newItemTemplate, [...path, currentCount])}</div>
+        </div>`;
+
+      const addButton = container.querySelector('.add-array-item');
+        if (addButton) {
+          addButton.insertAdjacentHTML('beforebegin', newItemHtml);
+        } else {
+          container.insertAdjacentHTML('beforeend', newItemHtml);
+        }
+
+      initializeTooltips();
+    }
+
+
+    // Helper to get nested value from template by path array
+    function getNestedValue(obj, path) {
+      return path.reduce((acc, key) => {
+        if (!acc) return undefined;
+        // At each step, first go into .value (if exists), then key
+        if (acc.value !== undefined) {
+          return acc.value[key];
+        }
+        return acc[key];
+      }, obj);
+    }
+
+    // Remove array item from DOM and reindex the siblings
+    function removeArrayItem(button) {
+      const itemDiv = button.closest('.array-item');
+      if (!itemDiv) return;
+
+      const container = itemDiv.parentElement;
+      itemDiv.remove();
+
+      // Reindex remaining array items headers and data-paths
+      const items = Array.from(container.querySelectorAll('.array-item'));
+      items.forEach((item, idx) => {
+        item.dataset.path = item.dataset.path.replace(/\.\d+$/, `.${idx}`);
+        const headerSpan = item.querySelector('.card-header > span');
+        if (headerSpan) {
+          const name = container.querySelector('button.add-array-item')?.textContent.replace('Add ', '') || 'Item';
+          headerSpan.textContent = `${name} [${idx + 1}]`;
+        }
+        // Also update all nested input IDs (optional: if you want full correct paths on inputs, but can be complex)
+        // Skipping for simplicity
+      });
+    }
+
+    // Initialize bootstrap tooltips
+    function initializeTooltips() {
+      const tooltipTriggerList = [].slice.call(document.querySelectorAll('[data-bs-toggle="tooltip"]'));
+      tooltipTriggerList.map(function (tooltipTriggerEl) {
+        return new bootstrap.Tooltip(tooltipTriggerEl);
+      });
+    }
+
+    $(document).ready(function () {
+      $('#settings-form').html(renderSettings(settingsTemplate));
+      initializeTooltips();
+
+      // Add event delegation for adding array items
+      $('#settings-form').on('click', '.add-array-item', function () {
+
+        const pathStr = $(this).data('path');
+        if (!pathStr) return;
+        const path = pathStr.split('.');
+        addArrayItem(path, settingsTemplate);
+      });
+
+      // Event delegation for removing array items
+      $('#settings-form').on('click', '.remove-array-item', function () {
+        removeArrayItem(this);
+      });
+
+      $('#save-settings').click(function () {
+        const newSettings = deserialize(settingsTemplate);
+        $('#output').text(JSON.stringify(newSettings, null, 2));
+      });
+    });
+</script>
+</body>
+</html>

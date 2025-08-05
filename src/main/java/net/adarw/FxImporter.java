@@ -16,7 +16,7 @@ import java.util.Date;
 public class FxImporter {
 
 
-    public static void importFx(String path, ArrayList<KeyValuePair<String, Template.Component>> componentMapping) throws IOException, ParseException {
+    public static void importFx(String path, ArrayList<KeyValuePair<String, Template.Component>> componentMapping, Settings.ImportMapping importMapping) throws IOException, ParseException {
         Reader in = new FileReader(path);
         Iterable<CSVRecord> records = CSVFormat.DEFAULT
                 .withHeader("Id", "Start", "Name", "Impact", "Currency")
@@ -31,10 +31,10 @@ public class FxImporter {
             }
 
             SimpleDateFormat parser = new SimpleDateFormat("MM/dd/yyyy HH:mm:ss");
-            Date date = parser.parse(record.get("Start"));
+            Date date = parser.parse(record.get(importMapping.date));
             date.setTime(date.getTime() + (1000*60*60)*(Settings.current.gmt + (Settings.current.daylightSaving ? 1 : 0)));
             Reminders.Reminder reminder = new Reminders.Reminder(
-                    record.get("Id"),
+                    record.get(importMapping.id),
                     entries,
                     TimerEx.getString(date),
                     true

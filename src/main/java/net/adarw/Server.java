@@ -1,5 +1,6 @@
 package net.adarw;
 
+import com.fasterxml.jackson.core.JsonProcessingException;
 import com.google.common.io.Resources;
 import com.google.gson.Gson;
 import com.j256.simplemagic.ContentType;
@@ -94,6 +95,13 @@ public class Server extends NanoHTTPD {
             }else if(path.equals("/main.js")){
                 return newFixedLengthResponse(Response.Status.OK,ContentType.fromFileExtension("js").getMimeType() ,readResource("gui/main.js", StandardCharsets.UTF_8)
                         .replace("{{interval}}", String.valueOf(Settings.current.pageReloadMinutesInterval*60*1000)));
+            }else if(path.equals("/settings")){
+                try {
+                    return newFixedLengthResponse(readResource("gui/settings.html", StandardCharsets.UTF_8)
+                            .replace("{settingsTemplate}", Settings.current.serializeToJson()));
+                } catch (IllegalAccessException | JsonProcessingException e) {
+                    throw new RuntimeException(e);
+                }
             }else{
                 String[] split = path.split("\\.");
                 return newFixedLengthResponse(Response.Status.OK,ContentType.fromFileExtension(split[split.length-1]).getMimeType() ,readResource("gui"+path, StandardCharsets.UTF_8));

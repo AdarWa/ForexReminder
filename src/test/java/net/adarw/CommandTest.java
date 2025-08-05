@@ -47,7 +47,7 @@ class CommandTest {
         entries.add(new KeyValuePair<>("Name", name));
         entries.add(new KeyValuePair<>("Impact", impact));
         entries.add(new KeyValuePair<>("Currency", currency));
-        Command.ImportFXCommand command = new Command.ImportFXCommand("/home/adarw/Downloads/calendar-event-list.csv", entries);
+        Command.ImportFXCommand command = new Command.ImportFXCommand("/home/adarw/Downloads/calendar-event-list.csv");
         System.out.println(new Gson().toJson(command));
     }
 

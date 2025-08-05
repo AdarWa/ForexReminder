@@ -39,7 +39,6 @@ public class Alert extends JDialog {
     }
 
     private void init(Reminders.Reminder reminder, boolean remindBefore, @Nullable String soundPath, String title, int closeTime){
-//        currentRemindersCount++;
         this.reminder = reminder;
         reminderCount++;
         JLabel titleLabel=new JLabel(remindBefore?title:Settings.current.alertTitle);
@@ -63,12 +62,6 @@ public class Alert extends JDialog {
         addWindowListener(new WindowAdapter() {
             @Override
             public void windowClosing(WindowEvent e) {
-//                for(KeyValuePair<String, Boolean> entry : currentReminders){
-//                    if(entry.getKey().equals(reminder.uuid)){
-//                        currentReminders.set(currentReminders.indexOf(entry), new KeyValuePair<>(reminder.uuid, false));
-//                        break;
-//                    }
-//                }
                 if(!closed){
                     reminderCount--;
                     closed = true;
@@ -85,7 +78,7 @@ public class Alert extends JDialog {
             Main.getInstance().player.queue.add(reminder.sound);
         }
         working = false;
-        logger.info(reminder.uuid);
+        logger.info("Opening alert window for reminder "+reminder.uuid);
         if((Settings.current.secondsUntilAlertDisappear > 0 && !remindBefore)|| (closeTime > 0 && remindBefore)){
             new Thread(()->{
                 try {
@@ -166,32 +159,6 @@ public class Alert extends JDialog {
         Dimension screenSize = Settings.current.screenSize;
         Dimension windowSize = getSize();
         double maxRemindersPerRow = Math.floor((screenSize.height-Settings.current.alertVerticalOffset)/windowSize.height);
-//        int index = 0;
-//        for(KeyValuePair<String, Boolean> entry : currentReminders){
-//            if(entry.getKey().equals(uuid) && entry.getValue()){
-//                index = currentReminders.indexOf(entry)+1;
-//                break;
-//            }
-//        }
-//        for(KeyValuePair<String, Boolean> entry : currentReminders){
-//            if(index == 0) break;
-//            if(!entry.getValue()){
-//                index = currentReminders.indexOf(entry)+1;
-//                currentReminders.set(index-1, new KeyValuePair<>(uuid, true));
-//                break;
-//            }
-//        }
-//        if(index == 0){
-//            index = currentReminders.size()+1;
-//            currentReminders.add(new KeyValuePair<>(uuid, true));
-//        }
-//        int y = screenSize.height - windowSize.height*index - ((int)Settings.current.alertVerticalOffset);
-//        int x = 1;
-//        if(y < 0){
-//            int alertsPerWindow = screenSize.height/windowSize.height;
-//            x = index/alertsPerWindow+1;
-//            y = screenSize.height - windowSize.height*(index-alertsPerWindow*(x-1)) - ((int)Settings.current.alertVerticalOffset);
-//        }
         boolean invalid = false;
         int count = reminderCount;
         int x = (int) (Math.floor((reminderCount-1)/maxRemindersPerRow)+1);
@@ -212,7 +179,6 @@ public class Alert extends JDialog {
     @Override
     public void setLocation(int x,int y){
         revalidate();
-        setVisible(true);
         SwingUtilities.invokeLater(()-> super.setLocation(x,y));
     }
 
@@ -227,7 +193,6 @@ public class Alert extends JDialog {
             setOpaque(true);
         }
         public Component getListCellRendererComponent(JList paramlist, Object value, int index, boolean isSelected, boolean cellHasFocus) {
-//            setText(String.format("<html><div style=\"width:%dpx; font-size:14px; margin: 0;\">%s</div></html>", paramlist.getBounds().width, value.toString()));
             if(value.toString().split(":")[0].equals(Settings.current.descFieldName)){
                 String text = "<html>";
                 char[] chars = value.toString().toCharArray();
@@ -241,7 +206,6 @@ public class Alert extends JDialog {
                 setText(text);
             }else
                 setText(value.toString());
-//            setBorder(BorderFactory.createEmptyBorder(5, 3, 5, 3));
             if (value.toString().equals(match)) {
                 setFont(new Font("Arial", Font.BOLD, 16));
                 String impact = match.split(":")[1];

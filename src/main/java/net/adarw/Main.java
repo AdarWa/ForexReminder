@@ -1,5 +1,6 @@
 package net.adarw;
 
+import com.fasterxml.jackson.core.JsonProcessingException;
 import com.formdev.flatlaf.FlatLightLaf;
 import com.google.gson.Gson;
 import net.adarw.Utils.MessageUtils;
@@ -24,6 +25,7 @@ import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.Objects;
 import java.util.UUID;
 import java.util.logging.Logger;
 
@@ -144,7 +146,7 @@ public class Main implements MainInterface{
                 return MessageUtils.getSuccessMessage();
             }else if(command.getType() == Command.CommandType.IMPORTFX){
                 Command.ImportFXCommand cmd = (Command.ImportFXCommand) command;
-                FxImporter.importFx(cmd.path, Settings.current.generateComponentMappings());
+                FxImporter.importFx(cmd.path, Settings.current.generateComponentMappings(), Settings.current.importMappings.mapping);
                 listener.interrupt();
                 return MessageUtils.getSuccessMessage();
             }else if(command.getType() == Command.CommandType.READ){
@@ -214,7 +216,7 @@ public class Main implements MainInterface{
                 return MessageUtils.getSuccessMessage();
             }else if(command.getType() == Command.CommandType.EDIT){
                 Command.EditCommand cmd = (Command.EditCommand) command;
-                ArrayList<Reminders.Reminder> reminders = StorageUtils.getReminders().reminders;
+                ArrayList<Reminders.Reminder> reminders = Objects.requireNonNull(StorageUtils.getReminders()).reminders;
                 int index = -1;
                 for(Reminders.Reminder reminder : reminders){
                     if(reminder.uuid.equals(cmd.reminder.uuid)){

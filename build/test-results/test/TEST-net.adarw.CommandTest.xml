@@ -1,8 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="net.adarw.CommandTest" tests="1" skipped="0" failures="0" errors="0" timestamp="2024-07-24T16:04:11" hostname="adarch" time="0.084">
-  <properties/>
-  <testcase name="test()" classname="net.adarw.CommandTest" time="0.084"/>
-  <system-out><![CDATA[{"template":{"components":[{"type":"STRING","name":"AlertName"},{"type":"STRING","name":"Importance"},{"type":"STRING","name":"Curr"}]}}
-]]></system-out>
-  <system-err><![CDATA[]]></system-err>
-</testsuite>
