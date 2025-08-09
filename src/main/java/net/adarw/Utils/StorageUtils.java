@@ -8,6 +8,7 @@ import net.adarw.Template;
 import java.io.*;
 import java.nio.file.Path;
 import java.nio.file.Paths;
+import java.util.ArrayList;
 import java.util.logging.Logger;
 
 public class StorageUtils {
@@ -33,7 +34,11 @@ public class StorageUtils {
                 Template t = new Template();
                 t.components.add(new Template.Component(Template.Component.ComponentType.STRING, "Subject"));
                 t.components.add(new Template.Component(Template.Component.ComponentType.STRING, "Importance"));
-                t.components.add(new Template.Component(Template.Component.ComponentType.STRING, "Currency"));
+                Template.Component currencyComponent = new Template.Component(Template.Component.ComponentType.STRING, "Currency");
+                currencyComponent.choices.add("USD");
+                currencyComponent.choices.add("EUR");
+                currencyComponent.choices.add("ILS");
+                t.components.add(currencyComponent);
                 setTemplate(t);
             }
 
@@ -91,12 +96,12 @@ public class StorageUtils {
         }
     }
 
-    public static Template getTemplate(){
-        if(!isInitialized())
+    public static Template getTemplate() {
+        if (!isInitialized())
             return null;
-        try{
+        try {
             return new Gson().fromJson(new FileReader(template.toFile()), Template.class);
-        }catch (Exception e){
+        } catch (Exception e) {
             logger.severe(e.getClass().getSimpleName() + " while reading template files: " + e.getMessage());
             return null;
         }

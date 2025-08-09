@@ -178,6 +178,13 @@ $("#openSetGui").on("click", function(){
     open('/settings', 'Settings', params);
 });
 
+$("#openTemplateGui").on("click", function(){
+    let params = `scrollbars=no,resizable=no,status=no,location=no,toolbar=no,menubar=no,
+        width=720,height=720,left=750,top=180`;
+
+    open('/template-editor', 'Template', params);
+});
+
 
 
 $("#reloadSet").on("click", function(){

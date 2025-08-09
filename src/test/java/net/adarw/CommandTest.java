@@ -10,6 +10,9 @@ import java.util.*;
 
 import static org.junit.jupiter.api.Assertions.*;
 
+/*
+  Please ignore this shitty code.
+ */
 class CommandTest {
     
     @Test

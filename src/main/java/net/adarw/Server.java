@@ -102,6 +102,9 @@ public class Server extends NanoHTTPD {
                 } catch (IllegalAccessException | JsonProcessingException e) {
                     throw new RuntimeException(e);
                 }
+            }else if(path.equals("/template-editor")){
+                return newFixedLengthResponse(readResource("gui/template-editor.html", StandardCharsets.UTF_8)
+                        .replace("{templateData}", new Gson().toJson(StorageUtils.getTemplate())));
             }else{
                 String[] split = path.split("\\.");
                 return newFixedLengthResponse(Response.Status.OK,ContentType.fromFileExtension(split[split.length-1]).getMimeType() ,readResource("gui"+path, StandardCharsets.UTF_8));

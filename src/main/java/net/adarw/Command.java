@@ -201,9 +201,11 @@ public interface Command {
         }
 
         public String settings;
+        public String template;
 
-        public SaveSettingsCommand(String settings) {
+        public SaveSettingsCommand(String settings, String template) {
             this.settings = settings;
+            this.template = template;
         }
     }
 

@@ -233,12 +233,20 @@ public class Main implements MainInterface{
                 return MessageUtils.getSuccessMessage();
             }else if(command.getType() == Command.CommandType.SAVE_SETTINGS){
                 Command.SaveSettingsCommand cmd = (Command.SaveSettingsCommand) command;
-                Settings desSettings = Settings.deserialize(cmd.settings);
-                if (desSettings == null)
-                    return MessageUtils.getMessage(3, "Couldn't deserialize settings.");
-                Settings.current = desSettings;
-                Settings.SettingsManager.writeSettings(Settings.current);
-                return MessageUtils.getSuccessMessage();
+                if(cmd.settings != null) {
+                    Settings desSettings = Settings.deserialize(cmd.settings);
+                    if (desSettings == null)
+                        return MessageUtils.getMessage(3, "Couldn't deserialize settings.");
+                    Settings.current = desSettings;
+                    Settings.SettingsManager.writeSettings(Settings.current);
+                    return MessageUtils.getSuccessMessage();
+                }else if(cmd.template != null){
+                    Template template = new Gson().fromJson(cmd.template, Template.class);
+                    StorageUtils.setTemplate(template);
+                    return MessageUtils.getSuccessMessage();
+                }else {
+                    return MessageUtils.getMessage(3, "Can't save empty settings/template!");
+                }
             }
         }catch (Exception e){
             String err = e.getClass().getSimpleName() + " while in main loop: " + e.getMessage();
