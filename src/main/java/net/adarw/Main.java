@@ -181,7 +181,8 @@ public class Main implements MainInterface{
                 frame.setLocationRelativeTo(null);
                 frame.requestFocus();
                 FileFilter filter = new FileNameExtensionFilter(cmd.file.toUpperCase()+" File",cmd.file);
-                final JFileChooser fc = new JFileChooser(Settings.current.initialSoundFolder);
+                final JFileChooser fc = new JFileChooser(Settings.current.initialImportFolder);
+                MiscUtils.registerDeleteAction(fc);
                 fc.setFileFilter(filter);
                 int res = fc.showOpenDialog(frame);
                 if(res == JFileChooser.APPROVE_OPTION){

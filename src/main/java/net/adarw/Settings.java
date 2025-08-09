@@ -69,6 +69,9 @@ public class Settings {
     @SettingDescription(name = "Initial Sound Folder", help = "Default folder opened when selecting sounds")
     public String initialSoundFolder = System.getProperty("user.home");
 
+    @SettingDescription(name = "Initial Import Folder", help = "Default folder opened when importing")
+    public String initialImportFolder = System.getProperty("user.home");
+
     @SettingDescription(name = "Default Alert Sound", help = "Default sound file used for alerts if none is specified")
     public String alertDefaultSoundFile = "";
 
@@ -120,8 +123,8 @@ public class Settings {
     private static Logger logger = Logger.getLogger(Settings.class.getName());
 
     public Settings(){
-        importMappings.templateMappings.add(new TemplateImportMapping("Importance", "Impact"));
         importMappings.templateMappings.add(new TemplateImportMapping("Subject", "Name"));
+        importMappings.templateMappings.add(new TemplateImportMapping("Importance", "Impact"));
         importMappings.templateMappings.add(new TemplateImportMapping("Currency", "Currency"));
 
         if(MiscUtils.getOperatingSystemType() == MiscUtils.OSType.WINDOWS){
