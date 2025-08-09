@@ -37,7 +37,7 @@ public class StorageUtils {
                 Template.Component currencyComponent = new Template.Component(Template.Component.ComponentType.STRING, "Currency");
                 currencyComponent.choices.add("USD");
                 currencyComponent.choices.add("EUR");
-                currencyComponent.choices.add("ILS");
+                currencyComponent.choices.add("GBP");
                 t.components.add(currencyComponent);
                 setTemplate(t);
             }
