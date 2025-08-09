@@ -61,5 +61,5 @@ nbdist/
 Thumbs.db
 desktop.ini
 
-# SuperReminder
-SuperReminderDaemon*/
+# ForexReminder
+ForexReminderDaemon*/

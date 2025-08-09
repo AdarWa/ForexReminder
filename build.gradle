@@ -17,7 +17,7 @@ javafx {
     modules = [ 'javafx.controls', 'javafx.fxml', 'javafx.media' ]
 }
 shadowJar {
-    archiveBaseName.set('SuperReminder')
+    archiveBaseName.set('ForexReminder')
     archiveClassifier.set('')
     archiveVersion.set('v1.2')
 }

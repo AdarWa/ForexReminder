@@ -93,7 +93,7 @@ public class Main implements MainInterface{
                 SystemTray tray = SystemTray.getSystemTray();
                 Image image = Toolkit.getDefaultToolkit().getImage(Main.class.getResource("/trayicon2.png"));
                 ActionListener listener = e -> MiscUtils.openBrowser("http://localhost:8579");
-                TrayIcon trayIcon = new TrayIcon(image, "Super Reminder");
+                TrayIcon trayIcon = new TrayIcon(image, "Forex Reminder");
                 trayIcon.addActionListener(listener);
                 try {
                     tray.add(trayIcon);
