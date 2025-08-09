@@ -122,7 +122,6 @@ public class Settings {
 
     public ArrayList<KeyValuePair<String, Template.Component>> generateComponentMappings() {
         ArrayList<KeyValuePair<String, Template.Component>> map = new ArrayList<>();
-        logger.info(importMappings.templateMappings.toString());
         for(TemplateImportMapping mapping : importMappings.templateMappings){
             map.add(new KeyValuePair<>(mapping.csvName, new Template.Component(Template.Component.ComponentType.STRING,mapping.templateName)));
         }
@@ -133,7 +132,7 @@ public class Settings {
 
     public static Settings deserialize(String jsonConfig) throws JsonProcessingException {
         SimpleModule module = new SimpleModule();
-        module.addDeserializer(Settings.class, new RecursiveSettingsDeserializer(Settings.class));
+        module.addDeserializer(Settings.class, new ValueOnlyDeserializer());
         ObjectMapper mapper = new ObjectMapper();
         mapper.registerModule(module);
 

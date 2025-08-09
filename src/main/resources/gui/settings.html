@@ -45,6 +45,9 @@
       const name = entry.name || key;
       const help = entry.help || '';
 
+      if (value === null) {
+            return; // or return an empty container
+        }
       if (typeof value === 'boolean') {
         return `
           <div class="form-check form-switch mb-3">
@@ -128,7 +131,7 @@
           result[key] = {
             name: value.name,
             help: value.help,
-            value: deserialize(value.value, fullPath)
+            value: deserialize(value.value == null ? "" : value.value, fullPath)
           };
         } else if (Array.isArray(value.value)) {
           // find current DOM elements for array items

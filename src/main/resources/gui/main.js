@@ -171,6 +171,15 @@ $("#openSet").on("click", function(){
     });
 });
 
+$("#openSetGui").on("click", function(){
+    let params = `scrollbars=no,resizable=no,status=no,location=no,toolbar=no,menubar=no,
+        width=720,height=720,left=750,top=180`;
+
+    open('/settings', 'Settings', params);
+});
+
+
+
 $("#reloadSet").on("click", function(){
     $.post({
         url: "/",
