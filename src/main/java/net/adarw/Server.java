@@ -50,7 +50,8 @@ public class Server extends NanoHTTPD {
     public Response serve(IHTTPSession session) {
         if(!Settings.current.allowCrossOriginRequests) {
             String origin = session.getHeaders().get("origin");
-            if (origin != null && !origin.equals(String.format("http://%s:%d", Settings.current.serverBind, Settings.current.port))) {
+            if (origin != null && !origin.equals(String.format("http://%s:%d", getHostname(), getListeningPort())) && !origin.equals(String.format("http://localhost:%d",getListeningPort()))) {
+                logger.warning("Blocked Forbidden request from " + origin);
                 return newFixedLengthResponse(Response.Status.FORBIDDEN, "text/plain", "Forbidden");
             }
         }
