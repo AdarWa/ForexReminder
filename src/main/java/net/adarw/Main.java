@@ -195,24 +195,26 @@ public class Main implements MainInterface{
             }else if(command.getType() == Command.CommandType.SETTINGS){
                 Command.SettingsCommand cmd = (Command.SettingsCommand) command;
                 String operation = cmd.operation;
-                if(operation.equals("reload")){
-                    Settings.current = Settings.SettingsManager.readSettings();
-                }else if(operation.equals("open")){
-                    MiscUtils.openTextEditor(StorageUtils.settings.toFile());
-                }else if(operation.equals("openTemplate")){
-                    MiscUtils.openTextEditor(StorageUtils.template.toFile());
-                } else if(operation.equals("quit")){
-                    System.exit(0);
-                    return MessageUtils.getSuccessMessage();
-                }else if(operation.equals("default")){
-                    FileUtils.deleteDirectory(StorageUtils.dataDir.toFile());
-                    System.exit(0);
-                    return MessageUtils.getSuccessMessage();
-                }else if(operation.equals("openDir")){
-                    MiscUtils.openDirectory(StorageUtils.dataDir.toFile());
-                    return MessageUtils.getSuccessMessage();
-                }else{
-                    return MessageUtils.getMessage(3, "Invalid settings operation: " + operation);
+                switch (operation) {
+                    case "reload" -> Settings.current = Settings.SettingsManager.readSettings();
+                    case "open" -> MiscUtils.openTextEditor(StorageUtils.settings.toFile());
+                    case "openTemplate" -> MiscUtils.openTextEditor(StorageUtils.template.toFile());
+                    case "quit" -> {
+                        System.exit(0);
+                        return MessageUtils.getSuccessMessage();
+                    }
+                    case "default" -> {
+                        FileUtils.deleteDirectory(StorageUtils.dataDir.toFile());
+                        System.exit(0);
+                        return MessageUtils.getSuccessMessage();
+                    }
+                    case "openDir" -> {
+                        MiscUtils.openDirectory(StorageUtils.dataDir.toFile());
+                        return MessageUtils.getSuccessMessage();
+                    }
+                    default -> {
+                        return MessageUtils.getMessage(3, "Invalid settings operation: " + operation);
+                    }
                 }
                 return MessageUtils.getSuccessMessage();
             }else if(command.getType() == Command.CommandType.EDIT){
