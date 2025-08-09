@@ -182,7 +182,7 @@ public class Main implements MainInterface{
                 frame.requestFocus();
                 FileFilter filter = new FileNameExtensionFilter(cmd.file.toUpperCase()+" File",cmd.file);
                 final JFileChooser fc = new JFileChooser(Settings.current.initialImportFolder);
-                MiscUtils.registerDeleteAction(fc);
+                MiscUtils.registerDeleteAction(fc, frame);
                 fc.setFileFilter(filter);
                 int res = fc.showOpenDialog(frame);
                 if(res == JFileChooser.APPROVE_OPTION){

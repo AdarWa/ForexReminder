@@ -23,7 +23,7 @@ public class MiscUtils {
 
     private static OSType detectedOS = null;
 
-    public static void registerDeleteAction(JFileChooser fileChooser)
+    public static void registerDeleteAction(JFileChooser fileChooser, JFrame frame)
     {
         AbstractAction abstractAction = new AbstractAction()
         {
@@ -37,7 +37,7 @@ public class MiscUtils {
 
                     if (selectedFile != null)
                     {
-                        int selectedAnswer = JOptionPane.showConfirmDialog(null, "Are you sure want to permanently delete this file?", "Confirm", JOptionPane.YES_NO_OPTION);
+                        int selectedAnswer = JOptionPane.showConfirmDialog(frame, "Are you sure want to permanently delete this file?", "Confirm", JOptionPane.YES_NO_OPTION);
 
                         if (selectedAnswer == JOptionPane.YES_OPTION)
                         {
