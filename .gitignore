@@ -63,3 +63,8 @@ desktop.ini
 
 # ForexReminder
 ForexReminderDaemon*/
+
+# Binaries
+*.deb
+*.rpm
+*.exe

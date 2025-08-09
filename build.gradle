@@ -4,8 +4,11 @@ plugins {
     id 'org.openjfx.javafxplugin' version '0.1.0'
 }
 
+def appVersion = '1.0.0'
+println "App version: $appVersion"
+
 group 'net.adarw'
-version '1.0-SNAPSHOT'
+version appVersion
 
 repositories {
     mavenCentral()
@@ -19,7 +22,7 @@ javafx {
 shadowJar {
     archiveBaseName.set('ForexReminder')
     archiveClassifier.set('')
-    archiveVersion.set('v1.2')
+    archiveVersion.set(appVersion)
 }
 
 jar {
@@ -62,4 +65,50 @@ tasks.register('run') {
             classpath = sourceSets.main.runtimeClasspath
         }
     }
+}
+
+def jpackageExe = 'jpackage' // assumes jpackage is in your PATH or use full path
+def mainClass = 'net.adarw.Main'
+def appName = 'ForexReminder'
+def inputDir = "${buildDir}/libs"
+def jarName = appName+"-${appVersion}.jar"
+def iconWin = "src/main/resources/trayicon2.ico"
+def iconLinux = "src/main/resources/trayicon2.png"
+
+tasks.register('jpackageWindows', Exec) {
+    dependsOn shadowJar
+    commandLine jpackageExe,
+            '--type', 'exe',
+            '--input', inputDir,
+            '--name', appName,
+            '--main-jar', jarName,
+            '--main-class', mainClass,
+            '--icon', iconWin,
+            '--app-version', appVersion,
+            '--win-menu',
+            '--win-shortcut'
+}
+
+tasks.register('jpackageLinuxDeb', Exec) {
+    dependsOn shadowJar
+    commandLine jpackageExe,
+            '--type', 'deb',
+            '--input', inputDir,
+            '--name', appName,
+            '--main-jar', jarName,
+            '--main-class', mainClass,
+            '--icon', iconLinux,
+            '--app-version', appVersion
+}
+
+tasks.register('jpackageLinuxRpm', Exec) {
+    dependsOn shadowJar
+    commandLine jpackageExe,
+            '--type', 'rpm',
+            '--input', inputDir,
+            '--name', appName,
+            '--main-jar', jarName,
+            '--main-class', mainClass,
+            '--icon', iconLinux,
+            '--app-version', appVersion
 }

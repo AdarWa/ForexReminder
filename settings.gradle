@@ -1,2 +1,3 @@
 rootProject.name = 'ForexReminder'
+ext.appVersion = '1.0.0'
 
