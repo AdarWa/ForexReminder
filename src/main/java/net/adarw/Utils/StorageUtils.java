@@ -14,7 +14,7 @@ import java.util.logging.Logger;
 public class StorageUtils {
     static Logger logger = Logger.getLogger(StorageUtils.class.getName());
 
-    public static Path home = Paths.get(System.getProperty("user.dir"));
+    public static Path home = Paths.get(System.getProperty("user.home"));
     public static Path dataDir = Paths.get(home.toString(), "ForexReminderDaemon");
     public static Path template = Paths.get(dataDir.toString(), "template.json");
     public static Path reminders = Paths.get(dataDir.toString(), "reminders.json");
