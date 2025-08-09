@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <title>Template Editor</title>
+    <link rel="stylesheet" href="bootstrap/css/bootstrap.min.css" />
+    <style>
+        .form-section { margin-bottom: 1.5rem; }
+        .nested-card { margin-top: 1rem; margin-left: 1rem; }
+        .key-label { font-weight: bold; }
+        .form-text-help {
+          font-size: 0.875em;
+          color: #6c757d;
+          margin-top: 0.25rem;
+          margin-bottom: 0.75rem;
+          display: block;
+        }
+    </style>
+</head>
+<body class="p-4 bg-light">
+    <div class="container">
+        <h2 class="mb-4">Template Editor</h2>
+        <div class="alert alert-warning" role="alert">
+            <strong>Note:</strong> The core needs to be restarted after any template change.
+        </div>
+        <form id="settings-form"></form>
+
+        <button type="button" class="btn btn-success mt-3" id="add-component">Add Component</button>
+        <button class="btn btn-primary mt-3" id="save-template">Save Template</button>
+
+        <h4 class="mt-4">Serialized Output</h4>
+        <pre id="output" class="bg-white p-3 border"></pre>
+    </div>
+
+    <script src="jquery/jquery.min.js"></script>
+    <script src="bootstrap/js/bootstrap.bundle.min.js"></script>
+    <script>
+        function createComponent(type = "STRING", name = "", choices = []) {
+            let compId = Date.now() + Math.random();
+
+            return $(`
+                <div class="card p-3 mb-3" data-id="${compId}">
+                    <div class="mb-2">
+                        <label class="form-label">Type</label>
+                        <select class="form-select type-input">
+                            <option value="STRING" ${type === "STRING" ? "selected" : ""}>STRING</option>
+                            <option value="BOOLEAN" ${type === "BOOLEAN" ? "selected" : ""}>BOOLEAN</option>
+                        </select>
+                    </div>
+                    <div class="mb-2">
+                        <label class="form-label">Name</label>
+                        <input type="text" class="form-control name-input" value="${name}">
+                    </div>
+                    <div class="mb-2">
+                        <label class="form-label">Choices (comma separated)</label>
+                        <input type="text" class="form-control choices-input" value="${choices.join(",")}">
+                    </div>
+                    <button type="button" class="btn btn-danger btn-sm remove-component">Remove</button>
+                </div>
+            `);
+        }
+
+        $(document).ready(function() {
+            // Initial data
+            let baseData = {templateData}
+
+            // Render initial components
+            baseData.components.forEach(c => {
+                $("#settings-form").append(createComponent(c.type, c.name, c.choices));
+            });
+
+            // Add new component
+            $("#add-component").click(function() {
+                $("#settings-form").append(createComponent());
+            });
+
+            // Remove component
+            $(document).on("click", ".remove-component", function() {
+                $(this).closest(".card").remove();
+            });
+
+            // Save JSON
+            $("#save-template").click(function(e) {
+                e.preventDefault();
+                let output = { components: [] };
+
+                $("#settings-form .card").each(function() {
+                    let type = $(this).find(".type-input").val();
+                    let name = $(this).find(".name-input").val();
+                    let choices = $(this).find(".choices-input").val()
+                        .split(",")
+                        .map(s => s.trim())
+                        .filter(s => s.length > 0);
+
+                    output.components.push({ type, name, choices });
+                });
+
+                $("#output").text(JSON.stringify(output, null, 2));
+                $.ajax({
+                    url: '/save_template',
+                    method: 'POST',
+                    contentType: 'application/json',
+                    data: JSON.stringify({type:"SAVE_SETTINGS", template: JSON.stringify(output)}),
+                    timeout: 10000, // 10 seconds timeout
+                    success: function(response) {
+                        alert('Settings saved successfully!');
+                    },
+                    error: function(xhr, status, error) {
+                        let errorMessage = 'Failed to save template.';
+                        if (status === 'timeout') {
+                            errorMessage += ' The request timed out.';
+                        } else if (xhr.status === 0) {
+                            errorMessage += ' Could not connect to the server.';
+                        } else if (xhr.responseJSON && xhr.responseJSON.message) {
+                            errorMessage += ' ' + xhr.responseJSON.message;
+                        } else {
+                            errorMessage += ' ' + error;
+                        }
+                        alert(errorMessage);
+                        console.error('Save Template error:', xhr, status, error);
+                    }
+                });
+            });
+        });
+    </script>
+</body>
+</html>
