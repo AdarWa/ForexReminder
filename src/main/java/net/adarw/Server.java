@@ -34,7 +34,7 @@ public class Server extends NanoHTTPD {
     }
 
     public Server(MainInterface main){
-        super(8579);
+        super(Settings.current.serverBind,Settings.current.port);
         this.main = main;
         try {
             start(NanoHTTPD.SOCKET_READ_TIMEOUT, false);
@@ -48,6 +48,12 @@ public class Server extends NanoHTTPD {
 
     @Override
     public Response serve(IHTTPSession session) {
+        if(!Settings.current.allowCrossOriginRequests) {
+            String origin = session.getHeaders().get("origin");
+            if (origin != null && !origin.equals(String.format("http://%s:%d", Settings.current.serverBind, Settings.current.port))) {
+                return newFixedLengthResponse(Response.Status.FORBIDDEN, "text/plain", "Forbidden");
+            }
+        }
         Map<String, String> params = new HashMap<>();
         Method method = session.getMethod();
         if (Method.POST.equals(method)) {

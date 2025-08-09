@@ -33,6 +33,15 @@ public class Settings {
         String help();
     }
 
+    @SettingDescription(name = "Server Port", help = "The port that the server will start on")
+    public int port = 8579;
+
+    @SettingDescription(name = "Server Bind", help = "The address that the server will bind to start, if unsure, do not change this to avoid security issues")
+    public String serverBind = "127.0.0.1";
+
+    @SettingDescription(name = "Allow Cross Origin", help = "Whether to allow requests coming from a different origin, if unsure, do not change this to avoid security issues")
+    public boolean allowCrossOriginRequests = false;
+
     @SettingDescription(name = "Alert Title", help = "The title shown at the top of each alert popup")
     public String alertTitle = "Alert";
 
@@ -104,6 +113,9 @@ public class Settings {
 
     @SettingDescription(name = "Import Mappings", help = "Mappings used when importing reminders from CSV or external systems")
     public ImportMappings importMappings = new ImportMappings();
+
+    @SettingDescription(name = "Import Date Format", help = "The date format used for importing dates in CSV files")
+    public String importDateFormat = "MM/dd/yyyy HH:mm:ss";
 
     private static Logger logger = Logger.getLogger(Settings.class.getName());
 

@@ -47,7 +47,7 @@ public class FxImporter {
                 entries.add(new KeyValuePair<>(entry.getValue(), record.get(entry.getKey())));
             }
 
-            SimpleDateFormat parser = new SimpleDateFormat("MM/dd/yyyy HH:mm:ss");
+            SimpleDateFormat parser = new SimpleDateFormat(Settings.current.importDateFormat);
             Date date = parser.parse(record.get(importMapping.date));
             date.setTime(date.getTime() + (1000*60*60)*(Settings.current.gmt + (Settings.current.daylightSaving ? 1 : 0)));
             Reminders.Reminder reminder = new Reminders.Reminder(
