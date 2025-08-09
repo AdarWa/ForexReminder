@@ -15,11 +15,28 @@ import java.util.Date;
 
 public class FxImporter {
 
+    private static String[] flattenComponentMapping(ArrayList<KeyValuePair<String, Template.Component>> componentMapping){
+        ArrayList<String> newMapping = new ArrayList<>();
+        for (KeyValuePair<String, Template.Component> mapping : componentMapping){
+            newMapping.add(mapping.key);
+        }
+        String[] arr = new String[newMapping.size()];
+        arr = newMapping.toArray(arr);
+        return arr;
+    }
 
     public static void importFx(String path, ArrayList<KeyValuePair<String, Template.Component>> componentMapping, Settings.ImportMapping importMapping) throws IOException, ParseException {
         Reader in = new FileReader(path);
+
+        // Doing some shit to merge the arrays.
+        String[] flattenedComponentMapping = flattenComponentMapping(componentMapping);
+        String[] importMappingArr = {importMapping.id, importMapping.date};
+        String[] headerMapping = new String[importMappingArr.length+flattenedComponentMapping.length];
+        System.arraycopy(importMappingArr, 0, headerMapping, 0, importMappingArr.length);
+        System.arraycopy(flattenedComponentMapping, 0, headerMapping, importMappingArr.length, flattenedComponentMapping.length);
+
         Iterable<CSVRecord> records = CSVFormat.DEFAULT
-                .withHeader("Id", "Start", "Name", "Impact", "Currency")
+                .withHeader(headerMapping)
                 .withFirstRecordAsHeader()
                 .parse(in);
         Reminders reminders = StorageUtils.getReminders();
