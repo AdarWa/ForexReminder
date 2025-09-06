@@ -29,6 +29,7 @@ Built for forex news, but flexible enough for other types of reminders.
 - [📥 Importing Data](#-importing-data)
 - [🛠 Building from Source](#-building-from-source)
 - [🤝 Contributing](#-contributing)
+- [☕ Support](#-support)
 - [📜 License](#-license)
 
 
@@ -135,6 +136,13 @@ If submitting a PR:
 1. Clearly describe your changes.
 2. Attach logs if fixing a bug.
 3. Update documentation for new features.
+
+---
+
+## ☕ Support
+
+The project is free, but if you find it useful and want to support development, you can [Buy Me a Coffee](https://www.buymeacoffee.com/AdarWa). Every bit helps and is really appreciated!
+[!["Buy Me A Coffee"](https://www.buymeacoffee.com/assets/img/custom_images/orange_img.png)](https://www.buymeacoffee.com/AdarWa)
 
 ---
 
