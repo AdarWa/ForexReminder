@@ -6,7 +6,9 @@
 ![Web-based](https://img.shields.io/badge/interface-web--based-orange)
 [![Build from Source](https://img.shields.io/badge/build-from--source-lightgrey)](#-building-from-source)
 [![Prebuilt Binaries](https://img.shields.io/badge/prebuilt-binaries-brightgreen)](#-quickstart)
+[![Buy Me a Coffee](https://img.shields.io/badge/Buy%20Me%20a%20Coffee-donate-yellow)](https://www.buymeacoffee.com/AdarWa)
 
+[!["Buy Me A Coffee"](https://www.buymeacoffee.com/assets/img/custom_images/orange_img.png)](https://www.buymeacoffee.com/AdarWa)
 
 > ⭐ **If you find ForexReminder useful, please consider giving it a star on GitHub!**  
 > It helps others discover the project and supports future development.
