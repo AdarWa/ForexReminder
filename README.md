@@ -142,6 +142,7 @@ If submitting a PR:
 ## ☕ Support
 
 The project is free, but if you find it useful and want to support development, you can [Buy Me a Coffee](https://www.buymeacoffee.com/AdarWa). Every bit helps and is really appreciated!
+
 [!["Buy Me A Coffee"](https://www.buymeacoffee.com/assets/img/custom_images/orange_img.png)](https://www.buymeacoffee.com/AdarWa)
 
 ---
