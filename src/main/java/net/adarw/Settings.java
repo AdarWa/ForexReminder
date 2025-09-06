@@ -67,7 +67,7 @@ public class Settings {
     public boolean showExampleAlertOnStart = false;
 
     @SettingDescription(name = "Initial Sound Folder", help = "Default folder opened when selecting sounds")
-    public String initialSoundFolder = System.getProperty("user.home");
+    public String initialSoundFolder = StorageUtils.soundsDir.toString();
 
     @SettingDescription(name = "Initial Import Folder", help = "Default folder opened when importing")
     public String initialImportFolder = System.getProperty("user.home");
@@ -119,6 +119,9 @@ public class Settings {
 
     @SettingDescription(name = "Import Date Format", help = "The date format used for importing dates in CSV files")
     public String importDateFormat = "MM/dd/yyyy HH:mm:ss";
+
+    @SettingDescription(name = "Show Donations", help = "Donations")
+    public boolean showDonations = true;
 
     private static Logger logger = Logger.getLogger(Settings.class.getName());
 

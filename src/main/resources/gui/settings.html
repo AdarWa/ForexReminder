@@ -15,6 +15,9 @@
           margin-bottom: 0.75rem;
           display: block;
         }
+        .hide {
+          display: none;
+        }
     </style>
 </head>
 <body class="p-4 bg-light">
@@ -45,12 +48,14 @@
       const name = entry.name || key;
       const help = entry.help || '';
 
+
       if (value === null) {
             return; // or return an empty container
         }
       if (typeof value === 'boolean') {
+        let hide = key === "showDonations" ? "hide" : "";
         return `
-          <div class="form-check form-switch mb-3">
+          <div class="form-check form-switch mb-3 ${hide}">
             <input class="form-check-input" type="checkbox" id="${id}" ${value ? 'checked' : ''} aria-describedby="${id}-help">
             <label class="form-check-label" for="${id}" data-bs-toggle="tooltip" title="${help}">${name}</label>
             <div id="${id}-help" class="form-text form-text-help">${help}</div>

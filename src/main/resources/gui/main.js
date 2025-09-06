@@ -185,7 +185,27 @@ $("#openTemplateGui").on("click", function(){
     open('/template-editor', 'Template', params);
 });
 
+$("#donate").on("click", function(){
+    window.open("https://www.buymeacoffee.com/AdarWa", '_blank').focus();
+    alert("Thanks!");
+});
 
+$("#addStartup").on("click", function(){
+    $.post({
+        url: "/",
+        data:JSON.stringify({type:"SETTINGS", operation:"addStartup"}),
+        dataType: "json",
+        contentType: "json",
+        success: function (result) {
+            if(result.code != 0){
+                alert("Code " + result.code + ". Message: " + result.message);
+                console.log("Code " + result.code + ". Message: " + result.message);
+                return;
+            }
+            location.reload();
+        }
+    });
+});
 
 $("#reloadSet").on("click", function(){
     $.post({
@@ -357,3 +377,68 @@ $(".import").on("click", function(){
 setInterval(function(){
     location.reload();
 }, {{interval}})
+
+function loadToastify(callback) {
+  // Load CSS
+  const link = document.createElement("link");
+  link.rel = "stylesheet";
+  link.href = "https://cdn.jsdelivr.net/npm/toastify-js/src/toastify.min.css";
+  document.head.appendChild(link);
+
+  // Load JS
+  const script = document.createElement("script");
+  script.src = "https://cdn.jsdelivr.net/npm/toastify-js";
+  script.onload = callback; // call after loaded
+  document.body.appendChild(script);
+}
+
+function showDonationToast() {
+  Toastify({
+    node: (() => {
+      const container = document.createElement("div");
+      container.style.display = "flex";
+      container.style.alignItems = "center";
+      container.style.justifyContent = "space-between";
+      container.style.gap = "10px";
+
+      const text = document.createElement("span");
+      text.innerText = "ForexReminder is free and maintained by volunteers trying to make Forex trading better.\nPlease consider supporting it's development by donating.";
+      text.style.fontWeight = "bold";
+
+      const btn = document.createElement("button");
+      btn.innerText = "Donate";
+      btn.style.backgroundColor = "#FFD700"; // gold
+      btn.style.color = "#000";
+      btn.style.border = "none";
+      btn.style.padding = "4px 8px";
+      btn.style.cursor = "pointer";
+      btn.style.borderRadius = "4px";
+      btn.onclick = () => window.open("https://www.buymeacoffee.com/AdarWa", "_blank");
+
+      container.appendChild(text);
+      container.appendChild(btn);
+      return container;
+    })(),
+    duration: 10000, // 10 seconds
+    gravity: "bottom",
+    position: "right",
+    backgroundColor: "#ff4c4c", // brighter, more visible
+    stopOnFocus: true,
+    close: false
+  }).showToast();
+}
+
+// Show twice per week
+let lastShown = localStorage.getItem("donationToastLastShown");
+let now = Date.now();
+
+if (!lastShown || now - lastShown > 4 * 24 * 60 * 60 * 1000) { // 3 days
+  if({{showDonations}}){
+    loadToastify(showDonationToast);
+    localStorage.setItem("donationToastLastShown", now);
+  }
+}
+
+if(!{{showDonations}}){
+    $("#donate").hide();
+}

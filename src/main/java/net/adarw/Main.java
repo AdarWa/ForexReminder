@@ -181,7 +181,7 @@ public class Main implements MainInterface{
                 frame.setLocationRelativeTo(null);
                 frame.requestFocus();
                 FileFilter filter = new FileNameExtensionFilter(cmd.file.toUpperCase()+" File",cmd.file);
-                final JFileChooser fc = new JFileChooser(Settings.current.initialImportFolder);
+                final JFileChooser fc = new JFileChooser(cmd.file.equals("wav") ? Settings.current.initialSoundFolder : Settings.current.initialImportFolder);
                 MiscUtils.registerDeleteAction(fc, frame);
                 fc.setFileFilter(filter);
                 int res = fc.showOpenDialog(frame);
@@ -210,6 +210,10 @@ public class Main implements MainInterface{
                     }
                     case "openDir" -> {
                         MiscUtils.openDirectory(StorageUtils.dataDir.toFile());
+                        return MessageUtils.getSuccessMessage();
+                    }
+                    case "addStartup" -> {
+                        StorageUtils.createShortcut();
                         return MessageUtils.getSuccessMessage();
                     }
                     default -> {

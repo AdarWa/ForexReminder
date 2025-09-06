@@ -101,7 +101,8 @@ public class Server extends NanoHTTPD {
                         .replace("{showDialogOnDelete}", String.valueOf(Settings.current.showDialogOnDelete)));
             }else if(path.equals("/main.js")){
                 return newFixedLengthResponse(Response.Status.OK,ContentType.fromFileExtension("js").getMimeType() ,readResource("gui/main.js", StandardCharsets.UTF_8)
-                        .replace("{{interval}}", String.valueOf(Settings.current.pageReloadMinutesInterval*60*1000)));
+                        .replace("{{interval}}", String.valueOf(Settings.current.pageReloadMinutesInterval*60*1000))
+                        .replace("{{showDonations}}", String.valueOf(Settings.current.showDonations)));
             }else if(path.equals("/settings")){
                 try {
                     return newFixedLengthResponse(readResource("gui/settings.html", StandardCharsets.UTF_8)
