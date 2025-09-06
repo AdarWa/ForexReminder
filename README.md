@@ -16,7 +16,8 @@
 **ForexReminder** is a fully offline, web-based forex news reminder system with **powerful customization** for fields, templates, and imports.  
 Built for forex news, but flexible enough for other types of reminders.
 
-![Showcase Image](imgs/img2.png)
+![Showcase Image](imgs/ReminderMainScreen.png)
+![Showcase Image](imgs/ReminderAlerts.png)
 
 ---
 
